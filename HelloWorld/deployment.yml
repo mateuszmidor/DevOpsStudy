@@ -1,0 +1,49 @@
+---
+  # I want a load balancer service to access my PODs
+  kind: Service
+  apiVersion: v1
+  metadata:
+   # The service will be named hello-world-service
+   name: hello-world-service
+  spec:
+   selector:
+     # And it will provide access to hello-world-app labeled PODs
+     app: hello-world-app
+   ports:
+     - protocol: "TCP"
+       # Port accessible inside cluster. It forwards to targetPort 80
+       port: 8080
+       # Port To forward to inside pod
+       targetPort: 80
+       # Port accessible outside cluster. It forwards to targetPort 80
+       nodePort: 31000
+   # Role of this Service is to balance the load between 5 PODS defined below
+   type: LoadBalancer
+   
+---
+apiVersion: apps/v1
+# I want a deployment
+kind: Deployment
+metadata:
+  # Named: hello-world-deployment
+  name: hello-world-deployment
+spec:
+  # With 5 replicas of the below specified POD
+  replicas: 5
+  selector:
+    matchLabels:
+      app: hello-world-app
+  template:
+    metadata:
+        labels:
+          # This is the same as Service's selector app
+          app: hello-world-app
+    spec:
+      # Make a POD of 1 container
+      containers:
+        - name: hello-world-app
+          # Use following image: tutum/hello-world
+          image: tutum/hello-world
+          ports:
+            # The running container will use port 80
+            - containerPort: 80
