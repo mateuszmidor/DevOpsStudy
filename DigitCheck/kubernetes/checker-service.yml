@@ -1,0 +1,18 @@
+---
+  # checker-service
+  kind: Service
+  apiVersion: v1
+  metadata:
+   name: checker-service
+  spec:
+   selector:
+     app: checker
+   ports:
+     - protocol: "TCP"
+       # Port accessible inside cluster. It forwards to targetPort 80
+       port: 8080
+       # Port To forward to inside pod
+       targetPort: 80
+       # Port accessible outside cluster. It forwards to targetPort 80
+       nodePort: 32000
+   type: LoadBalancer

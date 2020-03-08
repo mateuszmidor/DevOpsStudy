@@ -1,0 +1,18 @@
+---
+# webapp-service
+kind: Service
+apiVersion: v1
+metadata:
+ name: webapp-service
+spec:
+ selector:
+   app: webapp
+ ports:
+   - protocol: "TCP"
+     # Port accessible inside cluster. It forwards to targetPort 80
+     port: 8080
+     # Port To forward to inside pod
+     targetPort: 80
+     # Port accessible outside cluster. It forwards to targetPort 80
+     nodePort: 31000
+ type: LoadBalancer
