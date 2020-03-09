@@ -13,6 +13,4 @@
        port: 8080
        # Port To forward to inside pod
        targetPort: 80
-       # Port accessible outside cluster. It forwards to targetPort 80
-       nodePort: 32000
-   type: LoadBalancer
+   type: ClusterIP
