@@ -27,6 +27,12 @@
             volumeMounts:
               - name: shared-data
                 mountPath: /tmp
+            readinessProbe: # it takes time to learn digit recognition, so this is helpful
+              httpGet:
+                path: /healthcheck
+                port: 80
+              initialDelaySeconds: 60
+              periodSeconds: 5
   
           - name: pngconverter
             image: mateuszmidor/digitcheck-pngconverter

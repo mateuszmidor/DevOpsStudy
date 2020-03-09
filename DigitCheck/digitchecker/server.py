@@ -15,6 +15,10 @@ def pngToNumpyArray2dUint8(rawPngBytes : bytes) -> numpy.ndarray:
 class DigitCheckerAppHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
+        if self.path.lower() == "/healthcheck": # kubernetes readinessProbe
+            self.insertHeaders200OK()
+            return 
+
         self.insertHeaders404NotFound()
         self.handle404NotFound()
 
