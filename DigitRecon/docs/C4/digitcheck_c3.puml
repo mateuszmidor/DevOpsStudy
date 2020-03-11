@@ -1,0 +1,23 @@
+@startuml "c3"
+
+'!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+' uncomment the following line and comment the first to use locally
+!include C4PUML/C4-PlantUML/C4_Component.puml
+
+title Component-Level diagram for DigitRecon
+#Person(user, "digit hand writer")
+Container_Boundary(web_app, "webapp") {
+    Component(web_front, "frontend", "html+js")
+    Component(web_back, "backend", "python3")
+}
+Container(ml_digit_checker, "digitchecker", "python3")
+Container(png_converter, "pngconverter", "python3")
+ContainerDb(ml_model_storage, "volume", "filesystem")
+
+Rel(user, web_front, "draw digit, read result")
+Rel(web_front, web_back, "POST /checkdigit", "data:image/png;base64 -> {'value': '7'}")
+Rel(web_back, ml_digit_checker, "POST /checkdigit", "raw png bytes -> {'value': '7'}")
+Rel(ml_digit_checker, png_converter, "POST /convertpng", "raw png bytes -> converted png bytes")
+Rel(ml_digit_checker, ml_model_storage, "read/write:\n/tmp/model")
+
+@enduml

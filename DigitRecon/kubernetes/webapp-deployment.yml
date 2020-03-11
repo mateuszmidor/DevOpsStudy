@@ -1,0 +1,24 @@
+---
+  # webapp-deployment. 1 container: webapp
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+   name: webapp-deployment
+  spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       digitrecon: webapp
+   template:
+     metadata:
+         labels:
+          digitrecon: webapp
+     spec:
+       containers:
+         - name: webapp-container
+           image: mateuszmidor/digitrecon-webapp
+           imagePullPolicy: Never # use local image
+           ports:
+             - containerPort: 80
+          #  command: ["/bin/sh"]
+          #  args: ["-c", "echo Hello from the debian container > /pod-data/index.html"]

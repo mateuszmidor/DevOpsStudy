@@ -1,0 +1,24 @@
+@startuml "c2"
+
+!include C4PUML/C4-PlantUML/C4_Container.puml
+' !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Container.puml
+
+title Container-Level diagram for DigitRecon
+
+#Person(user, "digit hand writer")
+Boundary(sys, "DigitRecon", "kubernetes cluster") {
+    Boundary(pod1, "webapp-service", "clusterip:31000") {
+        Container(web_app, "webapp", "1 replica")
+    }
+    Boundary(pod2, "checker-service", "checker_service_ip:checker_service_port"){
+        Container(ml_digit_checker, "digitchecker", "3 replicas")
+        Container(png_converter, "pngconverter\n127.0.0.1:81", "3 replicas")
+        ContainerDb(ml_storage, "volume :/tmp/model", "shared within checker-service")
+    }
+}
+Rel(user, web_app, "draw a digit, read the result", "html5 ui")
+Rel(web_app, ml_digit_checker, "send png image, receive digit or error", "http post")
+Rel(ml_digit_checker, png_converter, "send png image, receive grayscaled 28x28x8bit png image", "http post")
+Rel(ml_digit_checker, ml_storage, "read machine learning model for digit recognition", "filesystem")
+
+@enduml
