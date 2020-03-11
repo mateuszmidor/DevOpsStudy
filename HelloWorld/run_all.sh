@@ -25,7 +25,7 @@ function showHelloAndDashboard() {
 
     # wait till http server is up
     echo "Waiting for http server to get up"
-    while true; do curl -X GET $ip:31000/ > /dev/null 2>&1; [[ $? == 0 ]] && break; sleep 1; done
+    while true; do curl -X GET --max-time 1 $ip:31000/ > /dev/null 2>&1; [[ $? == 0 ]] && break; sleep 1; done
 
     echo "Showing Kubernetized Hello World Web App"
     firefox $ip:31000
