@@ -39,7 +39,7 @@ function showWebPage() {
     echo "Waiting for http server to get up"
     while true; do curl -X GET --max-time 1 $ip:31000/ > /dev/null 2>&1; [[ $? == 0 ]] && break; sleep 1; done
 
-    echo "Showing DigitRecon Web App. Wait 60sec until neural network learns the digits :)"
+    echo "Showing DigitRecon Web App. If first time run, wait 60sec until neural network learns the digits :)"
     firefox $ip:31000
     while true; do sleep 1; done
 }

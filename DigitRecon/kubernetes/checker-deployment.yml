@@ -17,7 +17,8 @@
       spec:
         volumes:
           - name: shared-data
-            emptyDir: {}
+            hostPath:
+              path: /tmp
         containers:
           - name: digitchecker-container
             image: mateuszmidor/digitrecon-digitchecker
@@ -27,13 +28,16 @@
             volumeMounts:
               - name: shared-data
                 mountPath: /tmp
-            readinessProbe: # it takes time to learn digit recognition, so let kubernetes check for readiness
+            readinessProbe: # it takes time to train digit recognition model, so let kubernetes check for readiness
               httpGet:
                 path: /healthcheck
                 port: 80
-              initialDelaySeconds: 60
-              periodSeconds: 5
-  
+              initialDelaySeconds: 5 # if the digit recognition model is ready, then the container is ready almost right away
+              periodSeconds: 15 # otherwise, give it time to teach the model
+            # env:
+            #   - name: DELAY_SEC
+            #     value: "60"
+
           - name: pngconverter-container
             image: mateuszmidor/digitrecon-pngconverter
             imagePullPolicy: Never # use local image
