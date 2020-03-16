@@ -1,0 +1,21 @@
+---
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    name: hello-world-replicaset # pods will be named: hello-world-replicaset-someid
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: hello-world-pod
+    template:
+      metadata:
+        name: hello-world-pod
+        labels:
+          app: hello-world-pod
+      spec:
+        containers:
+          - name: hello-world-container
+            image: tutum/hello-world
+            ports:
+              - containerPort: 80
