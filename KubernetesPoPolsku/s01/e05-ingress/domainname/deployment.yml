@@ -1,0 +1,54 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  name: hello-world-ingress
+spec:
+  rules:
+    - host: hello-world.127.0.0.1.nip.io
+      http:
+        paths:
+          - backend:
+              serviceName: hello-world-service
+              servicePort: 8080
+            path: /
+
+---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: hello-world-service
+  spec:
+    type: ClusterIP
+    selector:
+      # Route the traffic to PODs with following label
+      app: hello-world-pod
+    ports:
+      - protocol: "TCP"
+        # Port accessible inside cluster. It forwards to targetPort 80 inside pod
+        port: 8080
+        # Port To forward to inside pod
+        targetPort: 80
+
+---
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    name: hello-world-replicaset # pods will be named: hello-world-replicaset-someid
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: hello-world-pod
+    template:
+      metadata:
+        name: hello-world-pod
+        labels:
+          app: hello-world-pod
+      spec:
+        containers:
+          - name: hello-world-container
+            image: tutum/hello-world
+            ports:
+              - containerPort: 80
