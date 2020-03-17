@@ -25,6 +25,16 @@ function runMinikube() {
     echo "Your ClusterIP: $ip"
 }
 
+function configMetricsServer() {
+    if [[ `sudo minikube addons list | grep metrics-server | grep enabled` == "" ]]; then
+        echo "Minikube metrics-server is not running. Run now..."
+        sudo minikube addons enable metrics-server
+        echo "Done. Check in minikube dashboard if metrics are available"
+    else
+        echo "Minikube metrics-server is running"
+    fi
+}
+
 function runReplicaSet() {
     echo "Running ReplicaSet"
     sudo kubectl apply -f deployment.yml
@@ -40,11 +50,16 @@ function autoscaleReplicaSet() {
     echo "Current num replicase = 1"
     sudo kubectl get replicaset
     
-    echo "Enabling autoscale with max num replicase = 5 based on cpu usage > 20%"
-    sudo kubectl autoscale replicaset hello-world-replicaset --min=2  --max=5 --cpu-percent=20
+    echo "Enabling autoscale with max num replicase = 3 based on cpu usage > 50%"
+    sudo kubectl autoscale replicaset hello-world-replicaset --min=1  --max=3 --cpu-percent=50
     sleep 5
 
-    while true; do sudo kubectl get replicaset; sleep 3; done
+    echo "Autoscaling up and down can take a few minutes. But it works :)"
+    while true; do 
+        sudo kubectl get hpa
+        echo
+        sleep 3
+    done
 }
 
 function tearDown() {
@@ -55,5 +70,6 @@ function tearDown() {
 
 checkPrerequsites
 runMinikube
+configMetricsServer
 runReplicaSet
 autoscaleReplicaSet

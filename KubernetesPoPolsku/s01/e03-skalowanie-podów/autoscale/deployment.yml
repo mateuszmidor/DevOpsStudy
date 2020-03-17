@@ -25,5 +25,5 @@
                 memory: 10Mi
             command: ["/bin/sh"]
 
-            # make CPU busy for autoscaling to take effect
-            args: ["-c", "dd if=/dev/zero of=/dev/null"]
+            # make CPU busy for autoscaling to take effect. You can login and kill dd to see autoscaler removes replicas
+            args: ["-c", "dd if=/dev/zero of=/dev/null &  while true; do sleep 1; done"]
