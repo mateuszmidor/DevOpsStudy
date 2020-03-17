@@ -4,4 +4,4 @@
 
 ### Install minikube on Arch
 
-- pamac build minikube
+- pamac build minikube-bin
