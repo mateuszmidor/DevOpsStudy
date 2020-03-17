@@ -8,6 +8,9 @@ def checkDigit(raw_png_bytes : bytes) -> str:
     ip = os.getenv("CHECKER_SERVICE_SERVICE_HOST")
     port = os.getenv("CHECKER_SERVICE_SERVICE_PORT")
     API_ENDPOINT = f"http://{ip}:{port}/checkdigit"
+
+    # alternatively, dns is available. It equals <servicename>.default, where default is the namespace
+    # API_ENDPOINT = "http://checker-service.default:8080/checkdigit"
     try:
         r = requests.post(url = API_ENDPOINT, data = raw_png_bytes)
         result_json = r.text 
