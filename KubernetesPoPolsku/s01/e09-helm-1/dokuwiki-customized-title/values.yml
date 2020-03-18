@@ -1,0 +1,3 @@
+# these params below come from chart page; there is lots of params to customize.
+# here: https://hub.kubeapps.com/charts/bitnami/dokuwiki
+dokuwikiWikiName: ++++++ Midor Wiki ++++++
