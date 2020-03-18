@@ -28,4 +28,4 @@ spec:
           command: ["/bin/sh"]
 
           # create readinessProbe file to check and keep the container alive
-          args: ["-c", "date > /tmp/currentdate &  while true; do sleep 1; done"]
+          args: ["-c", "date > /tmp/currentdate & while true; do sleep 1; done"]
