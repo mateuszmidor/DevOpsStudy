@@ -1,8 +1,8 @@
 # Kubernentes Study
 
-## Install minikube on arch linux
+## Install minikube and helm on arch linux
 
-    ./install_minikube_archlinux.sh
+    ./install_minikube_helm_archlinux.sh
 
 ## Run minikube and show dashboard web
 

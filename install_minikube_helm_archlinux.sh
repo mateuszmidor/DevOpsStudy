@@ -12,5 +12,16 @@ function installMinikubeArchLinux() {
     fi
 }
 
+function installHelmArchLinux() {
+    command helm > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        echo "Installing helm"
+        pamac build kubernetes-helm
+        [[ $? != 0 ]] && echo "Installing helm failed" && exit 1
+    else
+        echo "Helm is installed"
+    fi
+}
 
 installMinikubeArchLinux
+installHelmArchLinux
