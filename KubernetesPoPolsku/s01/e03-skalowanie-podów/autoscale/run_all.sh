@@ -2,6 +2,7 @@
 
 trap tearDown SIGINT
 
+HPA_NAME="hello-world-hpa"
 REPLICASET_NAME="hello-world-replicaset"
 
 function checkPrerequsites() {
@@ -47,14 +48,8 @@ function runReplicaSet() {
 }
 
 function autoscaleReplicaSet() {
-    echo "Current num replicase = 1"
-    sudo kubectl get replicaset
-    
-    echo "Enabling autoscale with max num replicase = 3 based on cpu usage > 50%"
-    sudo kubectl autoscale replicaset hello-world-replicaset --min=1  --max=3 --cpu-percent=50
-    sleep 5
+    echo "Waiting for autoscale with max num replicase = 3 based on cpu usage > 50%. It can take a few minutes"
 
-    echo "Autoscaling up and down can take a few minutes. But it works :)"
     while true; do 
         sudo kubectl get hpa
         echo
@@ -63,7 +58,7 @@ function autoscaleReplicaSet() {
 }
 
 function tearDown() {
-    sudo kubectl delete hpa $REPLICASET_NAME
+    sudo kubectl delete hpa $HPA_NAME
     sudo kubectl delete replicaset $REPLICASET_NAME
     exit 0
 }
