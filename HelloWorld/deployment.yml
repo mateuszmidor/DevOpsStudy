@@ -1,25 +1,25 @@
 ---
-  # I want a load balancer service to access my PODs
-  kind: Service
-  apiVersion: v1
-  metadata:
-   # The service will be named hello-world-service
-   name: hello-world-service
-  spec:
-   selector:
-     # And it will provide access to hello-world-app labeled PODs
-     app: hello-world-app
-   ports:
-     - protocol: "TCP"
-       # Port accessible inside cluster. It forwards to targetPort 80
-       port: 8080
-       # Port To forward to inside pod
-       targetPort: 80
-       # Port accessible outside cluster. It forwards to targetPort 80
-       nodePort: 31000
-   # Role of this Service is to balance the load between 5 PODS defined below
-   type: LoadBalancer
-   
+# I want a load balancer service to access my PODs
+apiVersion: v1
+kind: Service
+metadata:
+  # The service will be named hello-world-service
+  name: hello-world-service
+spec:
+  # Role of this Service is to balance the load between 5 PODS defined below
+  type: LoadBalancer
+  selector:
+    # And it will provide access to hello-world-app labeled PODs
+    app: hello-world-app
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster. It forwards to targetPort 80
+      port: 8080
+      # Port To forward to inside pod
+      targetPort: 80
+      # Port accessible outside cluster. It forwards to targetPort 80
+      nodePort: 31000
+
 ---
 apiVersion: apps/v1
 # I want a deployment
