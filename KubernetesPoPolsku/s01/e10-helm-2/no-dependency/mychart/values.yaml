@@ -11,8 +11,8 @@ image:
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
-nameOverride: "MY-CHART"
-fullnameOverride: "my-chart" 
+nameOverride: "MYCHART"
+fullnameOverride: "mychart" 
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -33,6 +33,3 @@ maintainers:
 
 # what other charts need to be deployed for our chart to work
 # dependencies:
-#   - name: redis
-#     version: 0.4.6
-#     repository: https://kubernetes-charts.storage.googleapis.com/
