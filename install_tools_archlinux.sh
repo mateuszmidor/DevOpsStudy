@@ -23,5 +23,17 @@ function installHelmArchLinux() {
     fi
 }
 
+function installKubeCTX {
+    command sudo kubectx > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        echo "Installing kubectx"
+        pamac build kubectx-git
+        [[ $? != 0 ]] && echo "Installing kubectx failed" && exit 1
+    else
+        echo "kubectx is installed"
+    fi
+}
+
 installMinikubeArchLinux
 installHelmArchLinux
+installKubeCTX
