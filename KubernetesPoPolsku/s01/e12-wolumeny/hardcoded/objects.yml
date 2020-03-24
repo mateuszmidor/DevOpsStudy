@@ -1,0 +1,19 @@
+---
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: hostpath-pod
+  spec:
+    restartPolicy: Never
+    volumes:
+      - name: shared
+        hostPath:
+          path: /home
+    containers:
+      - name: hostpath-container
+        image: alpine
+        volumeMounts:
+          - mountPath: /shared
+            name: shared
+        command: ["ls"]
+        args: ["-l", "/shared"]
