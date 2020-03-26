@@ -3,8 +3,16 @@
 trap tearDown SIGINT
 
 CHARTMUSEUM_NAME="mychartmuseum"
-LOCALREPO_NAME="minikube"
-LOCALREPO_URL="http://charts.127.0.0.1.nip.io" # configured in chart-museum-values.yaml
+CHARTMUSEUM_URL="http://charts.127.0.0.1.nip.io" # configured in chart-museum-values.yaml
+
+function stage() {
+    GREEN="\e[92m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$GREEN$msg$RESET"
+}
 
 function waitUrlAvailable() {
     url="$1"
@@ -15,14 +23,20 @@ function waitUrlAvailable() {
 }
 
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
 
     command helm > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install helm to run this lesson" && exit 1
+
+    echo "OK"
 }
 
 function runMinikube() {
+    stage "Running Minikube"
+
     desired_status=": Running : Running : Running : Configured "
     if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
         sudo rm -f /tmp/juju-mk*
@@ -39,38 +53,36 @@ function runMinikube() {
 }
 
 function installChartMuseum() {
-    echo
-    echo "Installing chart museum and helm push plugin"
+    stage "Installing chart museum and helm push plugin"
 
     sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com
     sudo helm repo update
     sudo helm install $CHARTMUSEUM_NAME stable/chartmuseum --version 2.9.0 -f chart-museum-values.yaml
     sudo helm plugin install https://github.com/chartmuseum/helm-push.git
 
-    waitUrlAvailable $LOCALREPO_URL
-    sudo helm repo add $LOCALREPO_NAME $LOCALREPO_URL
+    waitUrlAvailable $CHARTMUSEUM_URL
+    sudo helm repo add $CHARTMUSEUM_NAME $CHARTMUSEUM_URL
 }
 
 function publishMyChart() {
-    echo
-    echo "Publishing mychart into local chart repo called minikube"
+    stage "Publishing mychart into local chart repo called $CHARTMUSEUM_NAME"
 
-    sudo helm push mychart/ $LOCALREPO_NAME 
+    sudo helm push mychart/ $CHARTMUSEUM_NAME 
     sudo helm repo update
 }
 
 function searchPublishedChart() {
-    echo
-    echo "Searching mychart"
+    stage "Searching mychart"
+
     sudo helm search repo mychart
 }
 
 function showWebPage() {
-    echo
-    echo "Running mychart web page"
+    stage "Running chartmuseum web page"
     
     sleep 10
-    firefox $LOCALREPO_URL
+    firefox $CHARTMUSEUM_URL
+    echo "OK"
 }
 
 function keepAlive() {

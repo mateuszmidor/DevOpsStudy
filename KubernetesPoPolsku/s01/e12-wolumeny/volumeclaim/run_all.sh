@@ -80,6 +80,7 @@ function keepAlive() {
 }
 
 function tearDown() {
+    sudo kubens default
     sudo kubectl delete namespace $NS_NAME
 
     # persistentvolumes live outside namespaces
