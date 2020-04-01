@@ -1,3 +1,11 @@
+# this will result in:
+# mounted config volume files:
+#   /config/pod.properties
+# env variables:
+#   CONFIGMAP_PROJECT_NAME=Shamrock Project
+#   CONFIGMAP_PROJECT_VER=v0.1
+#   CONFIGMAP_PROJECT_WEB=www.shamrock.pl
+
 configMapGenerator:
   - name: my-config-map
     files:
