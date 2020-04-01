@@ -22,14 +22,6 @@ spec:
           readOnly: true
 
       # inject secret as env variables
-      env:
-        - name: SECRET_USER # will become env variable SECRET_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysecret
-              key: SECRET_USER
-        - name: SECRET_PASS # will become env variable SECRET_PASS
-          valueFrom:
-            secretKeyRef:
-              name: mysecret
-              key: SECRET_PASS
+      envFrom:
+        - secretRef:
+            name: mysecret

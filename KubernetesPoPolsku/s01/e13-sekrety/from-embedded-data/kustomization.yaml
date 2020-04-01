@@ -2,7 +2,7 @@
 secretGenerator:
   - name: mysecret
     literals:
-    - SECRET_USER=my_secret_user
-    - SECRET_PASS=my_secret_pass
+      - SECRET_USER=my_secret_user
+      - SECRET_PASS=my_secret_pass
 generatorOptions:
   disableNameSuffixHash: true # dont randomize name
