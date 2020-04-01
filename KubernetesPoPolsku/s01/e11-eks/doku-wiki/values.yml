@@ -4,5 +4,8 @@ dokuwikiWikiName: ++++++ Midor Wiki ++++++
 ingress:
   enabled: true
   hosts:
-    - name:	dokuwiki.local
+    - name:	mywiki.127.0.0.1.nip.io
       path:	/
+
+service:
+  type: ClusterIP

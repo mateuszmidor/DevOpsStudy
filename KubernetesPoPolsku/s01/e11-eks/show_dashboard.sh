@@ -13,7 +13,9 @@ function stage() {
 
 function waitHttp200() {
     url=$1
-    while [[ `curl -s -o /dev/null -w "%{http_code}" $url` != "200" ]]; do
+    while true; do
+        http_code=`curl -s -o /dev/null -w "%{http_code}" $url`
+        [[ $http_code -ge 200 ]] && [[ $http_code -lt 400 ]] && break
         echo "waiting..."
         sleep 3
     done

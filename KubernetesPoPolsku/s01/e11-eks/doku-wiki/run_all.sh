@@ -15,8 +15,9 @@ function stage() {
 
 function waitHttp200() {
     url=$1
-    echo $url
-    while [[ `curl -s -o /dev/null -w "%{http_code}" $url` -ge 400 ]]; do
+    while true; do
+        http_code=`curl -s -o /dev/null -w "%{http_code}" $url`
+        [[ $http_code -ge 200 ]] && [[ $http_code -lt 400 ]] && break
         echo "waiting..."
         sleep 3
     done
@@ -35,7 +36,7 @@ function checkPrerequsites() {
 }
 
 function makeDns() {
-    # make DNS from loadbalancer ip
+    # make nip.io DNS from loadbalancer ip
     elb=$(kubectl get svc ingress-nginx -o jsonpath="{ .status['loadBalancer']['ingress'][0]['hostname'] }" -n ingress-nginx)
     ip=`getent hosts $elb | head -n 1 | cut -d ' ' -f1` # first loadbalancer IP
     dns="mywiki.$ip.nip.io"

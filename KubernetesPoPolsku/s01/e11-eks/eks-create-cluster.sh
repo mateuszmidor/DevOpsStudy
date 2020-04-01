@@ -2,7 +2,7 @@
 
 function createCluster() {
     # cluster name: TestCluster
-    # node type: t2.small (2GB, 1vCPU); smallest instance that can run all the PODs we need (ie. POD state: pending, neverending)
+    # node type: t2.small (2GB, 1vCPU); smallest instance that can run all the PODs we need
     # node count: 3
     # logging: level 4
     eksctl create cluster -n TestCluster -t t2.small -N 3 -v4
