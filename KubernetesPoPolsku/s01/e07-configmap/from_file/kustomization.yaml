@@ -1,0 +1,6 @@
+configMapGenerator:
+  - name: my-config-map
+    files:
+      - pod.properties
+generatorOptions:
+  disableNameSuffixHash: true # dont randomize name

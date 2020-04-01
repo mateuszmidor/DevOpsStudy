@@ -5,12 +5,27 @@ trap tearDown SIGINT
 POD_NAME="alpine-linux-pod"
 CONFIG_MAP_NAME="my-config-map"
 
+function stage() {
+    GREEN="\e[92m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$GREEN$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
+
+    echo "OK"
 }
 
 function runMinikube() {
+    stage "Running Minikube"
+
     desired_status=": Running : Running : Running : Configured "
     if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
         sudo rm -f /tmp/juju-mk*
@@ -26,33 +41,42 @@ function runMinikube() {
     echo "Your ClusterIP: $ip"
 }
 
-function runPod() {
-    echo "Running POD"
-    sudo kubectl apply -f deployment.yml
+function createConfigMap() {
+    stage "Creating config map"
+    
+    sudo kubectl apply -k . # kustomization
+}
 
-    # wait POD is up
+function runExample() {
+    stage "Running example"
+
+    sudo kubectl apply -f objects.yml
+
+    echo "waiting example running..."
     while [[ `sudo kubectl get pod | grep $POD_NAME | grep Running` == "" ]]; do sleep 1; done
 }
 
 function showLogs() {  
-    # read logs
-    echo
-    echo "Env variables:"
+    stage "Showing configmap stored as env variables and as files"
+
     sudo kubectl logs $POD_NAME
 }
 
 function keepAlive() {
+    stage "CTRL+C to exit"
+
     while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo kubectl delete pod $POD_NAME
-    sudo kubectl delete configmap $CONFIG_MAP_NAME
+    sudo kubectl delete --grace-period=1 -f objects.yml
+    sudo kubectl delete -k .
     exit 0
 }
 
 checkPrerequsites
 runMinikube
-runPod
+createConfigMap
+runExample
 showLogs
 keepAlive
