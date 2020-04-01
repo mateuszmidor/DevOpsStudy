@@ -1,0 +1,8 @@
+# create secret "mysecret" from files
+secretGenerator:
+  - name: mysecret
+    files:
+    - SECRET_USER
+    - SECRET_PASS
+generatorOptions:
+  disableNameSuffixHash: true # dont randomize name
