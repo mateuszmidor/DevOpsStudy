@@ -19,7 +19,7 @@
    
 ---
   apiVersion: apps/v1
-  kind: ReplicaSet
+  kind: Deployment
   metadata:
     name: hello-world-replicaset # pods will be named: hello-world-replicaset-someid
   spec:
@@ -38,3 +38,11 @@
             image: tutum/hello-world
             ports:
               - containerPort: 80
+            resources:
+              requests:
+                cpu: 10m
+                memory: 10Mi
+              limits:
+                cpu: 20m
+                memory: 20Mi
+               
