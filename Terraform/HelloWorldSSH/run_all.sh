@@ -4,12 +4,12 @@ trap tearDown SIGINT
 
 
 function stage() {
-    GREEN="\e[92m"
+    COLOR="\e[96m"
     RESET="\e[0m"
     msg="$1"
     
     echo
-    echo -e "$GREEN$msg$RESET"
+    echo -e "$COLOR$msg$RESET"
 }
 
 function checkPrerequsites() {
