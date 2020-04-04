@@ -1,0 +1,17 @@
+- name: Prepare
+  hosts: ansible_study
+  gather_facts: no
+  pre_tasks:
+    # python is precondition for modules other than "raw" to work
+    - name: Update package index
+      raw: apk update # alpine linux package manager
+    - name: Install python3
+      raw: apk add python3 # alpine linux package manager
+
+    - apk: 
+        name: py3-pip
+        state: latest
+    - pip:
+        name: pip
+        extra_args: --upgrade
+      
