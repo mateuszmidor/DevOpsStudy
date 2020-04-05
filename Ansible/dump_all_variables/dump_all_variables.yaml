@@ -1,4 +1,4 @@
-- name: Prepare
+- name: DumpAnsibleHostVariables
   hosts: localhost # dump what HOST controller knows, not what GUEST
   connection: local
   gather_facts: no
