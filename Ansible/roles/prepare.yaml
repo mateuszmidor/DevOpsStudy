@@ -1,0 +1,24 @@
+- name: Prepare
+  hosts: ansible_study
+  gather_facts: no
+  pre_tasks:
+    # python is precondition for modules other than "raw" to work
+    - name: Update package index
+      raw: apk update # alpine linux package manager
+    - name: Install python3
+      raw: apk add python3 # alpine linux package manager
+
+  # roles are templated tasks that take input variables
+  roles:
+    - name: adduser_role # == role directory name
+      # variables
+      users:
+        - name: andrzej
+          pass: "{{ 'andrzej1' | password_hash('sha512') }}" # password must be provided in hashed form
+        - name: marian
+          pass: "{{ 'marian1' | password_hash('sha512') }}"
+        - name: tadek
+          pass: "{{ 'tadek1' | password_hash('sha512') }}"
+
+
+      

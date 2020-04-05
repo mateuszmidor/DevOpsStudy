@@ -1,0 +1,8 @@
+---
+# tasks file for adduser-role
+
+- name: Add users
+  user:
+    name: "{{ item.name }}"
+    password: "{{ item.pass }}" 
+  loop: "{{ users }}"
