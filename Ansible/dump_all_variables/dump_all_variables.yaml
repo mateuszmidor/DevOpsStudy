@@ -1,0 +1,7 @@
+- name: Prepare
+  hosts: localhost # dump what HOST controller knows, not what GUEST
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Dump all vars to file
+      action: template src=dumpall.j2 dest=dumped_vars.j2
