@@ -1,0 +1,10 @@
+---
+- name: Prepare static website home directory
+  file:
+    path: /var/www/mywebsite.com
+    state: directory
+
+- name: Create index.html
+  template:
+    src: index.html 
+    dest: /var/www/mywebsite.com/index.html

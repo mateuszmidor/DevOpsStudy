@@ -1,0 +1,28 @@
+- name: Prepare instances
+  hosts: all
+  gather_facts: no
+  pre_tasks:
+    # python is precondition for modules other than "raw" to work
+    - name: Update package index
+      raw: apk update
+    - name: Install python3
+      raw: apk add python3
+
+- name: Install website contents
+  hosts: all
+  gather_facts: no
+  roles:
+    - name: install_website_contents
+
+- name: Install apache
+  hosts: server_apache
+  gather_facts: no
+  roles:
+    - name: install_apache 
+
+- name: Install nginx
+  hosts: server_nginx
+  gather_facts: no
+  roles:
+    - name: install_nginx
+  

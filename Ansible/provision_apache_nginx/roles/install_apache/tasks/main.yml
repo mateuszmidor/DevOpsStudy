@@ -1,0 +1,12 @@
+---
+- name: Install apache
+  apk: 
+    name: apache2
+    state: latest
+
+- name: Install website config
+  copy:
+    src: welcome.conf
+    dest: /etc/apache2/conf.d/
+  notify:
+    - run apache

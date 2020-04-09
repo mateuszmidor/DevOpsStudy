@@ -1,0 +1,4 @@
+---
+- name: run apache
+  shell:
+    cmd: httpd

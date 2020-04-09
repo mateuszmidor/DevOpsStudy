@@ -1,0 +1,38 @@
+---
+- name: Install nginx
+  apk: 
+    name: nginx
+    state: latest
+
+- name: Post-installation /run/nginx tweak
+  file:
+    path: /run/nginx
+    state: directory
+
+- name: Configure nginx to serve static websites
+  lineinfile:
+    path: /etc/nginx/nginx.conf 
+    line: include /etc/nginx/sites-enabled/*;
+    insertafter: ^http
+    firstmatch: yes
+  
+- name: Prepare static websites directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /etc/nginx/sites-available
+    - /etc/nginx/sites-enabled
+
+- name: Prepare mywebsite configuration
+  copy:
+    src: mywebsite.com
+    dest: /etc/nginx/sites-available
+
+- name: Start serving mywebsite
+  file:
+    src: /etc/nginx/sites-available/mywebsite.com
+    dest: /etc/nginx/sites-enabled/mywebsite.com
+    state: link
+  notify:
+    - run nginx # run handler in handlers/main.yml

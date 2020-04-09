@@ -1,0 +1,4 @@
+---
+- name: run nginx
+  shell:
+    cmd: nginx
