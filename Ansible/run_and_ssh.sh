@@ -35,6 +35,7 @@ function runContainer() {
         --name $CONTAINER_NAME \
         --rm -d \
         --hostname=$CONTAINER_NAME \
+        -p 8080:80 \
         -e USER_NAME=$USER \
         -e SUDO_ACCESS=true \
         -e PUBLIC_KEY="`cat $HOME/.ssh/id_rsa.pub`" \
