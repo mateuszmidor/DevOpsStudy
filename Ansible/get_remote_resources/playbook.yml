@@ -1,0 +1,22 @@
+- name: Prepare instances
+  hosts: ansible_study
+  gather_facts: no
+  pre_tasks:
+    # python is precondition for modules other than "raw" to work
+    - name: Update package index
+      raw: apk update # alpine linux package manager
+    - name: Install python3
+      raw: apk add python3 # alpine linux package manager
+      
+- name: Ask for HW resources
+  hosts: ansible_study
+  gather_facts: yes
+  tasks:
+   - name: Get num CPU and RAM
+     debug:
+       var: "{{ item }}"
+     loop:
+       - "ansible_processor_vcpus"
+       - "ansible_memory_mb.real.free"
+       - "ansible_memory_mb.real.total"
+      
