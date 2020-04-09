@@ -37,7 +37,7 @@ function runAnsible() {
     IP2="172.17.0.9"
 
     ansible-playbook \
-        -i inventory.yaml dump_all_variables.yaml \
+        -i inventory.yaml run.yaml \
         --extra-vars "HOST1_IP=$IP1 HOST2_IP=$IP2 USER=$USER PORT=$SSH_PORT"
 }
 

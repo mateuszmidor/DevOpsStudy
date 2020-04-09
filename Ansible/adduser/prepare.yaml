@@ -1,4 +1,4 @@
-- name: Prepare
+- name: Prepare instances
   hosts: ansible_study
   gather_facts: no
   pre_tasks:
@@ -10,7 +10,7 @@
 
   # roles are templated tasks that take input variables
   roles:
-    - name: adduser_role # == role directory name
+    - name: adduser # == role directory name
       # variables
       users:
         - name: andrzej

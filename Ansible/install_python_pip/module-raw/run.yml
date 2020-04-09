@@ -1,4 +1,4 @@
-- name: Prepare
+- name: Prepare instances
   hosts: ansible_study
   gather_facts: no
   pre_tasks:

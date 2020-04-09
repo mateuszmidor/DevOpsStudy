@@ -4,4 +4,6 @@
   gather_facts: no
   tasks:
     - name: Dump all vars to file
-      action: template src=dumpall.j2 dest=dumped_vars.j2
+      template:
+        src: dumpall.j2 
+        dest: dumped_vars.j2

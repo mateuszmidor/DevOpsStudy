@@ -4,8 +4,8 @@ trap tearDown SIGINT
 
 HOST1="linux1"
 HOST2="linux2"
+USER="user"
 SSH_PORT=2222
-USER="ansible-user"
 
 function stage() {
     COLOR="\e[95m"
@@ -78,7 +78,7 @@ function runAnsible() {
     IP1=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
     IP2=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST2`
     ansible-playbook \
-        -i inventory.yaml prepare.yaml \
+        -i inventory.yml run.yml \
         --extra-vars "HOST1_IP=$IP1 HOST2_IP=$IP2 USER=$USER PORT=$SSH_PORT" \
         --ssh-extra-args "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 }
