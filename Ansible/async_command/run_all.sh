@@ -60,7 +60,7 @@ function runAnsible() {
 
     IP1=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
     ansible-playbook \
-        -i inventory.yaml playbook.yaml \
+        -i inventory.ini playbook.yaml \
         --extra-vars "HOST1_IP=$IP1 USER=$USER PORT=$SSH_PORT" \
         --ssh-extra-args "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" #-vvvv
 }

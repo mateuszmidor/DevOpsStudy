@@ -25,5 +25,5 @@ ssh linuxserver.io@172.17.0.8 -p 2222 -o StrictHostKeyChecking=no -o UserKnownHo
 ### Run ansible-playbook
 
 ```bash
-ansible-playbook -i inventory.yaml prepare.yaml
+ansible-playbook -i inventory.ini prepare.yaml
 ```

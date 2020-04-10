@@ -82,9 +82,9 @@ function runAnsible() {
     IP1=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
     IP2=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST2`
 
-    # the extra-vars below are inserted into inventory.yaml; almost "dynamic inventory"
+    # the extra-vars below are inserted into inventory.ini; almost "dynamic inventory"
     ansible-playbook \
-        -i inventory.yml run.yml \
+        -i inventory.ini run.yml \
         --extra-vars "HOST1_IP=$IP1 HOST2_IP=$IP2 USER=$USER PORT=$SSH_PORT" \
         --ssh-extra-args "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" #-vvvv
 }
