@@ -1,0 +1,10 @@
+---
+- name: Copy server to remote host
+  copy:
+    src: server.sh
+    dest: server.sh
+    mode: '0755'
+
+- name: Run server
+  shell: 
+    cmd: (nohup ./server.sh) &

@@ -1,0 +1,11 @@
+---
+- name: Copy server to remote host
+  copy:
+    src: server.sh
+    dest: server.sh
+    mode: '0755'
+
+- name: Run server
+  command: ./server.sh
+  async: 30 # server will die after 30 seconds
+  poll: 0 # dont wait for task result

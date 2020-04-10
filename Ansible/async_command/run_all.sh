@@ -3,9 +3,8 @@
 trap tearDown SIGINT
 
 HOST1="linux1"
-HOST2="linux2"
 SSH_PORT=2222
-USER="andrzej" # users andrzej, marian and tadek are configured by ansible with passwords andrzej1, marian1, tadek1
+USER="user"
 
 function stage() {
     COLOR="\e[95m"
@@ -31,7 +30,7 @@ function checkPrerequsites() {
 }
 
 function runContainers() {
-    stage "Running containers $HOST1, $HOST2 as daemons"
+    stage "Running containers $HOST1 as daemon"
  
     docker run \
         --name $HOST1 \
@@ -41,30 +40,14 @@ function runContainers() {
         -e SUDO_ACCESS=true \
         -e PUBLIC_KEY="`cat $HOME/.ssh/id_rsa.pub`" \
         linuxserver/openssh-server
-
-    docker run \
-        --name $HOST2 \
-        --rm -d \
-        --hostname=$HOST2\
-        -e USER_NAME=$USER \
-        -e SUDO_ACCESS=true \
-        -e PUBLIC_KEY="`cat $HOME/.ssh/id_rsa.pub`" \
-        linuxserver/openssh-server
 }
 
 function waitSshReady() {
-    stage "Waiting containers ssh is ready"
+    stage "Waiting container ssh is ready"
 
     sleep 3
 
     IP=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
-    while true; do
-        ssh $USER@$IP -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null 'whoami'
-        [[ $? == 0 ]] && break
-        sleep 3
-    done;
-
-    IP=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST2`
     while true; do
         ssh $USER@$IP -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null 'whoami'
         [[ $? == 0 ]] && break
@@ -76,10 +59,9 @@ function runAnsible() {
     stage "Running ansible"
 
     IP1=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
-    IP2=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST2`
     ansible-playbook \
-        -i inventory.yaml prepare.yaml \
-        --extra-vars "HOST1_IP=$IP1 HOST2_IP=$IP2 USER=$USER PORT=$SSH_PORT" \
+        -i inventory.yaml playbook.yaml \
+        --extra-vars "HOST1_IP=$IP1 USER=$USER PORT=$SSH_PORT" \
         --ssh-extra-args "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" #-vvvv
 }
 
@@ -87,14 +69,13 @@ function sshIntoContainer1() {
     stage "SSH into container $HOST1"
 
     IP=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
-    ssh $USER@$IP -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+    ssh $USER@$IP -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "tail -f server.log"
 }
 
 function tearDown() {
     stage "Destroying containers"
 
     docker kill $HOST1
-    docker kill $HOST2
     exit 0
 }
 

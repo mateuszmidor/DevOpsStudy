@@ -87,12 +87,7 @@ function sshIntoContainer1() {
     stage "SSH into container $HOST1"
 
     IP=`docker inspect -f {{.NetworkSettings.IPAddress}} $HOST1`
-
-    while true; do
-        ssh $USER@$IP -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
-        [[ $? == 0 ]] && break
-        sleep 3
-    done;
+    ssh $USER@$IP -p $SSH_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 }
 
 function tearDown() {
