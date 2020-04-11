@@ -1,5 +1,5 @@
 - name: Prepare instances
-  hosts: ansible_study
+  hosts: all
   gather_facts: no
   pre_tasks:
     # python is precondition for modules other than "raw" to work

@@ -5,7 +5,8 @@ trap tearDown SIGINT
 HOST1="linux1"
 HOST2="linux2"
 SSH_PORT=2222
-USER="andrzej" # users andrzej, marian and tadek are configured by ansible with passwords andrzej1, marian1, tadek1
+USER="user" # users andrzej, marian and tadek are configured later by ansible with passwords andrzej1, marian1, tadek1
+USER_ANS="andrzej"
 
 function stage() {
     COLOR="\e[95m"
