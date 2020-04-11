@@ -1,0 +1,7 @@
+- name: ansible-vault demo
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Read the vault-encrypted phrase
+      debug:
+        var: secret_phrase
