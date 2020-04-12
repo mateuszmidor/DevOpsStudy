@@ -1,0 +1,64 @@
+- name: Prepare host
+  hosts: all
+  connection: docker
+  gather_facts: no
+  tasks:
+    # python is precondition for modules other than "raw" to work
+    - name: Update package index
+      raw: apk update # alpine linux package manager
+    - name: Install python3
+      raw: apk add python3 # alpine linux package manager
+
+- name: Provision a new user, ensure sudo access and ssh keys
+  hosts: all
+  connection: docker
+  gather_facts: no
+  tasks:
+    - name: Install sudo
+      apk:
+        name: sudo
+        state: latest
+
+    - name: Create user
+      user:
+        name: "{{ USER }}"
+        password: "{{ 'pass' | password_hash('sha512') }}" 
+        create_home: true
+        expires: -1
+        comment: "Ansible-created account"
+
+    - name: Setup sudo accesss
+      copy:
+        dest: "/etc/sudoers.d/{{ USER }}"
+        content: "{{ USER }} ALL=(ALL) NOPASSWD:ALL"
+        validate: /usr/sbin/visudo -cf %s
+
+    - name: Install SSH Keys
+      authorized_key:
+        user: "{{ USER }}"
+        state: present
+        manage_dir: true
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+- name: Provision sshd
+  hosts: all
+  connection: docker
+  gather_facts: no
+  tasks:
+    - name: Install openrc
+      apk:
+        name: openrc
+        state: latest
+
+    - name: Install sshd
+      apk:
+        name: openssh
+        state: latest
+
+    - name: Run sshd
+      command: "{{ item }}"
+      loop:
+        - rc-update add sshd
+        - rc-status
+        - touch /run/openrc/softlevel
+        - rc-service sshd start
