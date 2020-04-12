@@ -1,0 +1,15 @@
+- name: Connect to docker by container name
+  hosts: all
+  connection: docker
+  gather_facts: no
+
+  pre_tasks:
+    # python is precondition for modules other than "raw" to work
+    - name: Update package index
+      raw: apk update # alpine linux package manager
+    - name: Install python3
+      raw: apk add python3 # alpine linux package manager
+
+  tasks:
+    - name: Ping the container
+      ping:
