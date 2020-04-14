@@ -1,0 +1,11 @@
+- name: register variable demo
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Get distribution info
+      command: uname -a
+      register: distro_info
+
+    - name: Read the vault-encrypted phrase
+      debug:
+        var: distro_info.stdout
