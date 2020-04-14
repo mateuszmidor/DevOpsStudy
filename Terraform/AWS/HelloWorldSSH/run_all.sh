@@ -17,6 +17,7 @@ function checkPrerequsites() {
 
     command terraform version > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install terraform to run this example" && exit 1
+    
     [[ ! -f ~/Downloads/terraform-key.pem ]] && echo "You need keypair file at: ~/Downloads/terraform-key.pem" && exit 1
 
     echo "OK"
@@ -35,7 +36,7 @@ function sshIntoInstance() {
     chmod 600 ~/Downloads/terraform-key.pem
     DNS=`python get_dns.py`
     while true; do
-        ssh -i ~/Downloads/terraform-key.pem ubuntu@$DNS
+        ssh -i ~/Downloads/terraform-key.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ubuntu@$DNS
         [[ $? == 0 ]] && break
         sleep 3
     done;

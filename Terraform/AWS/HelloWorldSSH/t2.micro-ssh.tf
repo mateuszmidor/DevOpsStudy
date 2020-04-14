@@ -11,7 +11,7 @@ resource "aws_instance" "terraform-study" {
   # AMI found on https://cloud-images.ubuntu.com/locator/ec2/
   ami           = "ami-0b6f46ba4d94838a0" # eu-central-1	bionic	18.04 LTS	amd64	hvm:ebs-ssd	20200323	ami-0b6f46ba4d94838a0	hvm
   instance_type = "t2.micro"
-  key_name = "terraform-key" # just the AWS keypair name, not downloaded filename
+  key_name = "terraform-key" # just the AWS keypair name, not a downloaded file name
   security_groups = ["${aws_security_group.allow_ssh.name}"]
 }
 

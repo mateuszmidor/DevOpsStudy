@@ -15,4 +15,4 @@
   terraform destroy # remove all the resources created before
 ```
 
-Notice: as no kepair is added, no ssh into this instance is possible
+Notice: as no keypair is added, no ssh into this instance is possible

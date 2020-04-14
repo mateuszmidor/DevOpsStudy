@@ -31,7 +31,7 @@ function createResources() {
 function printDNS() {
     stage "Instance created:"
 
-    echo `python get_dns.py`
+    python get_dns.py
 }
 
 function keepAlive() {
