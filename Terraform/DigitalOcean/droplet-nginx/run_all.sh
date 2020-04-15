@@ -2,6 +2,7 @@
 
 trap tearDown SIGINT
 
+PRIV_KEY="$HOME/.ssh/id_rsa"
 
 function stage() {
     COLOR="\e[96m"
@@ -19,6 +20,8 @@ function checkPrerequsites() {
 
     [[ -z $DO_FINGERPRINT ]] && echo "You need to export variable DO_FINGERPRINT first" && exit 1
 
+    [[ ! -f "$PRIV_KEY" ]] && echo "You need your private ssh key under $PRIV_KEY" && exit 1
+
     command terraform version > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install terraform to run this example" && exit 1
 
@@ -32,18 +35,21 @@ function createResources() {
     terraform apply \
         -auto-approve \
         -var "ssh_fingerprint=$DO_FINGERPRINT" \
-        -var "do_token=$DO_TOKEN"
+        -var "do_token=$DO_TOKEN" \
+        -var "pvt_key=$PRIV_KEY"
 }
 
-function sshIntoInstance() {
-    stage "Logging SSH into instance"
+function showWebPage() {
+    stage "Showing web page"
 
     IP=`python get_ipv4.py`
-    while true; do
-        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$IP
-        [[ $? == 0 ]] && break
-        sleep 3
-    done;
+    firefox $IP
+}
+
+function keepAlive() {
+    stage "CTRL+C to exit"
+
+    while true; do sleep 1; done
 }
 
 function tearDown() {
@@ -52,12 +58,14 @@ function tearDown() {
     terraform destroy \
         -auto-approve \
         -var "ssh_fingerprint=$DO_FINGERPRINT" \
-        -var "do_token=$DO_TOKEN"
+        -var "do_token=$DO_TOKEN" \
+        -var "pvt_key=$PRIV_KEY"
     exit 0
 }
 
 
 checkPrerequsites
 createResources
-sshIntoInstance
+showWebPage
+keepAlive
 tearDown
