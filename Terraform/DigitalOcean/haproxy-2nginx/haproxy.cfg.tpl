@@ -1,28 +1,12 @@
-global
-    log         127.0.0.1 local2
-    chroot      /var/lib/haproxy
-    pidfile     /var/run/haproxy.pid
-    maxconn     1024
-    user        haproxy
-    group       haproxy
-    nbproc 4
-    daemon
-
 defaults
     mode        http
-    log         global
-    option      dontlognull
-    option      httpclose
-    option      httplog
-    option      forwardfor
-    option      redispatch
-    timeout connect 10000 # default 10 second time out if a backend is not found
-    timeout client 300000
-    timeout server 300000
-    maxconn     60000
+    maxconn     10
     retries     3
+    timeout client 3s  # disconnect client if it doesnt talk for 3 sec
+    timeout connect 5s # wait 5 sec for connection then give up backend server
+    timeout server 3s  # wait 3 sec for response then give up backend server
 
-frontend www-http
+frontend web-front
     bind :80
     default_backend web-backend
 

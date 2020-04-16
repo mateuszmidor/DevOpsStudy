@@ -64,7 +64,7 @@ function keepAlive() {
 }
 
 function tearDown() {
-    stage "Destroying droplet resources"
+    stage "Destroying DigitalOcean resources"
 
     terraform destroy \
         -auto-approve \
@@ -79,4 +79,3 @@ checkPrerequsites
 createResources
 showWebPage
 keepAlive
-tearDown
