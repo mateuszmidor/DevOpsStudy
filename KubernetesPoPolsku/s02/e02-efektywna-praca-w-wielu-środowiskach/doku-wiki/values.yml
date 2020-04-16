@@ -1,0 +1,10 @@
+# these params below come from chart page; there is lots of params to customize.
+# here: https://hub.kubeapps.com/charts/bitnami/dokuwiki
+dokuwikiWikiName: ++++++ Midor Wiki ++++++
+ingress:
+  enabled: true
+  hosts:
+    - name:	mywiki.127.0.0.1.nip.io
+      path:	/
+service:
+  type: ClusterIP

@@ -37,15 +37,13 @@ function checkPrerequsites() {
 
 function makeDns() {
     # make nip.io DNS from loadbalancer ip
-    elb=""
-    while [[ $elb == "" ]]; do
-        elb=$(kubectl get svc ingress-nginx -o jsonpath="{ .status['loadBalancer']['ingress'][0]['hostname'] }" -n ingress-nginx)
-        [[ $elb != "" ]] && break
+    ip=""
+    while [[ $ip == "" ]]; do
+        ip=$(kubectl get svc nginx-ingress-controller -o jsonpath="{ .status['loadBalancer']['ingress'][0]['ip'] }" -n ingress)
+        [[ $ip != "" ]] && break
         echo "waiting for external IP..."
         sleep 3
     done;
-
-    ip=`getent hosts $elb | head -n 1 | cut -d ' ' -f1` # first loadbalancer IP
     dns="mywiki.$ip.nip.io"
     export DNS="$dns"
 }
@@ -55,6 +53,7 @@ function runHelmDokuWiki() {
 
     makeDns
     helm repo add bitnami https://charts.bitnami.com/bitnami
+    echo "Installing dokuwiki with ingress set to $DNS"
     helm install $RELEASE_NAME bitnami/dokuwiki -f values.yml --set ingress.hosts[0].name=$DNS
 }
 

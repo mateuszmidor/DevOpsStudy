@@ -8,7 +8,8 @@
 ./install_awscli_eksctl.sh
 ```
 
-Zostaniesz zapytany o klucze do konta AWS, znajdziesz je w konsoli AWS: <https://console.aws.amazon.com/iam/home?region=eu-central-1#/security_credentials>
+Zostaniesz zapytany o klucze do konta AWS, znajdziesz je w konsoli AWS:
+<https://console.aws.amazon.com/iam/home?region=eu-central-1#/security_credentials>
 
 ```text
 AWS Access Key ID [****************RWRQ]:
@@ -17,13 +18,19 @@ Default region name [eu-central-1]:
 Default output format [json]:
 ```
 
-## Utworzenie klastra na AWS
+## Tworzymy klaster na AWS (trwa 15 minut!)
 
 ```bash
 ./eks-create-cluster.sh
 ```
 
-## Skasowanie klastra na AWS
+## Odpalamy dany przykład
+
+```bash
+./run_all.sh
+```
+
+## Kasujemy klaster na AWS (raportuje koniec szybko, ale też trwa 15 minut)
 
 ```bash
 ./eks-delete-cluster.sh
