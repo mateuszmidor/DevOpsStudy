@@ -4,8 +4,9 @@
   tasks:
     - name: Get distribution info
       command: uname -a
+      no_log: true 
       register: distro_info
 
-    - name: Read the vault-encrypted phrase
+    - name: Print distribution info
       debug:
         var: distro_info.stdout
