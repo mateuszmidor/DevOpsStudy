@@ -1,13 +1,11 @@
 - name: hostvars demo
   hosts: localhost
   gather_facts: no
-  vars:
-    description: "Playbook local description" # this overrides the description assigned to localhost
   tasks:
-    - name: Print host-related var using hostvars
+    - name: Print description of first host in groups 'cheaphosts'
+      debug:
+        var: hostvars[groups['cheaphosts'][0]].description
+
+    - name: Print description of host 'localhost'
       debug:
         var: hostvars['localhost'].description
-
-    - name: Print host-related var the direct way
-      debug:
-        var: description
