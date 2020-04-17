@@ -1,0 +1,15 @@
+- name: tags demo
+  hosts: localhost
+  gather_facts: yes
+  tasks:
+    - name: Print localhost num cpus
+      debug:
+        var: ansible_processor_vcpus
+      tags:
+        - cpu
+
+    - name: Print localhost ram mb
+      debug:
+        var: ansible_memory_mb.real.total
+      tags:
+        - ram
