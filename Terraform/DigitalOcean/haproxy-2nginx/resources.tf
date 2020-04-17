@@ -89,3 +89,8 @@ resource "digitalocean_droplet" "web-nginx2" {
     timeout = "2m"
   }
 }
+
+# expose haproxy ip for ease of use
+output "loadbalancer_ip_addr" {
+  value = digitalocean_droplet.web-haproxy.ipv4_address 
+}
