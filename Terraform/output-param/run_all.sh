@@ -32,11 +32,12 @@ function createResources() {
 function printState() {
     stage "Print terraform.tfstate"
 
-    cat terraform.tfstate
+    terraform output instance_ip_addr # print from terraform.tfstate by keyname
 }
 
 function tearDown() {
-    stage "Destroying resources"
+    stage "Exiting now"
+    
     exit 0
 }
 
