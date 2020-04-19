@@ -20,6 +20,17 @@ function installAwsCli() {
     fi
 }
 
+function installAwsIamAuthenticator() {
+    stage "Installing AWS IAM Authenticator"
+
+    command aws-iam-authenticator version > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        pamac build aws-iam-authenticator-bin
+    else
+        echo "aws-iam-authenticator already installed"
+    fi
+}
+
 function configureAwsCli() {
     stage "Configuring AWS CLI"
 
@@ -30,3 +41,4 @@ function configureAwsCli() {
 
 installAwsCli
 configureAwsCli
+installAwsIamAuthenticator

@@ -18,6 +18,9 @@ function checkPrerequsites() {
     command terraform version > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install terraform to run this example" && exit 1
 
+    command aws --version > /dev/null 2>&1
+    [[ $? != 0 ]] && echo "You need to install aws cli to run this example" && exit 1
+    
     echo "OK"
 }
 
@@ -31,7 +34,7 @@ function createResources() {
 function printDNS() {
     stage "Instance created:"
 
-    python get_dns.py
+    terraform output dns
 }
 
 function keepAlive() {

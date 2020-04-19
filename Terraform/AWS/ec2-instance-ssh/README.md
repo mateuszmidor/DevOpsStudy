@@ -8,7 +8,7 @@
 
 ## Steps
 
-  First, create in AWS and download a keypair named: terraform-key.pem into ~/Downloads. It is referenced in ```t2.micro-ssh.tf```  
+  First, create in AWS and download a keypair named: terraform-key.pem into ~/Downloads. It is referenced in ```resources.tf```  
   <https://eu-central-1.console.aws.amazon.com/ec2/v2/home?region=eu-central-1#KeyPairs:>  
   Then:
 
