@@ -38,7 +38,7 @@ function createResources() {
 function sshIntoInstance() {
     stage "Logging SSH into instance"
 
-    IP=`python get_ipv4.py`
+    IP=`terraform output ip`
     while true; do
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$IP
         [[ $? == 0 ]] && break

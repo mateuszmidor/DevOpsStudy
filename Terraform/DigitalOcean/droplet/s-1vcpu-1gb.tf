@@ -14,3 +14,7 @@ resource "digitalocean_droplet" "terraform-study" {
       var.ssh_fingerprint
   ]
 }
+
+output "ip" {
+  value = digitalocean_droplet.terraform-study.ipv4_address
+}
