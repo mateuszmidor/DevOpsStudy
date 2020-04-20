@@ -23,7 +23,7 @@ function runAnsible() {
 
     ansible \
         --module-path=. \
-        -m mytime \
+        -m mytime -a "format=long" \
         localhost
 }
 
