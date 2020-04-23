@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-# the name is important; must be: terraform-<TYPE>-<NAME>
-go build -o terraform-provider-example
+# build the custom provider binary
+# the output binary name is important; must be in format: terraform-<TYPE>-<NAME>
+go build -o terraform-provider-fibb

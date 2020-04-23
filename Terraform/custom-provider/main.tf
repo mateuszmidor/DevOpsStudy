@@ -1,7 +1,7 @@
-resource "example_server" "my-server" {
-    address = "2.3.4.7"
+resource "fibb" "fibb_of_10" {
+    n = 10
 }
 
-output "name" {
-  value = example_server.my-server.port
+output "fibbResult" {
+  value = fibb.fibb_of_10.result
 }
