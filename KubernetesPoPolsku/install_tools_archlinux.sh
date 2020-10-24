@@ -56,7 +56,7 @@ function installK9SArchLinux() {
 function installKubeCTX {
     stage "Installing kubectx"
 
-    command sudo kubectx > /dev/null 2>&1
+    command kubectx > /dev/null 2>&1
     if [[ $? != 0 ]]; then
         pamac build kubectx-git
         [[ $? != 0 ]] && echo "Installing kubectx failed" && exit 1
