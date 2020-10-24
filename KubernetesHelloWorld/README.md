@@ -2,6 +2,6 @@
 
 ## Based on tutum/hello-world docker image
 
-### Install minikube on Arch
+## Before run_all.sh
 
-- pamac build minikube-bin
+Run installation script from KubernetesPoPolsku
