@@ -4,36 +4,36 @@ trap deleteDeployment SIGINT
 
 
 function buildDockerImages() {
-  for dir in pngconverter digitchecker webapp; do
-    pushd $dir
-      ./build_docker_image.sh
-    popd
-  done
+    eval $(minikube docker-env) # make sure the resulting images will be visible from kubernetes. NOTE: this means not visible from host
+    for dir in pngconverter digitchecker webapp; do
+        pushd $dir
+            ./build_docker_image.sh
+        popd
+    done
 }
 
 function runMinikube() {
     echo "Running minikube"
-    sudo rm /tmp/juju-mk*
-    sudo minikube start --vm-driver=none
+    minikube start #--vm-driver=none
 }
 
 function createDeployment() {
-  sudo kubectl create -f kubernetes/checker-deployment.yml
-  sudo kubectl create -f kubernetes/checker-service.yml
-  sudo kubectl create -f kubernetes/webapp-deployment.yml 
-  sudo kubectl create -f kubernetes/webapp-service.yml
+    kubectl create -f kubernetes/checker-deployment.yml
+    kubectl create -f kubernetes/checker-service.yml
+    kubectl create -f kubernetes/webapp-deployment.yml 
+    kubectl create -f kubernetes/webapp-service.yml
 }
 
 function deleteDeployment() {
-    sudo kubectl delete deployment webapp-deployment 
-    sudo kubectl delete service webapp-service
-    sudo kubectl delete deployment checker-deployment
-    sudo kubectl delete service checker-service
+    kubectl delete deployment webapp-deployment 
+    kubectl delete service webapp-service
+    kubectl delete deployment checker-deployment
+    kubectl delete service checker-service
     exit 0
 }
 
 function showWebPage() {
-    ip=`sudo minikube ip`
+    ip=`minikube ip`
 
     # wait till http server is up
     echo "Waiting for http server to get up"
@@ -45,6 +45,6 @@ function showWebPage() {
 }
 
 buildDockerImages
-[[ `sudo minikube status | grep Running` == "" ]] && runMinikube
-[[ `sudo minikube status | grep Running` != "" ]] && createDeployment
-[[ `sudo kubectl get deployment | grep webapp-deployment` != "" ]] && showWebPage
+[[ `minikube status | grep Running` == "" ]] && runMinikube
+[[ `minikube status | grep Running` != "" ]] && createDeployment
+[[ `kubectl get deployment | grep webapp-deployment` != "" ]] && showWebPage
