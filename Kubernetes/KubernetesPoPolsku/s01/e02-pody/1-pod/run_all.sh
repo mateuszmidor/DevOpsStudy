@@ -29,8 +29,10 @@ function checkPrerequsites() {
 function runMinikube() {
     stage "Running minikube"
 
-    desired_status=": Control Plane : Running : Running : Running : Configured "
-    if [[ `minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
         minikube stop
         minikube start
         [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
@@ -41,10 +43,14 @@ function runMinikube() {
 
 function runPod() {
     stage "Running POD"
+    
     kubectl apply -f deployment.yml
 
     # wait POD is up
-    while [[ `kubectl get pod | grep $POD_NAME | grep Running` == "" ]]; do sleep 1; done
+    while [ `kubectl get pod $POD_NAME -o jsonpath='{ .status.containerStatuses[0].ready }'` != "true" ]; do 
+        echo "waiting..."; 
+        sleep 1; 
+    done
 
     echo "Done"
 }
@@ -54,15 +60,16 @@ function showWebPage() {
 
     ip="127.0.0.1"
     port="8000"
+    url="$ip:$port"
 
     # setup port forwarding from localhost into pod
     kubectl port-forward $POD_NAME $port:80 &
 
     # wait till http server is up
     echo "Waiting for http server to get up"
-    while true; do curl --max-time 1 $ip:$port/ > /dev/null 2>&1; [[ $? == 0 ]] && break; sleep 1; done
+    while true; do curl --max-time 1 $url > /dev/null 2>&1; [[ $? == 0 ]] && break; sleep 1; done
 
-    firefox $ip:$port
+    firefox $url
     
     echo "Done"
 }

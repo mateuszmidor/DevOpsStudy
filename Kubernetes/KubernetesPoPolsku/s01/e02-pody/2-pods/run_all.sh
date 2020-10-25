@@ -25,8 +25,10 @@ function checkPrerequsites() {
 function runMinikube() {
     stage "Running minikube"
 
-    desired_status=": Control Plane : Running : Running : Running : Configured "
-    if [[ `minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
         minikube stop
         minikube start
         [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
@@ -40,8 +42,13 @@ function runPod() {
 
     kubectl apply -f deployment.yml
 
-    # wait POD is up
-    while [[ `kubectl get pod | grep $POD_NAME | grep Running` == "" ]]; do sleep 1; done
+    # wait both POD containers are up
+    while [ `kubectl get pod $POD_NAME -o jsonpath='{ .status.containerStatuses[0].ready }'` != "true" ] || 
+          [ `kubectl get pod $POD_NAME -o jsonpath='{ .status.containerStatuses[1].ready }'` != "true" ]
+    do 
+        echo "waiting..."; 
+        sleep 1; 
+    done
 
     echo "Done"
 }
@@ -50,7 +57,7 @@ function keepAlive() {
     stage "CTRL+C to exit"
 
     # read logs
-    kubectl logs producer-consumer -c consumer -f
+    kubectl logs $POD_NAME -c consumer -f
 }
 
 function tearDown() {

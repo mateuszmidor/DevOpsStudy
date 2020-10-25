@@ -21,8 +21,10 @@ function checkPrerequsites() {
 function runMinikube() {
     stage "Running minikube"
 
-    desired_status=": Control Plane : Running : Running : Running : Configured "
-    if [[ `minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
         minikube stop
         minikube start
         [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
@@ -34,20 +36,7 @@ function runMinikube() {
 function showDashboard() {
     stage "Running minikube dashboard"
     
-    minikube dashboard &
-    
-    url=""
-    while true; do
-        url=`kubectl describe service kubernetes-dashboard --namespace kubernetes-dashboard | sed -n '/Endpoints/ s|.* || p'`
-        curl -s > /dev/null 2>&1 $url
-        [[ $? == 0 ]] && break
-        echo "Waiting for minikube dashboard..."
-        sleep 3
-    done
-    echo "Your Dashboard URL: $url"
-    firefox $url
-
-    echo "Done"
+    minikube dashboard
 }
 
 checkPrerequsites
