@@ -4,46 +4,65 @@ trap tearDown SIGINT
 
 POD_NAME="producer-consumer"
 
+function stage() {
+    BOLD_BLUE="\e[1m\e[34m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$BOLD_BLUE$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
+
+    echo "Done"
 }
 
 function runMinikube() {
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    stage "Running minikube"
+
+    desired_status=": Control Plane : Running : Running : Running : Configured "
+    if [[ `minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function runPod() {
-    echo "Running POD"
-    sudo kubectl apply -f deployment.yml
+    stage "Running POD"
+
+    kubectl apply -f deployment.yml
 
     # wait POD is up
-    while [[ `sudo kubectl get pod | grep $POD_NAME | grep Running` == "" ]]; do sleep 1; done
+    while [[ `kubectl get pod | grep $POD_NAME | grep Running` == "" ]]; do sleep 1; done
+
+    echo "Done"
 }
 
-function showConsumerLogs() {
+function keepAlive() {
+    stage "CTRL+C to exit"
+
     # read logs
-    sudo kubectl logs producer-consumer -c consumer -f
+    kubectl logs producer-consumer -c consumer -f
 }
 
 function tearDown() {
-    sudo kubectl delete pod $POD_NAME
+    stage "Tear down"
+
+    kubectl delete pod $POD_NAME
+
+    echo "Done"
     exit 0
 }
 
 checkPrerequsites
 runMinikube
 runPod
-showConsumerLogs
+keepAlive
