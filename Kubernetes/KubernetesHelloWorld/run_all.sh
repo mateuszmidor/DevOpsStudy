@@ -1,35 +1,32 @@
 #!/usr/bin/env bash
 
-trap deleteDeployment SIGINT
+trap tearDown SIGINT
 
 function stage() {
-    BLUE_BOLD="\e[1m\e[34m"
+    BOLD_BLUE="\e[1m\e[34m"
     RESET="\e[0m"
     msg="$1"
     
     echo
-    echo -e "$BLUE_BOLD$msg$RESET"
+    echo -e "$BOLD_BLUE$msg$RESET"
 }
 
 function runMinikube() {
     stage "Running minikube"
 
-    # rm -f /tmp/juju-mk*
-    minikube start # --vm-driver=none; for running minikube inside windows hyper-v
+    if [[ `minikube status | grep Running` == "" ]]; then
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
+    fi
+    echo "Done"
 }
 
-function createDeployment() {
-    stage "Creating deployment"
+function createKubernetesResources() {
+    stage "Creating kubernetes resources"
 
-    kubectl create -f deployment.yml
-}
-
-function deleteDeployment() {
-    stage "Deleting deployment"
-
-    kubectl delete deployment hello-world-deployment
-    kubectl delete service hello-world-service
-    exit 0
+    kubectl create -f deployment_service.yml
+    [[ $? != 0 ]] && echo "Creating kubernetes resources failed" && exit 1
+    echo "Done"
 }
 
 function showHelloAndDashboard() {
@@ -49,6 +46,14 @@ function showHelloAndDashboard() {
 }
 
 
-[[ `minikube status | grep Running` == "" ]] && runMinikube
-[[ `minikube status | grep Running` != "" ]] && createDeployment
-[[ `kubectl get deployment | grep hello-world-deployment` != "" ]] && showHelloAndDashboard
+function tearDown() {
+    stage "Deleting kubernetes resources"
+
+    kubectl delete deployment hello-world-deployment
+    kubectl delete service hello-world-service
+    exit 0
+}
+
+runMinikube
+createKubernetesResources
+showHelloAndDashboard
