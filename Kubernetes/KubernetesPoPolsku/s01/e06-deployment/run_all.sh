@@ -4,59 +4,93 @@ trap tearDown SIGINT
 
 DEPLOYMENT_NAME="alpine-linux-deployment"
 
+function stage() {
+    BOLD_BLUE="\e[1m\e[34m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$BOLD_BLUE$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
+
+    echo "Done"
 }
 
 function runMinikube() {
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    stage "Running minikube"
+
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function runDeployment() {
-    echo "Running Deployment"
-    sudo kubectl apply -f deployment.yml
+    stage "Creating Deployment"
+
+    kubectl apply -f deployment.yml
 
     # wait Deployment is up
-    while [[ `sudo kubectl get deployment | grep $DEPLOYMENT_NAME | sed 's|\s\s*| |g' | cut -d ' ' -f4` != "8" ]]; do sleep 1; done
+    while [[ `kubectl get deployment $DEPLOYMENT_NAME -o jsonpath='{ .status.readyReplicas }'` != "8" ]]; do 
+        echo "waiting..."; 
+        sleep 1; 
+    done
 
-    echo "Deployment ready."
+    echo "Done"
 }
 
 function upgradeContainer() {
+    stage "Upgrading docker container version"
+
     echo "Now we upgrade container 3.10 -> 3.11. Watch the rolling update"
     sleep 5
     
     # docker image version is alpine:3.10
     # lets upgrade to apline:3.11
-    sudo kubectl set image deploy/alpine-linux-deployment alpine-linux-container=alpine:3.11 --record &
+    kubectl set image deploy/alpine-linux-deployment alpine-linux-container=alpine:3.11 --record &
 
     # show the rolling update progress
-    watch -n1 sudo kubectl get replicaset
+    watch -n1 kubectl get replicaset
+
+    echo "Done"
 }
 
 function rollbackContainer() {
+    stage "Rolling back docker container upgrade"
+
     # see the available rollback history
-    sudo kubectl rollout history deploy/alpine-linux-deployment
+    kubectl rollout history deploy/alpine-linux-deployment
 
     # rollback
-    sudo kubectl rollout undo deploy/alpine-linux-deployment
+    kubectl rollout undo deploy/alpine-linux-deployment
+
+    echo "Done"
+}
+
+function keepAlive() {
+    stage "CTRL+C to exit"
+
+    while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo kubectl delete deployment $DEPLOYMENT_NAME
+    echo "Tear down"
+
+    kubectl delete deployment $DEPLOYMENT_NAME
+
+    echo "Done"
     exit 0
 }
 
@@ -64,3 +98,5 @@ checkPrerequsites
 runMinikube
 runDeployment
 upgradeContainer
+rollbackContainer
+keepAlive
