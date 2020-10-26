@@ -5,50 +5,65 @@ trap tearDown SIGINT
 REPLICASET_NAME="hello-world-replicaset"
 SERVICE_NAME="hello-world-service"
 
+function stage() {
+    BOLD_BLUE="\e[1m\e[34m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$BOLD_BLUE$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
+
+    echo "Done"
 }
 
 function runMinikube() {
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    stage "Running minikube"
+
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function runReplicaSetAndService() {
-    echo "Running ReplicaSet and Service"
-    sudo kubectl apply -f deployment.yml
+    stage "Creating ReplicaSet and Service"
 
-    # wait replicaset is up
-    while [[ `sudo kubectl get replicaset | grep $REPLICASET_NAME` == "" ]]; do sleep 1; done
+    kubectl apply -f replicaset_service.yml
 
-    # wait pod is up. Pod name is replicaset name + some id
-    while [[ `sudo kubectl get pods | grep $REPLICASET_NAME | grep Running` == "" ]]; do sleep 1; done
-
-    echo
-    sudo kubectl get replicaset
+    # wait ReplicaSet is up
+    while [[ `kubectl get replicaset $REPLICASET_NAME -o jsonpath='{ .status.readyReplicas }'` != "3" ]]; do 
+        echo "waiting..."; 
+        sleep 1; 
+    done
 
     echo
-    sudo kubectl get services
+    kubectl get replicaset
 
     echo
+    kubectl get services
+
+    echo "Done"
 }
 
 function showWebPage() {
-    # NodePort service is visible from each node on port 8080, and from ClusterIP on random NodePort 30k something
-    ip=`sudo minikube ip`
-    port=`sudo kubectl describe svc $SERVICE_NAME | grep NodePort | egrep -o "[0-9]+"`
+    stage "Showing web page"
+
+    # NodePort service is visible from each node on port 8080, and from ClusterIP on random NodePort 30k something. We need that 30k something
+    ip=`minikube ip`
+    port=`kubectl get service $SERVICE_NAME -o jsonpath='{ .spec.ports[0].nodePort }'`
 
     # wait till http server is up
     echo "Waiting for http server to get up"
@@ -56,13 +71,23 @@ function showWebPage() {
 
     echo "Showing Kubernetized Hello World Web App"
     firefox $ip:$port
-    
+
+    echo "Done"
+}
+
+function keepAlive() {
+    stage "CTRL+C to exit"
+
     while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo kubectl delete service $SERVICE_NAME
-    sudo kubectl delete replicaset $REPLICASET_NAME
+    stage "Tear down"
+
+    kubectl delete service $SERVICE_NAME
+    kubectl delete replicaset $REPLICASET_NAME
+
+    echo "Done"
     exit 0
 }
 
@@ -70,3 +95,4 @@ checkPrerequsites
 runMinikube
 runReplicaSetAndService
 showWebPage
+keepAlive

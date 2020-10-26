@@ -19,7 +19,7 @@
    
 ---
   apiVersion: apps/v1
-  kind: Deployment
+  kind: ReplicaSet
   metadata:
     name: hello-world-replicaset # pods will be named: hello-world-replicaset-someid
   spec:
