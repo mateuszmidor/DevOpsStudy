@@ -1,20 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/auth-url: https://httpbin.org/basic-auth/user/user
   name: hello-world-ingress
 spec:
   rules:
-    - host: hello-world.127.0.0.1.nip.io
-      http:
-        paths:
-          - backend:
-              serviceName: hello-world-service
-              servicePort: 8080
-            path: /
-
+  - host: hello-world.127.0.0.1.nip.io # 127.0.0.1 will be kubectl patch'ed to `minikube ip`
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world-service
+            port:
+              number: 8080
 ---
   apiVersion: v1
   kind: Service
@@ -38,7 +37,7 @@ spec:
   metadata:
     name: hello-world-replicaset # pods will be named: hello-world-replicaset-someid
   spec:
-    replicas: 1
+    replicas: 3
     selector:
       matchLabels:
         app: hello-world-pod
