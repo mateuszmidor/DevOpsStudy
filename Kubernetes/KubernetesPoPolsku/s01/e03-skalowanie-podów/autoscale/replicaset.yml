@@ -39,7 +39,7 @@
               - containerPort: 80
             resources:
               requests:
-                cpu: 100m
+                cpu: 1000m # HorizontalPodAutoscaler compares actual CPU usage to requested CPU declared here. 1000m = 100% of single core
                 memory: 10Mi
             command: ["/bin/sh"]
 
