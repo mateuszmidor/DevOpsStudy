@@ -14,6 +14,8 @@
         port: 8080
         # Port To forward to inside pod
         targetPort: 80
+        # Port accessible from outside the cluster, eg. minikubeIP:32500
+        nodePort: 32500
    
 ---
   apiVersion: apps/v1

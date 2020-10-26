@@ -61,7 +61,7 @@ function runReplicaSetAndService() {
 function showWebPage() {
     stage "Showing web page"
 
-    # NodePort service is visible from each node on port 8080, and from ClusterIP on random NodePort 30k something. We need that 30k something
+    # NodePort service is visible from each node on port 8080, and from ClusterIP (minikube ip) on specified nodePort
     ip=`minikube ip`
     port=`kubectl get service $SERVICE_NAME -o jsonpath='{ .spec.ports[0].nodePort }'`
 
