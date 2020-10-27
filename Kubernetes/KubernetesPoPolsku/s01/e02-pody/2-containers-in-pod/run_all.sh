@@ -40,7 +40,7 @@ function runMinikube() {
 function runPod() {
     stage "Running POD"
 
-    kubectl apply -f deployment.yml
+    kubectl apply -f pod.yml
 
     # wait both POD containers are up
     while [ `kubectl get pod $POD_NAME -o jsonpath='{ .status.containerStatuses[0].ready }'` != "true" ] || 
