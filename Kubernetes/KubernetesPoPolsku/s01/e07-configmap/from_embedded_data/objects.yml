@@ -26,6 +26,7 @@ spec:
       image: alpine:3.10
       command: ["/bin/sh"]
       args: ["-c", "env | grep CONFIG & find /config/CONFIG* & while true; do sleep 1; done"]
+      
 
       # mount configmap as volume
       volumeMounts:

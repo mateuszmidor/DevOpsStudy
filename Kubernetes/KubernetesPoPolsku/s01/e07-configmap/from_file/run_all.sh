@@ -6,12 +6,12 @@ POD_NAME="alpine-linux-pod"
 CONFIG_MAP_NAME="my-config-map"
 
 function stage() {
-    GREEN="\e[92m"
+    BOLD_BLUE="\e[1m\e[34m"
     RESET="\e[0m"
     msg="$1"
     
     echo
-    echo -e "$GREEN$msg$RESET"
+    echo -e "$BOLD_BLUE$msg$RESET"
 }
 
 function checkPrerequsites() {
@@ -20,46 +20,52 @@ function checkPrerequsites() {
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
 
-    echo "OK"
+    echo "Done"
 }
 
 function runMinikube() {
-    stage "Running Minikube"
+    stage "Running minikube"
 
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function createConfigMap() {
     stage "Creating config map"
     
-    sudo kubectl apply -k . # kustomization
+    kubectl apply -k . # kustomization
+
+    echo "Done"
 }
 
 function runExample() {
     stage "Running example"
 
-    sudo kubectl apply -f objects.yml
+    kubectl apply -f objects.yml
 
-    echo "waiting example running..."
-    while [[ `sudo kubectl get pod | grep $POD_NAME | grep Running` == "" ]]; do sleep 1; done
+    # wait Pod is up
+    while [[ `kubectl get pod $POD_NAME -o jsonpath='{ .status.containerStatuses[0].ready }'` != "true" ]]; do 
+        echo "waiting..."; 
+        sleep 1; 
+    done
+
+    echo "Done"
 }
 
 function showLogs() {  
     stage "Showing configmap stored as env variables and as files"
 
-    sudo kubectl logs $POD_NAME
+    kubectl logs $POD_NAME
+
+    echo "Done"
 }
 
 function keepAlive() {
@@ -69,8 +75,12 @@ function keepAlive() {
 }
 
 function tearDown() {
-    sudo kubectl delete --grace-period=1 -f objects.yml
-    sudo kubectl delete -k .
+    stage "Tear down"
+
+    kubectl delete --grace-period=1 -f objects.yml
+    kubectl delete -k .
+
+    echo "Done"
     exit 0
 }
 
