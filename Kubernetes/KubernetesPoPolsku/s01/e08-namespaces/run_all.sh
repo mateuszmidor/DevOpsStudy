@@ -2,47 +2,65 @@
 
 trap tearDown SIGINT
 
+function stage() {
+    BOLD_BLUE="\e[1m\e[34m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$BOLD_BLUE$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
+
+    echo "Done"
 }
 
 function runMinikube() {
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    stage "Running minikube"
+
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
+
 function createNamespaces() {
-    echo
-    echo "Creating namespaces: test, prod"
-    sudo kubectl create namespace test
-    sudo kubectl create namespace prod
-    sudo kubectl get namespace
+    stage "Creating namespaces: test, prod"
+
+    kubectl create namespace test
+    kubectl create namespace prod
+    kubectl get namespace
+
+    echo "Done"
 }
 
 function runPods() {
-    echo
-    echo "Running POD in test namespace"
-    sudo kubectl apply --namespace test -f deployment_test.yml
+    stage "Running PODs"
+
+    echo "in test namespace"
+    kubectl apply --namespace test -f deployment_test.yml
 
     echo
-    echo "Running POD in prod namespace"
-    sudo kubectl apply  --namespace prod -f deployment_prod.yml
+    echo "in prod namespace"
+    kubectl apply --namespace prod -f deployment_prod.yml
+
+    echo "Done"
 }
 
 function playWithNamespaces() {
-    echo
+    stage "Checking namespaces"
     
     if [[ ! -d kubectx ]]; then
         echo "Downloading kubens..."
@@ -51,26 +69,34 @@ function playWithNamespaces() {
     fi
     
     echo "See pods in test namespace:"
-    sudo kubectx/kubens test
-    sudo kubectl get pods
+    kubectx/kubens test
+    kubectl get pods
 
     echo
     echo "See pods in prod namespace:"
-    sudo kubectx/kubens prod
-    sudo kubectl get pods
+    kubectx/kubens prod
+    kubectl get pods
 
     echo
     echo "Going back to defaul namespace"
-    sudo kubectx/kubens default 
+    kubectx/kubens default 
+
+    echo "Done"
 }
 
 function keepAlive() {
+    stage "CTRL+C to exit"
+    
     while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo kubectl delete namespace test
-    sudo kubectl delete namespace prod
+    stage "Tear down"
+
+    kubectl delete namespace test
+    kubectl delete namespace prod
+    
+    echo "Done"
     exit 0
 }
 
