@@ -4,60 +4,81 @@ trap tearDown SIGINT
 
 RELEASE_NAME="my-dokuwiki"
 
+function stage() {
+    BOLD_BLUE="\e[1m\e[34m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$BOLD_BLUE$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
 
     command helm > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install helm to run this lesson" && exit 1
+
+    echo "Done"
 }
 
 function runMinikube() {
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    stage "Running minikube"
+
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function runHelmDokuWiki() {
-    echo
-    echo "Running dokuwiki helm release "
-    sudo helm repo add bitnami https://charts.bitnami.com/bitnami
-    sudo helm install $RELEASE_NAME bitnami/dokuwiki -f values.yml
+    stage "Running dokuwiki helm release "
+
+    helm repo add bitnami https://charts.bitnami.com/bitnami
+    helm install $RELEASE_NAME bitnami/dokuwiki -f values.yml
+
+    echo "Done"
 }
 
 function showWebPage() {
-    echo
-    echo "Running dokuwiki web page"
+    stage "Running dokuwiki web page"
     
     url=""
     while true; do
-        url=`sudo kubectl describe service $RELEASE_NAME | sed -n '/IP/ s|.* || p'`
-        curl -s > /dev/null 2>&1 $url
+        url=`kubectl get svc $RELEASE_NAME -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
+        curl -X GET --max-time 1 $url > /dev/null 2>&1
         [[ $? == 0 ]] && break
-        echo "Waiting for dokuwiki server..."
+        echo "Waiting for dokuwiki server. Make sure to issue 'minikube tunnel', so loadbalancer gets external IP"
         sleep 3
     done
     
     echo "Your dokuwiki URL: $url"
     firefox $url
+
+    echo "Done"
 }
 
 function keepAlive() {
+    stage "CTRL+C to exit"
+
     while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo helm delete $RELEASE_NAME
+    stage "Tear down"
+
+    helm delete $RELEASE_NAME
+    
+    echo "Done"
     exit 0
 }
 
