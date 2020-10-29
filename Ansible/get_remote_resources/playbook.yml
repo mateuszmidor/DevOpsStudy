@@ -19,4 +19,7 @@
        - "ansible_processor_vcpus"
        - "ansible_memory_mb.real.free"
        - "ansible_memory_mb.real.total"
+       - "ansible_memory_mb.real.total"
+      #  - "ansible_facts" # print ALL available information
+       
       
