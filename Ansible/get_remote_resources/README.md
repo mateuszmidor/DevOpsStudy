@@ -2,7 +2,7 @@
 
 To see all available information in JSON format, run:
 ```bash
-ansible localhost w-m setup
+ansible localhost -m setup
 ``` 
 Output:
 ```json
