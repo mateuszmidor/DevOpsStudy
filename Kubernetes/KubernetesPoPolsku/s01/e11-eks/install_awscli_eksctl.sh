@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 function stage() {
-    GREEN="\e[92m"
+    BOLD_BLUE="\e[1m\e[34m"
     RESET="\e[0m"
     msg="$1"
     
     echo
-    echo -e "$GREEN$msg$RESET"
+    echo -e "$BOLD_BLUE$msg$RESET"
 }
 
 function installAwsCli() {
@@ -18,6 +18,8 @@ function installAwsCli() {
     else
         echo "aws cli already installed"
     fi
+
+    echo "Done"
 }
 
 function configureAwsCli() {
@@ -25,6 +27,8 @@ function configureAwsCli() {
 
     echo "find the secret keys here: https://console.aws.amazon.com/iam/home?region=eu-central-1#/security_credentials"
     aws configure
+
+    echo "Done"
 }
 
 function installEksctl() {
@@ -32,10 +36,12 @@ function installEksctl() {
 
     command eksctl > /dev/null 2>&1
     if [[ $? != 0 ]]; then
-        pamac build eksctl
+        sudo pacman -S eksctl
     else
         echo "eksctl already installed"
     fi
+
+    echo "Done"
 }
 
 
