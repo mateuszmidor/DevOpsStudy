@@ -7,9 +7,9 @@ ingress:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
   hosts:
-    - charts.127.0.0.1.nip.io:
+    - charts.127.0.0.1.nip.io: # '127.0.0.1' to be overriden with minikube ip in helm install --set
         - /
-        - /index.yaml
+        - /index.yaml # this is actual list of available charts; will contain "mychart"
 env:
   open:
     STORAGE: local

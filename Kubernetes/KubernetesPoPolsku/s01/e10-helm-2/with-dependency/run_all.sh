@@ -4,116 +4,141 @@ trap tearDown SIGINT
 
 CHART_NAME="mychart"
 NAMESPACE_NAME="mychart"
+
+function stage() {
+    BOLD_BLUE="\e[1m\e[34m"
+    RESET="\e[0m"
+    msg="$1"
+    
+    echo
+    echo -e "$BOLD_BLUE$msg$RESET"
+}
+
 function checkPrerequsites() {
+    stage "Checking prerequisites"
+
     command minikube > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install minicube to run local cluster" && exit 1
 
     command helm > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install helm to run this lesson" && exit 1
+
+    echo "Done"
 }
 
 function runMinikube() {
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    stage "Running minikube"
+
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function createMyChart() {
-    echo
-    echo "Creating mychart"
+    stage "Creating mychart"
    
     # mariadb creates persistent volumes, deleting namespace will easily clean everything up
-    sudo kubectl create namespace $NAMESPACE_NAME
+    kubectl create namespace $NAMESPACE_NAME
 
     # helm create $CHART_NAME  # already created and extended "mychart/" for example purpose
-    sudo helm dep update $CHART_NAME/
+    helm dep update $CHART_NAME/
+
+    echo "Done"
 }
 
 function lintMyChart() {
-    echo
-    echo "Linting mychart"
+    stage "Linting mychart"
     
     helm lint $CHART_NAME
+
+    echo "Done"
 }
 
 function dryRunInstallMyChart() {
-    echo
-    echo "Trying installing mychart"
+    stage "Trying installing mychart"
 
-    sudo helm install --dry-run --debug $CHART_NAME $CHART_NAME/
+    helm install --dry-run --debug $CHART_NAME $CHART_NAME/
+
+    echo "Done"
 }
 
 function packageMyChart() {
-    echo
-    echo "Packaging mychart"
+    stage "Packaging mychart"
 
-    helm package $CHART_NAME/  # result: mychart-0.1.0.tgz. Version comes from Chary.yaml: version
+    helm package $CHART_NAME/  # result: mychart-0.1.0.tgz. Version comes from Chart.yaml: version
+
+    echo "Done"
+}
+
+function getServiceURL() {
+    echo "mychart.`minikube ip`.nip.io"
 }
 
 function installPackagedMyChart() {
-    echo
-    echo "Installing mychart"
+    stage "Installing mychart"
 
-    sudo helm install -n $NAMESPACE_NAME $CHART_NAME mychart-0.1.0.tgz
-    # non-packaged would simply install from directory: sudo helm install $CHART_NAME $CHART_NAME/
+    host=`getServiceURL`
+    # --set overrides some configuration from values.yaml
+    helm install -n $NAMESPACE_NAME --set ingress.hosts[0].host=$host --set ingress.hosts[0].paths[0]="/" $CHART_NAME mychart-0.1.0.tgz
+    # non-packaged would simply install from directory: helm install $CHART_NAME $CHART_NAME/
+
+    echo "Done"
 }
 
 function waitServiceReady() {
-    echo
-    echo "Waiting service is up"
+    stage "Waiting service is up"
 
-    while true; do
-        url=`sudo kubectl describe service -n $NAMESPACE_NAME $CHART_NAME | sed -n '/Endpoints/ s|.* || p'`
-        [[ $url != "" && $url != "<none>" ]] && break
+    url=`getServiceURL`
+    while [[ `curl -X GET --max-time 1 -s -o /dev/null -w "%{http_code}" $url` != "200" ]]; do
         echo "waiting..."
         sleep 3
     done
+
+    echo "Done"
 }
 
 function testMyChart() {
-    echo
-    echo "Testing mychart installation"
+    stage "Testing mychart installation"
 
-    sudo helm test -n $NAMESPACE_NAME $CHART_NAME
+    helm test -n $NAMESPACE_NAME $CHART_NAME
+
+    echo "Done"
 }
 
 function showWebPage() {
-    echo
-    echo "Running mychart web page"
+    stage "Running mychart web page"
     
-    url="mychart.127.0.0.1.nip.io" # ingress, configured in values.yaml
-    while [[ `curl -s -o /dev/null -w "%{http_code}" $url` != "200" ]]; do
-        echo "Waiting for mychart web page..."
-        sleep 3
-    done
-    
-    echo "mychart URL: $url"
+    url=`getServiceURL`
     firefox $url
+
+    echo "Done"
 }
 
 function keepAlive() {
+    stage "CTRL+C to exit"
+
     while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo helm delete -n $NAMESPACE_NAME $CHART_NAME
-    sudo kubectl delete namespace $NAMESPACE_NAME
+    stage "Tear down"
+
+    helm delete -n $NAMESPACE_NAME $CHART_NAME
+    kubectl delete namespace $NAMESPACE_NAME
+
+    echo "Done"
     exit 0
 }
 
 checkPrerequsites
 runMinikube
-
 createMyChart 
 lintMyChart
 #dryRunInstallMyChart # disabled because generates lots of text

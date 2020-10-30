@@ -47,7 +47,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: mychart.127.0.0.1.nip.io
+    - host: mychart.127.0.0.1.nip.io # this '127.0.0.1' will be replaced with minikube ip during helm install with --set
       paths: [/]
   tls: []
   #  - secretName: chart-example-tls

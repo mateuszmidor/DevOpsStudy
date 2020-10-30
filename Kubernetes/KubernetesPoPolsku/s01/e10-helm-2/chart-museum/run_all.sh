@@ -3,15 +3,14 @@
 trap tearDown SIGINT
 
 CHARTMUSEUM_NAME="mychartmuseum"
-CHARTMUSEUM_URL="http://charts.127.0.0.1.nip.io" # configured in chart-museum-values.yaml
 
 function stage() {
-    GREEN="\e[92m"
+    BOLD_BLUE="\e[1m\e[34m"
     RESET="\e[0m"
     msg="$1"
     
     echo
-    echo -e "$GREEN$msg$RESET"
+    echo -e "$BOLD_BLUE$msg$RESET"
 }
 
 function waitUrlAvailable() {
@@ -20,6 +19,10 @@ function waitUrlAvailable() {
         echo "Waiting for $url ..."
         sleep 3
     done
+}
+
+function getChartMuseumURL() {
+    echo "http://charts.`minikube ip`.nip.io"
 }
 
 function checkPrerequsites() {
@@ -31,66 +34,81 @@ function checkPrerequsites() {
     command helm > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install helm to run this lesson" && exit 1
 
-    echo "OK"
+    echo "Done"
 }
 
 function runMinikube() {
-    stage "Running Minikube"
+    stage "Running minikube"
 
-    desired_status=": Running : Running : Running : Configured "
-    if [[ `sudo minikube status | egrep -o ":.*" | tr '\n' ' '` != $desired_status ]]; then
-        sudo rm -f /tmp/juju-mk*
-        sudo minikube stop
-        sudo rm -f /tmp/juju-mk*
-        echo "Running minikube"
-        sudo minikube start --vm-driver=none
-    else
-        echo "Minikube is running"
+    host_status=`minikube status -f '{{ .Host }}'`
+    kubelet_status=`minikube status -f '{{ .Kubelet }}'`
+    apiserver_status=`minikube status -f '{{ .APIServer }}'`
+    if [ $host_status != "Running"  ] || [ $kubelet_status != "Running"  ] || [ $apiserver_status != "Running"  ]; then
+        minikube stop
+        minikube start
+        [[ $? != 0 ]] && echo "Running minikube failed" && exit 1
     fi
 
-    ip=`sudo minikube ip`
-    echo "Your ClusterIP: $ip"
+    echo "Done"
 }
 
 function installChartMuseum() {
     stage "Installing chart museum and helm push plugin"
 
-    sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com
-    sudo helm repo update
-    sudo helm install $CHARTMUSEUM_NAME stable/chartmuseum --version 2.9.0 -f chart-museum-values.yaml
-    sudo helm plugin install https://github.com/chartmuseum/helm-push.git
+    helm repo add stable https://kubernetes-charts.storage.googleapis.com
+    helm repo update
 
-    waitUrlAvailable $CHARTMUSEUM_URL
-    sudo helm repo add $CHARTMUSEUM_NAME $CHARTMUSEUM_URL
+    host=`getChartMuseumURL`
+    # --set overrides some configuration from chart-museum-values.yaml
+    helm install $CHARTMUSEUM_NAME stable/chartmuseum --version 2.9.0 -f chart-museum-values.yaml --set ingress.hosts[0].host=$host --set ingress.hosts[0].paths[0]="/"
+    helm plugin install https://github.com/chartmuseum/helm-push.git
+
+    url=`getChartMuseumURL`
+    waitUrlAvailable $url
+    helm repo add $CHARTMUSEUM_NAME $url
+
+    echo "Done"
 }
 
 function publishMyChart() {
     stage "Publishing mychart into local chart repo called $CHARTMUSEUM_NAME"
 
-    sudo helm push mychart/ $CHARTMUSEUM_NAME 
-    sudo helm repo update
+    helm push mychart/ $CHARTMUSEUM_NAME 
+    helm repo update
+
+    echo "Done"
 }
 
 function searchPublishedChart() {
     stage "Searching mychart"
 
-    sudo helm search repo mychart
+    helm search repo mychart
+
+    echo "Done"
 }
 
 function showWebPage() {
     stage "Running chartmuseum web page"
     
     sleep 10
-    firefox $CHARTMUSEUM_URL
-    echo "OK"
+    url=`getChartMuseumURL`
+    firefox $url
+
+    echo "Done"
 }
 
 function keepAlive() {
+    stage "CTRL+C to exit"
+
     while true; do sleep 1; done
 }
 
 function tearDown() {
-    sudo helm delete $CHARTMUSEUM_NAME
+    stage "Tear down"
+
+    helm delete $CHARTMUSEUM_NAME
+    
+    echo "Done"
     exit 0
 }
 
