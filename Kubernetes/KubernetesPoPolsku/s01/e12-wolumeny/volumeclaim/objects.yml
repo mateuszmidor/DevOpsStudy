@@ -55,7 +55,7 @@
       - name: volumeclaim-container
         image: alpine
         volumeMounts:
-          - mountPath: /data
-            name: data1
-        command: ["df"]
-        args: ["-h", "/data"]
+          - name: data1
+            mountPath: /pod_persistent_data
+        command: ["sh"]
+        args: ["-c", "df -h /pod_persistent_data && sleep 5"] # sleep 5 to allow Ready state to be detected by "kubectl wait pod/hostpath-pod  --for condition=Ready"
