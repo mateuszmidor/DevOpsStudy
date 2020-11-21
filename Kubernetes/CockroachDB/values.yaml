@@ -4,7 +4,7 @@ service:
     type: NodePort # so you can connect to cluster from outside 
 
 statefulset:
-  replicas: 10 # 3 cockroachdb cluster nodes
+  replicas: 3 # 3 cockroachdb cluster nodes
 
 storage:
   persistentVolume:
