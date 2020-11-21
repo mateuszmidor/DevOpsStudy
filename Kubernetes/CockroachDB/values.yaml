@@ -1,0 +1,13 @@
+---
+service:
+  public:
+    type: NodePort # so you can connect to cluster from outside 
+
+statefulset:
+  replicas: 10 # 3 cockroachdb cluster nodes
+
+storage:
+  persistentVolume:
+    enabled: true
+    size: 2Gi
+    # storageClass: karaluch # first need to create PersistentVolume with this storageClass
