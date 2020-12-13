@@ -1,6 +1,6 @@
-# Prometheus study
+# Prometheus
 
-The client here is simple use of netcat in server mode
+The metric provider here is simple use of netcat in server mode
 
 ## Metrics source
 
