@@ -1,5 +1,7 @@
 # Custom terraform provider - fibbonaci provider; what cooler can you get :)
 
+Note: this is out of date example based on v1 terraform sdk. Recent one is v2.  
+
 Based on terraform example but changed server to fibb provider:
 <https://www.terraform.io/docs/extend/writing-custom-providers.html>
 
