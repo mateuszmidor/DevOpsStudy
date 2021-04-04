@@ -2,4 +2,9 @@
 
 ## Hand-written digit recognition with web interface, written in python3, using tensorflow, deployed with Kubernetes
 
-![alt text](./media/digitrecon.png)
+## UI
+![digit recon web ui](./media/digitrecon.png)
+
+## C2
+
+![c2 diagram](./docs/C4/c2.png)
