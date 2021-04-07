@@ -1,6 +1,7 @@
 # DigitRecon
 
-## Hand-written digit recognition with web interface, written in python3, using tensorflow, deployed with Kubernetes
+
+## Hand-written digit recognition with web interface, written in python3, using tensorflow, mnist, deployed with Kubernetes
 
 ## UI
 ![digit recon web ui](./media/digitrecon.png)
