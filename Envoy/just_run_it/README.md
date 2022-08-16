@@ -9,7 +9,7 @@ docker run -it --rm -v "$PWD"/envoy.yaml:/etc/envoy/envoy.yaml --network host en
 
 ```bash
 # listen at localhost:8080 and reply to incoming request
-echo -e "HTTP/1.1 200 OK\n\nWORKS!" | nc -l -p 8080
+echo -e "HTTP/1.1 200 OK\nContent-Length: 6\n\nWORKS!" | nc -l -p 8080
 ```
 
 ```bash
