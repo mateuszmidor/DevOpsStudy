@@ -17,7 +17,7 @@ function checkPrerequsites() {
     command docker --version > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install docker to run this example" && exit 1
 
-    command netcat --version > /dev/null 2>&1
+    which netcat > /dev/null 2>&1
     [[ $? != 0 ]] && echo "You need to install netcat to run this example" && exit 1
 
     echo "Done"
@@ -43,7 +43,7 @@ function runMetricProvider() {
    
     while true; do
         for s in $SINUS; do
-            printf "$HEADER\n\nwave $s" | netcat  -l -p 8080 localhost
+            printf "$HEADER\n\nwave $s" | netcat  -l -p 8080 
         done
     done
 
