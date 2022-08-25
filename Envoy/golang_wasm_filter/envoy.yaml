@@ -20,17 +20,16 @@ static_resources:
                 config:
                   name: "my_filter"
                   root_id: "my_root_id"
-                  configuration:
+                  configuration: # plugin configuration
                     "@type": "type.googleapis.com/google.protobuf.StringValue"
-                    value: |
-                      {}
+                    value: 'HELLO FROM WASM!' # value for our http response extra header "x-wasm-filter" 
                   vm_config:
                     runtime: "envoy.wasm.runtime.v8"
-                    vm_id: "my_vm_id"
+                    vm_id: "my_vm_id" # to run filters in a single VM; used to share data between WASM filters using WASM Proxy API: SharedData and Queues
                     code:
                       local:
                         filename: "/etc/envoy/myfilter.wasm"
-                    configuration: { }                  
+                    configuration: {}
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
