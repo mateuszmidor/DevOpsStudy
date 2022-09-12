@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway # gateway is a proxy on the mesh edge - allows traffic into the mesh (ingress gateway) or out of the mesh (egress gateway)
+metadata:
+  name: gateway # VirtualService will refer to this name to route traffic from it into regular K8S Services
+spec:
+  selector:
+    istio: ingressgateway # bind the Gateway to a LoadBalancer in istio-system namespace 
+  servers:
+    - port:
+        number: 80 # receive traffic on port 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - '*' # receive traffic destined for any hosts
+
