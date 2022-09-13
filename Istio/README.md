@@ -3,6 +3,8 @@
 ## Tutorials:
 - Istio Fundamentals https://academy.tetrate.io/courses/istio-fundamentals
 
+![Kubernetes-Isto-Envoy](./kubernetes-istio-envoy.png)
+
 ## Install Istio using Tetrate's "getmesh"
 
 Note: `istioctl` will become a subcommand of getmesh.  
