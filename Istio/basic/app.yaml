@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - image: gcr.io/tetratelabs/hello-world:1.0.0
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           name: svc
           ports:
             - containerPort: 3000
