@@ -1,5 +1,10 @@
 # Istio Service Mesh
 
+For testing on Minikube, it's better to start it with 8GB memory
+```sh
+minikube start --memory 8192 # may require "minikube delete" first, to take effect
+```
+
 ## Tutorials:
 - Istio Fundamentals https://academy.tetrate.io/courses/istio-fundamentals
 
@@ -31,21 +36,7 @@ export PATH=$PWD/istio-1.14.3/bin/:$PATH
 
 # install istio in current cluster. Profile "demo" is for learning purposes - it brings basic istio components and higher tracing level
 istioctl install --set profile=demo
-
-# install istio operator
 istioctl operator init
-
-# create istio operator CRD in cluster
-echo "apiVersion: install.istio.io/v1alpha1
-kind: IstioOperator
-metadata:
-  namespace: istio-system
-  name: demo-istio-install
-spec:
-  profile: demo" | kubectl apply -f -
-
-# wait till "demo-istio-install" CRD is in HEALTHY state
-kubectl get istiooperator -n istio-system -w
 ```
 
 
