@@ -51,6 +51,6 @@ spec:
           "/bin/ash",
           "-c",
           # send GET to our server listening in custom network
-          "while true; do curl --silent --interface my-intf 192.168.1.88:8888; sleep 1; done",
+          "while true; do curl --interface my-intf 192.168.1.88:8888; sleep 1; done",
         ]
       image: alpine/curl:3.14

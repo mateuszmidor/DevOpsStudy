@@ -1,4 +1,5 @@
 # network with static IP assignment - "type": "static"
+# as for "master" - must be present on the Node: eth0 works, docker0 and cni0 doesnt work
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
