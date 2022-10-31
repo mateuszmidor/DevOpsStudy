@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  annotations:
+    # here we define custom network that we want attached in our POD
+    k8s.v1.cni.cncf.io/networks: '[
+      {
+      "name": "customnet",
+      "interface": "myintf",
+      "ips": [ "192.168.1.1/16" ]
+      }
+      ]'
+
+spec:
+  containers:
+    - name: server
+      command:
+        [
+          "/bin/bash",
+          "-c",
+          "route del -net 0.0.0.0 gw 192.168.1.1 && iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE && sleep infinity",
+        ]
+      image: praqma/network-multitool
+      securityContext:
+        capabilities:
+          add:
+            - NET_ADMIN
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  annotations:
+    # here we define custom network that we want attached in our POD
+    k8s.v1.cni.cncf.io/networks: '[
+      {
+      "name": "customnet",
+      "interface": "myintf",
+      "ips": [ "192.168.1.44/16" ],
+      "gateway": [ "192.168.1.1" ]
+      }
+      ]'
+
+spec:
+  containers:
+    - name: client
+      command: ["/bin/ash", "-c", "sleep infinite"]
+      image: alpine/curl:3.14
