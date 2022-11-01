@@ -1,0 +1,57 @@
+# this POD acts as a gateway for my-intf interface: runs at gateway IP and forwards all packets to eth0
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gateway
+  annotations:
+    # here we define custom network that we want attached in our POD
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "custom-net",
+          "interface": "my-intf",
+          "ips": [ "192.168.1.254/8" ] 
+        }
+      ]
+
+spec:
+  containers:
+    - name: gateway
+      command: [
+          "/bin/bash",
+          "-x",
+          "-c",
+          # this POD doesnt need a route for gateway in my-intf; it is the gateway in my-intf, so remove the route
+          # forward all packets to eth0
+          # never exit
+          "route del -net 0.0.0.0 gw 192.168.1.254 && iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE && sleep infinity",
+        ]
+      image: praqma/network-multitool
+      securityContext:
+        capabilities:
+          add:
+            - NET_ADMIN
+
+---
+# this POD continuously pings google.com over my-intf interface to prove gateway works
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  annotations:
+    # here we define custom network that we want attached in our POD
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "custom-net",
+          "interface": "my-intf",
+          "ips": [ "192.168.1.44/8" ]
+        }
+      ]
+
+spec:
+  containers:
+    - name: client
+      # ping www.google.com over my-intf. DNS doesn't work for now
+      command: ["/bin/bash", "-x", "-c", "ping -I my-intf 216.58.209.4"]
+      image: praqma/network-multitool
