@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	proxywasm.LogInfo("plugin main() called!")
 	proxywasm.SetVMContext(&vmContext{})
 }
 

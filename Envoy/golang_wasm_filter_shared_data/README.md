@@ -1,7 +1,7 @@
 # Envoy WebAssembly filter demonstrating SharedData in golang
  
-This example configures Envoy to return canned "Hello!" response, and employs a WASM filter that:
-1. increments a counter and prints its value to envoy logs every time the plugin is run
+This example configures Envoy to return canned "Hello!" response, and employs 2 WASM filters sharing `my_vm_id`, that:
+1. increment a counter and print its value to envoy logs every time the plugin is run
 
 Based on:
 
@@ -28,9 +28,12 @@ curl -v localhost:9090
 ```
 
 ```bash
-# Envoy logs - "not found" error is expected and not harmful - shared data needs initialization during the plugin's first run
-[2022-11-09 11:51:16.521][23][error][wasm] [source/extensions/common/wasm/context.cc:1176] wasm log my_filter my_root_id my_vm_id: proxywasm.GetSharedData error: error status returned by host: not found
-[2022-11-09 11:51:16.521][23][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log my_filter my_root_id my_vm_id: Counter value: 1
-[2022-11-09 11:51:17.403][24][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log my_filter my_root_id my_vm_id: Counter value: 2
-[2022-11-09 11:51:18.071][35][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log my_filter my_root_id my_vm_id: Counter value: 3
+# Envoy logs - "not found" error is expected and not harmful - shared data needs initialization during the plugin's first execution
+[2022-11-10 07:55:01.606][31][error][wasm] [source/extensions/common/wasm/context.cc:1176] wasm log incrementer_2 my_root_id my_vm_id: proxywasm.GetSharedData error: error status returned by host: not found
+[2022-11-10 07:55:01.606][31][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_2 my_root_id my_vm_id: Counter value: 1
+[2022-11-10 07:55:01.606][31][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_1 my_root_id my_vm_id: Counter value: 2
+[2022-11-10 07:55:07.656][30][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_2 my_root_id my_vm_id: Counter value: 3
+[2022-11-10 07:55:07.656][30][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_1 my_root_id my_vm_id: Counter value: 4
+[2022-11-10 07:55:08.352][27][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_2 my_root_id my_vm_id: Counter value: 5
+[2022-11-10 07:55:08.352][27][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_1 my_root_id my_vm_id: Counter value: 6
 ```

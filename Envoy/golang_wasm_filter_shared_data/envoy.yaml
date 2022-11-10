@@ -23,7 +23,25 @@ static_resources:
               type_url: type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm
               value:
                 config:
-                  name: "my_filter"
+                  name: "incrementer_filter_1"
+                  root_id: "my_root_id"
+                  configuration: # plugin configuration
+                    "@type": "type.googleapis.com/google.protobuf.StringValue"
+                    value: '' 
+                  vm_config:
+                    runtime: "envoy.wasm.runtime.v8"
+                    vm_id: "my_vm_id" # to run filters in a single VM; used to share data between WASM filters using WASM Proxy API: SharedData and Queues
+                    code:
+                      local:
+                        filename: "/etc/envoy/myfilter.wasm"
+                    configuration: {}
+          - name: envoy.filters.http.wasm
+            typed_config:
+              "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+              type_url: type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm
+              value:
+                config:
+                  name: "incrementer_filter_2"
                   root_id: "my_root_id"
                   configuration: # plugin configuration
                     "@type": "type.googleapis.com/google.protobuf.StringValue"
