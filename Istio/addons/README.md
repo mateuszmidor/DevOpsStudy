@@ -30,3 +30,9 @@ Install and run dashboard:
 kubectl apply -f istio-1.14.3/samples/addons/kiali.yaml
 istioctl dashboard kiali
 ```
+
+## ControlZ
+
+```sh
+istioctl dashboard controlz deployment/istiod.istio-system
+```
