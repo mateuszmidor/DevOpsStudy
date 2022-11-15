@@ -1,0 +1,9 @@
+apiVersion: extensions.istio.io/v1alpha1
+kind: WasmPlugin
+metadata:
+  name: my-wasm-plugin-1 # arbitrary name
+spec:
+  selector:
+    matchLabels:
+      app: run # filter will be applied to PODS with this label
+  url: https://k8s-envoy-istio-research.s3.us-east-1.amazonaws.com/my_plugin.wasm # publicly accessible location
