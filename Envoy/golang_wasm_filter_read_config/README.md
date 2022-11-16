@@ -2,7 +2,7 @@
  
 This example configures Envoy to forward requests from localhost:9090 to localhost:8080, and employs a WASM filter that:
 1. prints request headers to Envoy log
-2. adds custom header `x-wasm-filter` to the reponse. The header value is read from plugin configuration in [envoy.yaml](./envoy.yaml)
+2. adds custom header `x-wasm-filter` to the response. The header value is read from plugin configuration in [envoy.yaml](./envoy.yaml)
 
 Based on:
 

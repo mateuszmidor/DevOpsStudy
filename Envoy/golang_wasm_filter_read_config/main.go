@@ -59,10 +59,10 @@ func (ctx *httpContext) OnHttpRequestHeaders(numHeaders int, _ bool) types.Actio
 	}
 
 	return types.ActionContinue
- }
+}
 
- // OnHttpResponseHeaders adds a custom HTTP header to the response
+// OnHttpResponseHeaders adds a custom HTTP header to the response
 func (ctx *httpContext) OnHttpResponseHeaders(int, bool) types.Action {
-	proxywasm.AddHttpResponseHeader("x-wasm-filter",  ctx.extra_header_value)
+	proxywasm.AddHttpResponseHeader("x-wasm-filter", ctx.extra_header_value)
 	return types.ActionContinue
 }
