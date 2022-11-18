@@ -1,10 +1,11 @@
 # Envoy WebAssembly filter demonstrating SharedData in golang
  
 This example configures Envoy to return canned "Hello!" response, and employs 2 WASM filters sharing `my_vm_id`, that:
-1. increment a counter and print its value to envoy logs every time the plugin is run
+1. increment a request counter and print its value to envoy logs every time the plugin is run
 
 Based on:
 
+1. https://github.com/tetratelabs/proxy-wasm-go-sdk/blob/main/doc/OVERVIEW.md#shared-data-shared-kvs
 1. https://medium.com/trendyol-tech/extending-envoy-proxy-wasm-filter-with-golang-9080017f28ea
 1. https://tufin.medium.com/extending-envoy-proxy-with-golang-webassembly-e51202809ba6
 1. https://pkg.go.dev/github.com/tetratelabs/proxy-wasm-go-sdk/proxywasm#GetSharedData
@@ -28,12 +29,11 @@ curl -v localhost:9090
 ```
 
 ```bash
-# Envoy logs - "not found" error is expected and not harmful - shared data needs initialization during the plugin's first execution
-[2022-11-10 07:55:01.606][31][error][wasm] [source/extensions/common/wasm/context.cc:1176] wasm log incrementer_2 my_root_id my_vm_id: proxywasm.GetSharedData error: error status returned by host: not found
-[2022-11-10 07:55:01.606][31][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_2 my_root_id my_vm_id: Counter value: 1
-[2022-11-10 07:55:01.606][31][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_1 my_root_id my_vm_id: Counter value: 2
-[2022-11-10 07:55:07.656][30][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_2 my_root_id my_vm_id: Counter value: 3
-[2022-11-10 07:55:07.656][30][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_1 my_root_id my_vm_id: Counter value: 4
-[2022-11-10 07:55:08.352][27][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_2 my_root_id my_vm_id: Counter value: 5
-[2022-11-10 07:55:08.352][27][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_1 my_root_id my_vm_id: Counter value: 6
+[2022-11-15 12:06:19.026][1][info][main] [source/server/server.cc:882] starting main dispatch loop
+[2022-11-15 12:06:23.307][32][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_filter_1 my_root_id my_vm_id: Counter value: 1
+[2022-11-15 12:06:23.307][32][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_filter_2 my_root_id my_vm_id: Counter value: 2
+[2022-11-15 12:06:24.208][24][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_filter_1 my_root_id my_vm_id: Counter value: 3
+[2022-11-15 12:06:24.208][24][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_filter_2 my_root_id my_vm_id: Counter value: 4
+[2022-11-15 12:06:25.092][32][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_filter_1 my_root_id my_vm_id: Counter value: 5
+[2022-11-15 12:06:25.092][32][info][wasm] [source/extensions/common/wasm/context.cc:1170] wasm log incrementer_filter_2 my_root_id my_vm_id: Counter value: 6
 ```

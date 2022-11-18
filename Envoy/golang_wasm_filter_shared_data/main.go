@@ -1,14 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/tetratelabs/proxy-wasm-go-sdk/proxywasm"
 	"github.com/tetratelabs/proxy-wasm-go-sdk/proxywasm/types"
 )
 
+const COUNTER_NAME = "my-counter"
+const INVALID_COUNTER = -1
+
 func main() {
-	proxywasm.LogInfo("plugin main() called!")
 	proxywasm.SetVMContext(&vmContext{})
 }
 
@@ -29,11 +32,6 @@ type pluginContext struct {
 	types.DefaultPluginContext
 }
 
-// Override types.DefaultPluginContext. Read plugin configuration here
-func (ctx *pluginContext) OnPluginStart(pluginConfigurationSize int) types.OnPluginStartStatus {
-	return types.OnPluginStartStatusOK
-}
-
 // Override types.DefaultPluginContext.
 func (ctx *pluginContext) NewHttpContext(contextID uint32) types.HttpContext {
 	return &httpContext{}
@@ -45,34 +43,26 @@ type httpContext struct {
 	types.DefaultHttpContext
 }
 
-// OnHttpRequestHeaders placeholder
+// OnHttpRequestHeaders  gets, prints and increments the call counter
 func (ctx *httpContext) OnHttpRequestHeaders(numHeaders int, _ bool) types.Action {
-	return types.ActionContinue
-}
-
-// OnHttpResponseHeaders gets, prints and increments the call counter
-func (ctx *httpContext) OnHttpResponseHeaders(int, bool) types.Action {
-	callCounter := GetIncCounter()
-	proxywasm.LogInfof("Counter value: %v", callCounter)
-	return types.ActionContinue
-}
-
-func GetIncCounter() int {
-	KEY := "counter"
-	var counter int
-	var cas uint32
-	var err error
-
-	// try get counter value
-	counter, cas, err = getCounter(KEY)
-
-	// shared data not initialized yet; initialize now and continue
-	if err == types.ErrorStatusNotFound {
-		counter = 1
+	if callCounter, err := GetIncCounter(); err != nil {
+		proxywasm.LogErrorf("failed to GetIncCounter: %v", err)
+	} else {
+		proxywasm.LogInfof("Counter value: %v", callCounter)
 	}
+	return types.ActionContinue
+}
 
-	putCounter(KEY, counter+1, cas)
-	return counter
+func GetIncCounter() (int, error) {
+	counter, cas, err := getCounter(COUNTER_NAME)
+	if err != nil {
+		return INVALID_COUNTER, fmt.Errorf("failed to getCounter: %w", err)
+	}
+	err = putCounter(COUNTER_NAME, counter+1, cas)
+	if err != nil {
+		return INVALID_COUNTER, fmt.Errorf("failed to putCounter: %w", err)
+	}
+	return counter, nil
 }
 
 func putCounter(name string, val int, cas uint32) error {
@@ -84,18 +74,19 @@ func putCounter(name string, val int, cas uint32) error {
 	return err
 }
 
-func getCounter(name string) (val int, cas uint32, err error) {
-	VAL_ERR := -1
+func getCounter(key string) (val int, cas uint32, err error) {
 	var data []byte
-	data, cas, err = proxywasm.GetSharedData(name)
-	if err != nil {
-		proxywasm.LogErrorf("proxywasm.GetSharedData error: %v", err)
-		return VAL_ERR, 0, err
+	data, cas, err = proxywasm.GetSharedData(key)
+
+	if err == types.ErrorStatusNotFound { // shared data not initialized yet; return counter initial value
+		return 1, cas, nil
+	} else if err != nil { // some other error; report
+		return INVALID_COUNTER, 0, fmt.Errorf("failed to GetSharedData: %w", err)
 	}
 
 	val, err = strconv.Atoi(string(data))
 	if err != nil {
-		proxywasm.LogErrorf("strconv.Atoi error: %v", err)
+		return INVALID_COUNTER, cas, fmt.Errorf("failed to strconv.Atoi: %w", err)
 	}
 	return val, cas, err
 }
