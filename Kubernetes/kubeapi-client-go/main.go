@@ -45,7 +45,7 @@ func getClient() *kubernetes.Clientset {
 }
 
 func waitKubeAPIReady(clientset *kubernetes.Clientset) {
-	// simply call "get nodes" and retry on failure untill success
+	// simply call "get nodes" and retry on failure until success
 	for {
 		_, err := clientset.CoreV1().Nodes().List(context.TODO(), metav1.ListOptions{})
 		if errors.Is(err, syscall.ECONNREFUSED) {
