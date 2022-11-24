@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: k8s-api-client-crd
+  name: k8s-api-client-crd
+spec:
+  containers:
+  - image: k8s-api-client-crd:latest
+    name: k8s-api-client-crd
+    imagePullPolicy: Never # load from docker cache
+  restartPolicy: Never # single run
+  serviceAccount: k8s-api-client-crd-sa
