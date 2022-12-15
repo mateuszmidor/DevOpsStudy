@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: echo-server
+  name: echo-server
+spec:
+  containers:
+  - image: echo-server:latest
+    name: echo-server
+    imagePullPolicy: Never # pull it from minikube local cache
+  restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: echo-server
+  name: echo-server
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: echo-server
