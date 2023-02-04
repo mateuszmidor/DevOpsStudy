@@ -10,3 +10,4 @@ Highlights:
 ## Practice/Labs
 - https://kodekloud.com/courses/kubernetes-challenges/
 - https://liptanbiswas.com/tuts/ckad-practice-challenges/
+- https://github.com/dgkanatsios/CKAD-exercises
