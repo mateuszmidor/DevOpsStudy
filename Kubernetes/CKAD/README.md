@@ -2,7 +2,8 @@
 
 Highlights:
 - Exam: https://www.cncf.io/certification/ckad/  
-  Linux Foundation gives 25% New Year discount (from 395$ - 31.01.2023) for CKAD during 1 week in January
+  - Linux Foundation gives 25% New Year discount (from 395$ - 31.01.2023) for CKAD during 1 week in January
+  - after buying exam, you get 2 simulated exam sessions included: https://killer.sh/faq
 
 ## Training
 - KodeKloud: https://www.udemy.com/course/certified-kubernetes-application-developer/
