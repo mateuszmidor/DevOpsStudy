@@ -13,6 +13,7 @@ Highlights:
 - https://liptanbiswas.com/tuts/ckad-practice-challenges/
 - https://github.com/dgkanatsios/CKAD-exercises
 - https://killercoda.com/killer-shell-ckad (free, but needs login)
+- https://killercoda.com/killer-shell-cka (CKA, but worthy)
 
 ## YouTube videos
 - API Fundamentals https://www.youtube.com/watch?v=_65Md2qar14
