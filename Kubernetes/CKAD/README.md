@@ -6,7 +6,8 @@ Highlights:
   - after buying exam, you get 2 simulated exam sessions included: https://killer.sh/faq
 
 ## Training
-- KodeKloud: https://www.udemy.com/course/certified-kubernetes-application-developer/
+- Kubernetes: https://www.udemy.com/course/certified-kubernetes-application-developer
+- Helm: https://www.youtube.com/playlist?list=PLSwo-wAGP1b8svO5fbAr7ko2Buz6GuH1g
 
 ## Practice/Labs
 - https://kodekloud.com/courses/kubernetes-challenges/
