@@ -1,0 +1,91 @@
+# Default values for tt-reports.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+
+# default job image values to be used for minikube deployment
+imageName: tt-reports-mvp:latest
+imagePullPolicy: Never # Never means to load the image from minikube cache
+
+# for details, see: config.yaml
+config:
+  InputData:
+    GoogleDrive:
+      Email: input-service-account@example-project.iam.gserviceaccount.com
+      PrivateKey: |
+        -----BEGIN PRIVATE KEY-----
+        EXAMPLE-PRIVATE-KEY-00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        1EkEtMgs/N+76EUa5B/nBgkk6SPWfT9QZa+dBUQa1POQhU455piqGaUJCXDf3f9e
+        X4MQkD72cGSNmFF9cZlyrjOl2WN16CPm7IOiKs3N/KbXSy68eYK+qBiM+VZ9b7n9
+        Clji3lgVL3BKxzVW8OXANVdR5rz+wU4MK8OIsriUyyzIBzCjU0PS947sdMZbJPGn
+        mGlBR2LB8lL8WvTLQ/1nfiS0HKxGoPWghhakdm7SPIBEVV2yZxDs8tLZngdSeFtv
+        C9ZoBM0RAgMBAAECggEAJsBM58dFdxXA4wdMjTqxCdbGkCrnew1gYuHGDFjCp/6G
+        khUfn3lTagq9AyRTWCQ9+t+0EhViNO+HCisZk1/M/KgDhc6AGv/gwbQb9ZWVM7cm
+        4LCn5wk2hA8NZICh88Y3YUOla1+y6cPlODbHPyjTQncOFpgfkk0awtvqGxMDJ0HG
+        vjQZK6DwO7Ck/Xm8foiw0hJrLK98rVPhfsTUuXw4CCSpQYyjPJiRK08SKqTLOk+I
+        b2zKQTReWQBfl7ors62zsga0L7p2WuiADk5u889V8pFDbJir0avy/4U9fUM7qGHB
+        A4TEkXFXt3kwgTgQ+bWa4/AVJ/IVOqsyEsOIWdlphQKBgQD5COlQvuSKtpDcAnzv
+        TMBow2Z8VmeAKelf/+cFup/5C3r34tE8HP2fQloHwC2+AQbrr3gl4xu1NDofyry5
+        HP3A5LrzaBgxFbwlT7CoNaM0mse5Z7VEcBZREW7zzCFzZreCNLIOqCO/OYeb8ZGq
+        CVSO9GJ2sX9c/i2Uu3DwKFrSbQKBgQDiyGDYr1AHFxFmvu3tPPuL9+d08wumVFAf
+        RtsSv51J8UnrIjJSTqRGJOYUhxloJysqQwL1IFM2pnCDpPXuHlssghKYS0R4Mpfz
+        Dwljm0KPaedpwUyfFg/U1R9w/D8YQoX8zWtuoG5vgqBPm5N9oHEtyCyeq56on1j2
+        2/Qu2nJetQKBgF2EDSk3Jdc5C1iyznuGFNLCXZ/fSmqEUpCsJfKuzBfXScwALpYm
+        RM8jOW+jqQmqlRC4CaQgjm0TOahql0fkLR3cRp/UvRDhmo9gR3RDABBm9w0WdqlG
+        dfrnUwTV6NHPBqYsZ5i9Zv8N+XCD3DE/47Ly7m6n5K3k/PTXFmf4n3JZAoGAV1Yh
+        7fD+GezpV69aA85DdbEAI0rihqjbvl/USJEgqvRQqkweIxKEMztMnEU3JKRI/FqY
+        Tfyn71kD5b7ms1BffnGNZbc+5Cdf20xEKmcFqCN56oF116JwcF+vXxzV06ry3Nvj
+        btQ8E5ez01Sv5Wafj6kSffzL+lZ7tX4ZuN2JxC0CgYAPvIRHctDdyzbLI2+PqGqo
+        LZUDCtDA2JAxWlNm+YdVRZUBuO7gJj02QHCtrR6HC5CEDVZ5tx2xIP/QtaXRlnC0
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000==
+        -----END PRIVATE KEY-----
+      JobsFilenamePattern: jobs
+      CandidatesFilenamePattern: candidates
+    
+  OutputData:
+    GoogleDrive: 
+      Email: output-service-account@example-project.iam.gserviceaccount.com
+      PrivateKey: |
+        -----BEGIN PRIVATE KEY-----
+        EXAMPLE-PRIVATE-KEY-00000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        1EkEtMgs/N+76EUa5B/nBgkk6SPWfT9QZa+dBUQa1POQhU455piqGaUJCXDf3f9e
+        X4MQkD72cGSNmFF9cZlyrjOl2WN16CPm7IOiKs3N/KbXSy68eYK+qBiM+VZ9b7n9
+        Clji3lgVL3BKxzVW8OXANVdR5rz+wU4MK8OIsriUyyzIBzCjU0PS947sdMZbJPGn
+        mGlBR2LB8lL8WvTLQ/1nfiS0HKxGoPWghhakdm7SPIBEVV2yZxDs8tLZngdSeFtv
+        C9ZoBM0RAgMBAAECggEAJsBM58dFdxXA4wdMjTqxCdbGkCrnew1gYuHGDFjCp/6G
+        khUfn3lTagq9AyRTWCQ9+t+0EhViNO+HCisZk1/M/KgDhc6AGv/gwbQb9ZWVM7cm
+        4LCn5wk2hA8NZICh88Y3YUOla1+y6cPlODbHPyjTQncOFpgfkk0awtvqGxMDJ0HG
+        vjQZK6DwO7Ck/Xm8foiw0hJrLK98rVPhfsTUuXw4CCSpQYyjPJiRK08SKqTLOk+I
+        b2zKQTReWQBfl7ors62zsga0L7p2WuiADk5u889V8pFDbJir0avy/4U9fUM7qGHB
+        A4TEkXFXt3kwgTgQ+bWa4/AVJ/IVOqsyEsOIWdlphQKBgQD5COlQvuSKtpDcAnzv
+        TMBow2Z8VmeAKelf/+cFup/5C3r34tE8HP2fQloHwC2+AQbrr3gl4xu1NDofyry5
+        HP3A5LrzaBgxFbwlT7CoNaM0mse5Z7VEcBZREW7zzCFzZreCNLIOqCO/OYeb8ZGq
+        CVSO9GJ2sX9c/i2Uu3DwKFrSbQKBgQDiyGDYr1AHFxFmvu3tPPuL9+d08wumVFAf
+        RtsSv51J8UnrIjJSTqRGJOYUhxloJysqQwL1IFM2pnCDpPXuHlssghKYS0R4Mpfz
+        Dwljm0KPaedpwUyfFg/U1R9w/D8YQoX8zWtuoG5vgqBPm5N9oHEtyCyeq56on1j2
+        2/Qu2nJetQKBgF2EDSk3Jdc5C1iyznuGFNLCXZ/fSmqEUpCsJfKuzBfXScwALpYm
+        RM8jOW+jqQmqlRC4CaQgjm0TOahql0fkLR3cRp/UvRDhmo9gR3RDABBm9w0WdqlG
+        dfrnUwTV6NHPBqYsZ5i9Zv8N+XCD3DE/47Ly7m6n5K3k/PTXFmf4n3JZAoGAV1Yh
+        7fD+GezpV69aA85DdbEAI0rihqjbvl/USJEgqvRQqkweIxKEMztMnEU3JKRI/FqY
+        Tfyn71kD5b7ms1BffnGNZbc+5Cdf20xEKmcFqCN56oF116JwcF+vXxzV06ry3Nvj
+        btQ8E5ez01Sv5Wafj6kSffzL+lZ7tX4ZuN2JxC0CgYAPvIRHctDdyzbLI2+PqGqo
+        LZUDCtDA2JAxWlNm+YdVRZUBuO7gJj02QHCtrR6HC5CEDVZ5tx2xIP/QtaXRlnC0
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000==
+        -----END PRIVATE KEY-----
+      FileName: report
+      FolderID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  Persistence: 
+    Mongo: 
+      Endpoint: mongodb://localhost:27017
+      Collection: tt-reports
+      UserName: admin
+      UserPass: admin
+
+  ReportUpdateFrequency: 168h0m0s # every 7 days 
+  DataPointCountLimit: 52

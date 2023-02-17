@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "tt-reports.fullname" . }}
+spec:
+  backoffLimit: 0 # don't retry if the job fails - failure most likely means configuration issue
+  template:
+    metadata:
+    spec:
+      containers:
+      - image: {{ .Values.imageName }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }} 
+        name: tt-reports
+        envFrom:
+        - secretRef:
+            name: {{ include "tt-reports.fullname" . }}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 150m
+            memory: 192Mi
+      restartPolicy: Never
+
+
