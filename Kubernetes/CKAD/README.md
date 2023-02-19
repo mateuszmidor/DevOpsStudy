@@ -18,3 +18,6 @@ Highlights:
 
 ## YouTube videos
 - API Fundamentals https://www.youtube.com/watch?v=_65Md2qar14
+
+## Tips
+- https://github.com/twajr/ckad-prep-notes
