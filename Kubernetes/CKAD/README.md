@@ -21,3 +21,15 @@ Highlights:
 
 ## Tips
 - https://github.com/twajr/ckad-prep-notes
+
+## Simulated exam
+- lots of namespace switching
+- lots of testing with curl
+
+So, better prepare:
+```sh
+vim ~/.bashrc
+alias kn='kubectl config set-context --current --namespace '
+alias kb='kubectl run busybox-once --rm --restart=Never -it --image=busybox -- '
+export O='--dry-run=client -o=yaml'
+```
