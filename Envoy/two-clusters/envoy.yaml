@@ -1,0 +1,91 @@
+admin:
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 9901
+
+static_resources:
+  listeners:
+  - name: listener_asia
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 5000    
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          stat_prefix: edge
+          http_filters:
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+          route_config:
+            virtual_hosts:
+            - name: forward_service
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: cluster_asia
+  - name: listener_america
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 6000    
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          stat_prefix: edge
+          http_filters:
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+          route_config:
+            virtual_hosts:
+            - name: forward_service
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: cluster_america                
+  clusters:
+  - name: cluster_asia
+    type: STRICT_DNS # allows using dns name in "socket_address.address" field
+    connect_timeout: 5s
+    load_assignment:
+      cluster_name: cluster_america
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: chiang_rai
+                port_value: 5000
+        - endpoint:
+            address:
+              socket_address:
+                address: luang_prabang
+                port_value: 5000   
+  - name: cluster_america
+    type: STRICT_DNS # allows using dns name in "socket_address.address" field
+    connect_timeout: 5s
+    load_assignment:
+      cluster_name: cluster_america
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: cleveland
+                port_value: 5000
+        - endpoint:
+            address:
+              socket_address:
+                address: tucson
+                port_value: 5000                
