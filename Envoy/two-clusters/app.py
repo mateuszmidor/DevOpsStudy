@@ -5,13 +5,12 @@ import os
 import random
 import requests
 import socket
-import sys
 
 
 def main():
     talkers = os.getenv("TALKERS")
     if talkers is None:
-        print("Env variable TALKERS not set. No one to talk to It should be comma-separated list of hosts.")
+        print("Env variable TALKERS not set. No one to talk to. It should be comma-separated list of hosts.")
         return
     talker_list = talkers.split(",")
 
