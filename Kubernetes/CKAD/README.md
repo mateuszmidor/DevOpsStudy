@@ -15,6 +15,7 @@ Highlights:
 - https://github.com/dgkanatsios/CKAD-exercises
 - https://killercoda.com/killer-shell-ckad (free, but needs login)
 - https://killercoda.com/killer-shell-cka (CKA, but worthy)
+- https://editor.cilium.io/ (Netowork Policy lab)
 
 ## YouTube videos
 - API Fundamentals https://www.youtube.com/watch?v=_65Md2qar14
