@@ -6,7 +6,7 @@ services:
     networks:
       - talker-net
     ports:
-      - "9901:9901" # envoy admin interface
+      - "9901:9901" # envoy admin interface for fetching stats with: curl localhost:9901/stats?format=json
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
     depends_on:
@@ -18,28 +18,28 @@ services:
     build: .
     hostname: luang_prabang
     environment:
-      TALKERS: "http://envoy:6000" # talk to american cities
+      TALKERS: "http://envoy:4000" # talk to american cities
     networks:
       - talker-net
   chiang_rai:
     build: .
     hostname: chiang_rai
     environment:
-      TALKERS: "http://envoy:6000" # talk to american cities
+      TALKERS: "http://envoy:4000" # talk to american cities
     networks:
       - talker-net
   cleveland:
     build: .
     hostname: cleveland
     environment:
-      TALKERS: "http://envoy:5000" # talk to asian cities
+      TALKERS: "http://envoy:3000" # talk to asian cities
     networks:
       - talker-net
   tucson:
     build: .
     hostname: tucson
     environment:
-      TALKERS: "http://envoy:5000" # talk to asian cities
+      TALKERS: "http://envoy:3000" # talk to asian cities
     networks:
       - talker-net
 
