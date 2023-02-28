@@ -16,6 +16,8 @@ Highlights:
 - https://killercoda.com/killer-shell-ckad (free, but needs login)
 - https://killercoda.com/killer-shell-cka (CKA, but worthy)
 - https://editor.cilium.io/ (Netowork Policy lab)
+- https://tanzu.vmware.com/developer/blog/ckad-practice-questions-sept-21/
+- https://k21academy.com/docker-kubernetes/cka-ckad-exam-questions-answers/
 
 ## YouTube videos
 - API Fundamentals https://www.youtube.com/watch?v=_65Md2qar14
