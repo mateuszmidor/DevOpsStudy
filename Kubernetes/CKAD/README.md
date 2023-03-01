@@ -18,21 +18,40 @@ Highlights:
 - https://editor.cilium.io/ (Netowork Policy lab)
 - https://tanzu.vmware.com/developer/blog/ckad-practice-questions-sept-21/
 - https://k21academy.com/docker-kubernetes/cka-ckad-exam-questions-answers/
+- https://codeburst.io/kubernetes-ckad-weekly-challenges-overview-and-tips-7282b36a2681
+- https://medium.com/bb-tutorials-and-thoughts/practice-enough-with-these-questions-for-the-ckad-exam-2f42d1228552
 
 ## YouTube videos
 - API Fundamentals https://www.youtube.com/watch?v=_65Md2qar14
 
 ## Tips
 - https://github.com/twajr/ckad-prep-notes
+- https://kavinduchamiran.medium.com/my-two-cents-on-passing-ckad-in-2022-ffbb7f1c65be
 
 ## Simulated exam
 - lots of namespace switching
 - lots of testing with curl
+- multitab terminal available
+- multidesktop linux!
 
-So, better prepare:
+So, better prepare ~/.bashrc:
 ```sh
-vim ~/.bashrc
 alias kn='kubectl config set-context --current --namespace '
 alias kb='kubectl run busybox-once --rm --restart=Never -it --image=busybox -- '
+alias ka='kubectl apply -f '
+alias kr='kubectl replace --force --grace-period=0 -f '
+alias l=less
+alias ke='kubectl explain --recursive '# usage: ke pod.spec.volumes | l
 export O='--dry-run=client -o=yaml'
+export N='--grace-period=0 --force'
+```
+
+And ~/.vimrc:
+```vim
+syntax on
+set number
+set shiftwidth=2
+set tabstop=2
+set expandtab
+autocmd FileType yaml setlocal ai "enable auto-indent in YAML files
 ```
