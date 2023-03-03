@@ -1,0 +1,4532 @@
+{
+  "stats": [
+    {
+      "name": "cluster.cluster_america.assignment_stale",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.assignment_timeout_received"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.bind_errors"
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.default.cx_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.default.cx_pool_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.default.rq_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.default.rq_pending_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.circuit_breakers.default.rq_retry_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.circuit_breakers.high.cx_open"
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.high.cx_pool_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.circuit_breakers.high.rq_open"
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.high.rq_pending_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.circuit_breakers.high.rq_retry_open",
+      "value": 0
+    },
+    {
+      "value": 74,
+      "name": "cluster.cluster_america.default.total_match_count"
+    },
+    {
+      "name": "cluster.cluster_america.external.upstream_rq_200",
+      "value": 307
+    },
+    {
+      "name": "cluster.cluster_america.external.upstream_rq_2xx",
+      "value": 307
+    },
+    {
+      "name": "cluster.cluster_america.external.upstream_rq_300",
+      "value": 13
+    },
+    {
+      "name": "cluster.cluster_america.external.upstream_rq_3xx",
+      "value": 13
+    },
+    {
+      "name": "cluster.cluster_america.external.upstream_rq_400",
+      "value": 9
+    },
+    {
+      "name": "cluster.cluster_america.external.upstream_rq_4xx",
+      "value": 9
+    },
+    {
+      "value": 7,
+      "name": "cluster.cluster_america.external.upstream_rq_500"
+    },
+    {
+      "value": 7,
+      "name": "cluster.cluster_america.external.upstream_rq_5xx"
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_america.external.upstream_rq_completed"
+    },
+    {
+      "name": "cluster.cluster_america.http1.dropped_headers_with_underscores",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.http1.metadata_not_supported_error"
+    },
+    {
+      "name": "cluster.cluster_america.http1.requests_rejected_with_underscores_in_headers",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.http1.response_flood",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.lb_healthy_panic"
+    },
+    {
+      "name": "cluster.cluster_america.lb_local_cluster_not_ok",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.lb_recalculate_zone_structures",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.lb_subsets_active"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.lb_subsets_created"
+    },
+    {
+      "name": "cluster.cluster_america.lb_subsets_fallback",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.lb_subsets_fallback_panic",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.lb_subsets_removed"
+    },
+    {
+      "name": "cluster.cluster_america.lb_subsets_selected",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.lb_zone_cluster_too_small",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.lb_zone_no_capacity_left"
+    },
+    {
+      "name": "cluster.cluster_america.lb_zone_number_differs",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.lb_zone_routing_all_directly",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.lb_zone_routing_cross_zone"
+    },
+    {
+      "name": "cluster.cluster_america.lb_zone_routing_sampled",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.max_host_weight",
+      "value": 1
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_america.membership_change"
+    },
+    {
+      "name": "cluster.cluster_america.membership_degraded",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.membership_excluded"
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_america.membership_healthy"
+    },
+    {
+      "name": "cluster.cluster_america.membership_total",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_america.original_dst_host_invalid",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.retry_or_shadow_abandoned",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.update_attempt",
+      "value": 74
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.update_empty"
+    },
+    {
+      "name": "cluster.cluster_america.update_failure",
+      "value": 0
+    },
+    {
+      "value": 72,
+      "name": "cluster.cluster_america.update_no_rebuild"
+    },
+    {
+      "value": 74,
+      "name": "cluster.cluster_america.update_success"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_active"
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_america.upstream_cx_close_notify"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_connect_attempts_exceeded"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_connect_fail",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_connect_timeout",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_connect_with_0_rtt"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_destroy",
+      "value": 336
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_destroy_local",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_destroy_local_with_active_rq"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_destroy_remote",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_destroy_remote_with_active_rq",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_destroy_with_active_rq"
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_america.upstream_cx_http1_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_http2_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_http3_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_idle_timeout"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_max_duration_reached"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_max_requests",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_none_healthy",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_overflow"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_pool_overflow",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_cx_protocol_error"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_rx_bytes_buffered",
+      "value": 0
+    },
+    {
+      "value": 863605,
+      "name": "cluster.cluster_america.upstream_cx_rx_bytes_total"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_total",
+      "value": 336
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_tx_bytes_buffered",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_cx_tx_bytes_total",
+      "value": 77952
+    },
+    {
+      "name": "cluster.cluster_america.upstream_flow_control_backed_up_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_flow_control_drained_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_flow_control_paused_reading_total"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_flow_control_resumed_reading_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_internal_redirect_failed_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_internal_redirect_succeeded_total"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_200",
+      "value": 307
+    },
+    {
+      "value": 307,
+      "name": "cluster.cluster_america.upstream_rq_2xx"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_300",
+      "value": 13
+    },
+    {
+      "value": 13,
+      "name": "cluster.cluster_america.upstream_rq_3xx"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_400",
+      "value": 9
+    },
+    {
+      "value": 9,
+      "name": "cluster.cluster_america.upstream_rq_4xx"
+    },
+    {
+      "value": 7,
+      "name": "cluster.cluster_america.upstream_rq_500"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_5xx",
+      "value": 7
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_active"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_cancelled",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_completed",
+      "value": 336
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_maintenance_mode",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_max_duration_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_pending_active"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_pending_failure_eject",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_pending_overflow",
+      "value": 0
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_america.upstream_rq_pending_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_per_try_idle_timeout"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_per_try_timeout"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_retry"
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_retry_backoff_exponential",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_retry_backoff_ratelimited",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_retry_limit_exceeded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_america.upstream_rq_retry_overflow",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_retry_success"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_rx_reset"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_timeout"
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_america.upstream_rq_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.upstream_rq_tx_reset"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_america.version"
+    },
+    {
+      "name": "cluster.cluster_antarctica.assignment_stale",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.assignment_timeout_received",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.bind_errors"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.circuit_breakers.default.cx_open"
+    },
+    {
+      "name": "cluster.cluster_antarctica.circuit_breakers.default.cx_pool_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.circuit_breakers.default.rq_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.circuit_breakers.default.rq_pending_open"
+    },
+    {
+      "name": "cluster.cluster_antarctica.circuit_breakers.default.rq_retry_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.circuit_breakers.high.cx_open"
+    },
+    {
+      "name": "cluster.cluster_antarctica.circuit_breakers.high.cx_pool_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.circuit_breakers.high.rq_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.circuit_breakers.high.rq_pending_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.circuit_breakers.high.rq_retry_open"
+    },
+    {
+      "name": "cluster.cluster_antarctica.default.total_match_count",
+      "value": 74
+    },
+    {
+      "name": "cluster.cluster_antarctica.external.upstream_rq_200",
+      "value": 19
+    },
+    {
+      "value": 19,
+      "name": "cluster.cluster_antarctica.external.upstream_rq_2xx"
+    },
+    {
+      "name": "cluster.cluster_antarctica.external.upstream_rq_300",
+      "value": 2
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_antarctica.external.upstream_rq_3xx"
+    },
+    {
+      "name": "cluster.cluster_antarctica.external.upstream_rq_504",
+      "value": 22
+    },
+    {
+      "name": "cluster.cluster_antarctica.external.upstream_rq_5xx",
+      "value": 22
+    },
+    {
+      "name": "cluster.cluster_antarctica.external.upstream_rq_completed",
+      "value": 43
+    },
+    {
+      "name": "cluster.cluster_antarctica.http1.dropped_headers_with_underscores",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.http1.metadata_not_supported_error",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.http1.requests_rejected_with_underscores_in_headers"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.http1.response_flood"
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_healthy_panic",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_local_cluster_not_ok",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_recalculate_zone_structures",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_subsets_active",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_subsets_created",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.lb_subsets_fallback"
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_subsets_fallback_panic",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_subsets_removed",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_subsets_selected",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_zone_cluster_too_small",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.lb_zone_no_capacity_left"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.lb_zone_number_differs"
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_zone_routing_all_directly",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.lb_zone_routing_cross_zone"
+    },
+    {
+      "name": "cluster.cluster_antarctica.lb_zone_routing_sampled",
+      "value": 0
+    },
+    {
+      "value": 1,
+      "name": "cluster.cluster_antarctica.max_host_weight"
+    },
+    {
+      "name": "cluster.cluster_antarctica.membership_change",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_antarctica.membership_degraded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.membership_excluded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.membership_healthy",
+      "value": 2
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_antarctica.membership_total"
+    },
+    {
+      "name": "cluster.cluster_antarctica.original_dst_host_invalid",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.retry_or_shadow_abandoned"
+    },
+    {
+      "name": "cluster.cluster_antarctica.update_attempt",
+      "value": 74
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.update_empty"
+    },
+    {
+      "name": "cluster.cluster_antarctica.update_failure",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.update_no_rebuild",
+      "value": 72
+    },
+    {
+      "name": "cluster.cluster_antarctica.update_success",
+      "value": 74
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_antarctica.upstream_cx_active"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_close_notify",
+      "value": 21
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_connect_attempts_exceeded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_connect_fail",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_connect_timeout"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_connect_with_0_rtt"
+    },
+    {
+      "value": 43,
+      "name": "cluster.cluster_antarctica.upstream_cx_destroy"
+    },
+    {
+      "value": 43,
+      "name": "cluster.cluster_antarctica.upstream_cx_destroy_local"
+    },
+    {
+      "value": 22,
+      "name": "cluster.cluster_antarctica.upstream_cx_destroy_local_with_active_rq"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_destroy_remote",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_destroy_remote_with_active_rq",
+      "value": 0
+    },
+    {
+      "value": 22,
+      "name": "cluster.cluster_antarctica.upstream_cx_destroy_with_active_rq"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_http1_total",
+      "value": 45
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_http2_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_http3_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_idle_timeout"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_max_duration_reached"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_max_requests"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_none_healthy",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_overflow",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_pool_overflow",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_protocol_error",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_rx_bytes_buffered",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_rx_bytes_total",
+      "value": 4246
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_total",
+      "value": 45
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_cx_tx_bytes_buffered"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_cx_tx_bytes_total",
+      "value": 10440
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_flow_control_backed_up_total"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_flow_control_drained_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_flow_control_paused_reading_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_flow_control_resumed_reading_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_internal_redirect_failed_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_internal_redirect_succeeded_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_200",
+      "value": 19
+    },
+    {
+      "value": 19,
+      "name": "cluster.cluster_antarctica.upstream_rq_2xx"
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_antarctica.upstream_rq_300"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_3xx",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_504",
+      "value": 22
+    },
+    {
+      "value": 22,
+      "name": "cluster.cluster_antarctica.upstream_rq_5xx"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_active",
+      "value": 2
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_cancelled"
+    },
+    {
+      "value": 43,
+      "name": "cluster.cluster_antarctica.upstream_rq_completed"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_maintenance_mode"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_max_duration_reached",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_pending_active",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_pending_failure_eject",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_pending_overflow"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_pending_total",
+      "value": 45
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_per_try_idle_timeout"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_per_try_timeout",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_retry"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_retry_backoff_exponential"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_retry_backoff_ratelimited"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.upstream_rq_retry_limit_exceeded"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_retry_overflow",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_retry_success",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_rx_reset",
+      "value": 0
+    },
+    {
+      "value": 22,
+      "name": "cluster.cluster_antarctica.upstream_rq_timeout"
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_total",
+      "value": 45
+    },
+    {
+      "name": "cluster.cluster_antarctica.upstream_rq_tx_reset",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_antarctica.version"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.assignment_stale"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.assignment_timeout_received"
+    },
+    {
+      "name": "cluster.cluster_asia.bind_errors",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.circuit_breakers.default.cx_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.circuit_breakers.default.cx_pool_open"
+    },
+    {
+      "name": "cluster.cluster_asia.circuit_breakers.default.rq_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.circuit_breakers.default.rq_pending_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.circuit_breakers.default.rq_retry_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.circuit_breakers.high.cx_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.circuit_breakers.high.cx_pool_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.circuit_breakers.high.rq_open"
+    },
+    {
+      "name": "cluster.cluster_asia.circuit_breakers.high.rq_pending_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.circuit_breakers.high.rq_retry_open"
+    },
+    {
+      "name": "cluster.cluster_asia.default.total_match_count",
+      "value": 74
+    },
+    {
+      "value": 62,
+      "name": "cluster.cluster_asia.external.upstream_rq_200"
+    },
+    {
+      "name": "cluster.cluster_asia.external.upstream_rq_2xx",
+      "value": 62
+    },
+    {
+      "value": 11,
+      "name": "cluster.cluster_asia.external.upstream_rq_300"
+    },
+    {
+      "name": "cluster.cluster_asia.external.upstream_rq_3xx",
+      "value": 11
+    },
+    {
+      "value": 5,
+      "name": "cluster.cluster_asia.external.upstream_rq_400"
+    },
+    {
+      "value": 5,
+      "name": "cluster.cluster_asia.external.upstream_rq_4xx"
+    },
+    {
+      "name": "cluster.cluster_asia.external.upstream_rq_500",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_asia.external.upstream_rq_5xx",
+      "value": 2
+    },
+    {
+      "value": 80,
+      "name": "cluster.cluster_asia.external.upstream_rq_completed"
+    },
+    {
+      "name": "cluster.cluster_asia.http1.dropped_headers_with_underscores",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.http1.metadata_not_supported_error",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.http1.requests_rejected_with_underscores_in_headers"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.http1.response_flood"
+    },
+    {
+      "name": "cluster.cluster_asia.lb_healthy_panic",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.lb_local_cluster_not_ok",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.lb_recalculate_zone_structures",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_subsets_active"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_subsets_created"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_subsets_fallback"
+    },
+    {
+      "name": "cluster.cluster_asia.lb_subsets_fallback_panic",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_subsets_removed"
+    },
+    {
+      "name": "cluster.cluster_asia.lb_subsets_selected",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_zone_cluster_too_small"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_zone_no_capacity_left"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_zone_number_differs"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.lb_zone_routing_all_directly"
+    },
+    {
+      "name": "cluster.cluster_asia.lb_zone_routing_cross_zone",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.lb_zone_routing_sampled",
+      "value": 0
+    },
+    {
+      "value": 1,
+      "name": "cluster.cluster_asia.max_host_weight"
+    },
+    {
+      "name": "cluster.cluster_asia.membership_change",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_asia.membership_degraded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.membership_excluded",
+      "value": 0
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_asia.membership_healthy"
+    },
+    {
+      "name": "cluster.cluster_asia.membership_total",
+      "value": 2
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.original_dst_host_invalid"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.retry_or_shadow_abandoned"
+    },
+    {
+      "name": "cluster.cluster_asia.update_attempt",
+      "value": 74
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.update_empty"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.update_failure"
+    },
+    {
+      "value": 72,
+      "name": "cluster.cluster_asia.update_no_rebuild"
+    },
+    {
+      "value": 74,
+      "name": "cluster.cluster_asia.update_success"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_active",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_close_notify",
+      "value": 80
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_connect_attempts_exceeded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_connect_fail",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_connect_timeout",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_connect_with_0_rtt",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_destroy",
+      "value": 80
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_destroy_local",
+      "value": 80
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_destroy_local_with_active_rq",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_destroy_remote",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_destroy_remote_with_active_rq"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_destroy_with_active_rq"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_http1_total",
+      "value": 82
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_http2_total"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_http3_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_idle_timeout",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_max_duration_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_max_requests"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_none_healthy",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_overflow"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_pool_overflow"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_protocol_error",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_cx_rx_bytes_buffered"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_rx_bytes_total",
+      "value": 34942788
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_total",
+      "value": 82
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_cx_tx_bytes_buffered",
+      "value": 0
+    },
+    {
+      "value": 19024,
+      "name": "cluster.cluster_asia.upstream_cx_tx_bytes_total"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_flow_control_backed_up_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_flow_control_drained_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_flow_control_paused_reading_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_flow_control_resumed_reading_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_internal_redirect_failed_total"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_internal_redirect_succeeded_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_200",
+      "value": 62
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_2xx",
+      "value": 62
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_300",
+      "value": 11
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_3xx",
+      "value": 11
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_400",
+      "value": 5
+    },
+    {
+      "value": 5,
+      "name": "cluster.cluster_asia.upstream_rq_4xx"
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_asia.upstream_rq_500"
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_asia.upstream_rq_5xx"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_active",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_cancelled",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_completed",
+      "value": 80
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_maintenance_mode"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_max_duration_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_pending_active"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_pending_failure_eject",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_pending_overflow",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_pending_total",
+      "value": 82
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_per_try_idle_timeout",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_per_try_timeout",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_retry",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_retry_backoff_exponential"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_retry_backoff_ratelimited"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_retry_limit_exceeded"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_retry_overflow"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_retry_success",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.upstream_rq_rx_reset"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_timeout",
+      "value": 0
+    },
+    {
+      "value": 82,
+      "name": "cluster.cluster_asia.upstream_rq_total"
+    },
+    {
+      "name": "cluster.cluster_asia.upstream_rq_tx_reset",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_asia.version"
+    },
+    {
+      "name": "cluster.cluster_europe.assignment_stale",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.assignment_timeout_received"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.bind_errors"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.default.cx_open"
+    },
+    {
+      "name": "cluster.cluster_europe.circuit_breakers.default.cx_pool_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.default.rq_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.default.rq_pending_open"
+    },
+    {
+      "name": "cluster.cluster_europe.circuit_breakers.default.rq_retry_open",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.high.cx_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.high.cx_pool_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.high.rq_open"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.circuit_breakers.high.rq_pending_open"
+    },
+    {
+      "name": "cluster.cluster_europe.circuit_breakers.high.rq_retry_open",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.default.total_match_count",
+      "value": 74
+    },
+    {
+      "value": 303,
+      "name": "cluster.cluster_europe.external.upstream_rq_200"
+    },
+    {
+      "name": "cluster.cluster_europe.external.upstream_rq_2xx",
+      "value": 303
+    },
+    {
+      "value": 16,
+      "name": "cluster.cluster_europe.external.upstream_rq_300"
+    },
+    {
+      "value": 16,
+      "name": "cluster.cluster_europe.external.upstream_rq_3xx"
+    },
+    {
+      "name": "cluster.cluster_europe.external.upstream_rq_400",
+      "value": 9
+    },
+    {
+      "name": "cluster.cluster_europe.external.upstream_rq_4xx",
+      "value": 9
+    },
+    {
+      "value": 8,
+      "name": "cluster.cluster_europe.external.upstream_rq_500"
+    },
+    {
+      "name": "cluster.cluster_europe.external.upstream_rq_5xx",
+      "value": 8
+    },
+    {
+      "name": "cluster.cluster_europe.external.upstream_rq_completed",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.http1.dropped_headers_with_underscores"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.http1.metadata_not_supported_error"
+    },
+    {
+      "name": "cluster.cluster_europe.http1.requests_rejected_with_underscores_in_headers",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.http1.response_flood",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_healthy_panic"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_local_cluster_not_ok"
+    },
+    {
+      "name": "cluster.cluster_europe.lb_recalculate_zone_structures",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.lb_subsets_active",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_subsets_created"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_subsets_fallback"
+    },
+    {
+      "name": "cluster.cluster_europe.lb_subsets_fallback_panic",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.lb_subsets_removed",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_subsets_selected"
+    },
+    {
+      "name": "cluster.cluster_europe.lb_zone_cluster_too_small",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_zone_no_capacity_left"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.lb_zone_number_differs"
+    },
+    {
+      "name": "cluster.cluster_europe.lb_zone_routing_all_directly",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.lb_zone_routing_cross_zone",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.lb_zone_routing_sampled",
+      "value": 0
+    },
+    {
+      "value": 1,
+      "name": "cluster.cluster_europe.max_host_weight"
+    },
+    {
+      "name": "cluster.cluster_europe.membership_change",
+      "value": 2
+    },
+    {
+      "name": "cluster.cluster_europe.membership_degraded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.membership_excluded",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.membership_healthy",
+      "value": 2
+    },
+    {
+      "value": 2,
+      "name": "cluster.cluster_europe.membership_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.original_dst_host_invalid"
+    },
+    {
+      "name": "cluster.cluster_europe.retry_or_shadow_abandoned",
+      "value": 0
+    },
+    {
+      "value": 74,
+      "name": "cluster.cluster_europe.update_attempt"
+    },
+    {
+      "name": "cluster.cluster_europe.update_empty",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.update_failure",
+      "value": 0
+    },
+    {
+      "value": 72,
+      "name": "cluster.cluster_europe.update_no_rebuild"
+    },
+    {
+      "name": "cluster.cluster_europe.update_success",
+      "value": 74
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_active"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_close_notify",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_connect_attempts_exceeded"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_connect_fail"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_connect_timeout",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_connect_with_0_rtt"
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_europe.upstream_cx_destroy"
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_europe.upstream_cx_destroy_local"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_destroy_local_with_active_rq"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_destroy_remote"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_destroy_remote_with_active_rq",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_destroy_with_active_rq",
+      "value": 0
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_europe.upstream_cx_http1_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_http2_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_http3_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_idle_timeout"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_max_duration_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_max_requests"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_none_healthy"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_overflow"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_pool_overflow"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_cx_protocol_error"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_rx_bytes_buffered",
+      "value": 0
+    },
+    {
+      "value": 807952,
+      "name": "cluster.cluster_europe.upstream_cx_rx_bytes_total"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_total",
+      "value": 336
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_tx_bytes_buffered",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_cx_tx_bytes_total",
+      "value": 77952
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_flow_control_backed_up_total",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_flow_control_drained_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_flow_control_paused_reading_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_flow_control_resumed_reading_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_internal_redirect_failed_total"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_internal_redirect_succeeded_total"
+    },
+    {
+      "value": 303,
+      "name": "cluster.cluster_europe.upstream_rq_200"
+    },
+    {
+      "value": 303,
+      "name": "cluster.cluster_europe.upstream_rq_2xx"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_300",
+      "value": 16
+    },
+    {
+      "value": 16,
+      "name": "cluster.cluster_europe.upstream_rq_3xx"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_400",
+      "value": 9
+    },
+    {
+      "value": 9,
+      "name": "cluster.cluster_europe.upstream_rq_4xx"
+    },
+    {
+      "value": 8,
+      "name": "cluster.cluster_europe.upstream_rq_500"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_5xx",
+      "value": 8
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_active"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_cancelled",
+      "value": 0
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_europe.upstream_rq_completed"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_maintenance_mode"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_max_duration_reached"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_pending_active"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_pending_failure_eject",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_pending_overflow",
+      "value": 0
+    },
+    {
+      "value": 336,
+      "name": "cluster.cluster_europe.upstream_rq_pending_total"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_per_try_idle_timeout",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_per_try_timeout",
+      "value": 0
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_retry",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_retry_backoff_exponential"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_retry_backoff_ratelimited"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_retry_limit_exceeded"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_retry_overflow"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_retry_success"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_rx_reset",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_timeout"
+    },
+    {
+      "name": "cluster.cluster_europe.upstream_rq_total",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.upstream_rq_tx_reset"
+    },
+    {
+      "value": 0,
+      "name": "cluster.cluster_europe.version"
+    },
+    {
+      "value": 4,
+      "name": "cluster_manager.active_clusters"
+    },
+    {
+      "name": "cluster_manager.cluster_added",
+      "value": 4
+    },
+    {
+      "value": 0,
+      "name": "cluster_manager.cluster_modified"
+    },
+    {
+      "name": "cluster_manager.cluster_removed",
+      "value": 0
+    },
+    {
+      "value": 4,
+      "name": "cluster_manager.cluster_updated"
+    },
+    {
+      "value": 0,
+      "name": "cluster_manager.cluster_updated_via_merge"
+    },
+    {
+      "value": 0,
+      "name": "cluster_manager.update_merge_cancelled"
+    },
+    {
+      "name": "cluster_manager.update_out_of_merge_window",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "cluster_manager.warming_clusters"
+    },
+    {
+      "name": "envoy.overload_actions.reset_high_memory_stream.count",
+      "value": 0
+    },
+    {
+      "name": "filesystem.flushed_by_timer",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "filesystem.reopen_failed"
+    },
+    {
+      "value": 0,
+      "name": "filesystem.write_buffered"
+    },
+    {
+      "value": 0,
+      "name": "filesystem.write_completed"
+    },
+    {
+      "name": "filesystem.write_failed",
+      "value": 0
+    },
+    {
+      "name": "filesystem.write_total_buffered",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_cx_active",
+      "value": 1
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_delayed_close_timeout"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_destroy"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_destroy_active_rq"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_destroy_local"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_destroy_local_active_rq"
+    },
+    {
+      "name": "http.admin.downstream_cx_destroy_remote",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_destroy_remote_active_rq"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_drain_close"
+    },
+    {
+      "name": "http.admin.downstream_cx_http1_active",
+      "value": 1
+    },
+    {
+      "value": 1,
+      "name": "http.admin.downstream_cx_http1_total"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_http2_active"
+    },
+    {
+      "name": "http.admin.downstream_cx_http2_total",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_cx_http3_active",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_http3_total"
+    },
+    {
+      "name": "http.admin.downstream_cx_idle_timeout",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_cx_max_duration_reached",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_cx_max_requests_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_overload_disable_keepalive"
+    },
+    {
+      "name": "http.admin.downstream_cx_protocol_error",
+      "value": 0
+    },
+    {
+      "value": 95,
+      "name": "http.admin.downstream_cx_rx_bytes_buffered"
+    },
+    {
+      "value": 95,
+      "name": "http.admin.downstream_cx_rx_bytes_total"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_ssl_active"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_ssl_total"
+    },
+    {
+      "name": "http.admin.downstream_cx_total",
+      "value": 1
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_tx_bytes_buffered"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_tx_bytes_total"
+    },
+    {
+      "name": "http.admin.downstream_cx_upgrades_active",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_cx_upgrades_total"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_flow_control_paused_reading_total"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_flow_control_resumed_reading_total"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_1xx"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_2xx"
+    },
+    {
+      "name": "http.admin.downstream_rq_3xx",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_4xx"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_5xx"
+    },
+    {
+      "value": 1,
+      "name": "http.admin.downstream_rq_active"
+    },
+    {
+      "name": "http.admin.downstream_rq_completed",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_failed_path_normalization"
+    },
+    {
+      "name": "http.admin.downstream_rq_header_timeout",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_rq_http1_total",
+      "value": 1
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_http2_total"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_http3_total"
+    },
+    {
+      "name": "http.admin.downstream_rq_idle_timeout",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_max_duration_reached"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_non_relative_path"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_overload_close"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_redirected_with_normalized_path"
+    },
+    {
+      "name": "http.admin.downstream_rq_rejected_via_ip_detection",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_rq_response_before_rq_complete",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_rx_reset"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_timeout"
+    },
+    {
+      "value": 0,
+      "name": "http.admin.downstream_rq_too_large"
+    },
+    {
+      "value": 1,
+      "name": "http.admin.downstream_rq_total"
+    },
+    {
+      "name": "http.admin.downstream_rq_tx_reset",
+      "value": 0
+    },
+    {
+      "name": "http.admin.downstream_rq_ws_on_non_ws_route",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.admin.rs_too_large"
+    },
+    {
+      "value": 4,
+      "name": "http.edge.downstream_cx_active"
+    },
+    {
+      "name": "http.edge.downstream_cx_delayed_close_timeout",
+      "value": 0
+    },
+    {
+      "value": 795,
+      "name": "http.edge.downstream_cx_destroy"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_destroy_active_rq"
+    },
+    {
+      "name": "http.edge.downstream_cx_destroy_local",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_destroy_local_active_rq"
+    },
+    {
+      "name": "http.edge.downstream_cx_destroy_remote",
+      "value": 795
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_destroy_remote_active_rq"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_drain_close"
+    },
+    {
+      "value": 4,
+      "name": "http.edge.downstream_cx_http1_active"
+    },
+    {
+      "value": 799,
+      "name": "http.edge.downstream_cx_http1_total"
+    },
+    {
+      "name": "http.edge.downstream_cx_http2_active",
+      "value": 0
+    },
+    {
+      "name": "http.edge.downstream_cx_http2_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_http3_active"
+    },
+    {
+      "name": "http.edge.downstream_cx_http3_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_idle_timeout"
+    },
+    {
+      "name": "http.edge.downstream_cx_max_duration_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_max_requests_reached"
+    },
+    {
+      "name": "http.edge.downstream_cx_overload_disable_keepalive",
+      "value": 0
+    },
+    {
+      "name": "http.edge.downstream_cx_protocol_error",
+      "value": 0
+    },
+    {
+      "value": 564,
+      "name": "http.edge.downstream_cx_rx_bytes_buffered"
+    },
+    {
+      "value": 112659,
+      "name": "http.edge.downstream_cx_rx_bytes_total"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_ssl_active"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_ssl_total"
+    },
+    {
+      "value": 799,
+      "name": "http.edge.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_cx_tx_bytes_buffered"
+    },
+    {
+      "value": 36616811,
+      "name": "http.edge.downstream_cx_tx_bytes_total"
+    },
+    {
+      "name": "http.edge.downstream_cx_upgrades_active",
+      "value": 0
+    },
+    {
+      "name": "http.edge.downstream_cx_upgrades_total",
+      "value": 0
+    },
+    {
+      "name": "http.edge.downstream_flow_control_paused_reading_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_flow_control_resumed_reading_total"
+    },
+    {
+      "name": "http.edge.downstream_rq_1xx",
+      "value": 0
+    },
+    {
+      "name": "http.edge.downstream_rq_2xx",
+      "value": 691
+    },
+    {
+      "value": 42,
+      "name": "http.edge.downstream_rq_3xx"
+    },
+    {
+      "name": "http.edge.downstream_rq_4xx",
+      "value": 23
+    },
+    {
+      "value": 39,
+      "name": "http.edge.downstream_rq_5xx"
+    },
+    {
+      "value": 4,
+      "name": "http.edge.downstream_rq_active"
+    },
+    {
+      "value": 795,
+      "name": "http.edge.downstream_rq_completed"
+    },
+    {
+      "name": "http.edge.downstream_rq_failed_path_normalization",
+      "value": 0
+    },
+    {
+      "name": "http.edge.downstream_rq_header_timeout",
+      "value": 0
+    },
+    {
+      "value": 799,
+      "name": "http.edge.downstream_rq_http1_total"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_http2_total"
+    },
+    {
+      "name": "http.edge.downstream_rq_http3_total",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_idle_timeout"
+    },
+    {
+      "name": "http.edge.downstream_rq_max_duration_reached",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_non_relative_path"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_overload_close"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_redirected_with_normalized_path"
+    },
+    {
+      "name": "http.edge.downstream_rq_rejected_via_ip_detection",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_response_before_rq_complete"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_rx_reset"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_timeout"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_too_large"
+    },
+    {
+      "value": 799,
+      "name": "http.edge.downstream_rq_total"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.downstream_rq_tx_reset"
+    },
+    {
+      "name": "http.edge.downstream_rq_ws_on_non_ws_route",
+      "value": 0
+    },
+    {
+      "name": "http.edge.no_cluster",
+      "value": 0
+    },
+    {
+      "name": "http.edge.no_route",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.passthrough_internal_redirect_bad_location"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.passthrough_internal_redirect_no_route"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.passthrough_internal_redirect_predicate"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.passthrough_internal_redirect_too_many_redirects"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.passthrough_internal_redirect_unsafe_scheme"
+    },
+    {
+      "name": "http.edge.rq_direct_response",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.rq_redirect"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.rq_reset_after_downstream_response_started"
+    },
+    {
+      "name": "http.edge.rq_total",
+      "value": 799
+    },
+    {
+      "value": 0,
+      "name": "http.edge.rs_too_large"
+    },
+    {
+      "name": "http.edge.tracing.client_enabled",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http.edge.tracing.health_check"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.tracing.not_traceable"
+    },
+    {
+      "value": 0,
+      "name": "http.edge.tracing.random_sampling"
+    },
+    {
+      "name": "http.edge.tracing.service_forced",
+      "value": 0
+    },
+    {
+      "name": "http1.dropped_headers_with_underscores",
+      "value": 0
+    },
+    {
+      "name": "http1.metadata_not_supported_error",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "http1.requests_rejected_with_underscores_in_headers"
+    },
+    {
+      "name": "http1.response_flood",
+      "value": 0
+    },
+    {
+      "value": 2,
+      "name": "listener.0.0.0.0_1000.downstream_cx_active"
+    },
+    {
+      "value": 43,
+      "name": "listener.0.0.0.0_1000.downstream_cx_destroy"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.downstream_cx_overflow",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_1000.downstream_cx_overload_reject"
+    },
+    {
+      "value": 45,
+      "name": "listener.0.0.0.0_1000.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.downstream_cx_transport_socket_connect_timeout",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_1000.downstream_global_cx_overflow",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_1000.downstream_pre_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.downstream_pre_cx_timeout",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_1000.http.edge.downstream_rq_1xx",
+      "value": 0
+    },
+    {
+      "value": 19,
+      "name": "listener.0.0.0.0_1000.http.edge.downstream_rq_2xx"
+    },
+    {
+      "value": 2,
+      "name": "listener.0.0.0.0_1000.http.edge.downstream_rq_3xx"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_1000.http.edge.downstream_rq_4xx"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.http.edge.downstream_rq_5xx",
+      "value": 22
+    },
+    {
+      "name": "listener.0.0.0.0_1000.http.edge.downstream_rq_completed",
+      "value": 43
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_1000.no_filter_chain_match"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_0.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 7,
+      "name": "listener.0.0.0.0_1000.worker_0.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_1000.worker_1.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_1.downstream_cx_total",
+      "value": 8
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_2.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_2.downstream_cx_total",
+      "value": 2
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_3.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_3.downstream_cx_total",
+      "value": 6
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_1000.worker_4.downstream_cx_active"
+    },
+    {
+      "value": 5,
+      "name": "listener.0.0.0.0_1000.worker_4.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_5.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_5.downstream_cx_total",
+      "value": 5
+    },
+    {
+      "value": 2,
+      "name": "listener.0.0.0.0_1000.worker_6.downstream_cx_active"
+    },
+    {
+      "value": 7,
+      "name": "listener.0.0.0.0_1000.worker_6.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_7.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_1000.worker_7.downstream_cx_total",
+      "value": 5
+    },
+    {
+      "name": "listener.0.0.0.0_2000.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_2000.downstream_cx_destroy",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.downstream_cx_overflow"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.downstream_cx_overload_reject"
+    },
+    {
+      "value": 336,
+      "name": "listener.0.0.0.0_2000.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.downstream_cx_transport_socket_connect_timeout"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.downstream_global_cx_overflow",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_2000.downstream_pre_cx_active",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.downstream_pre_cx_timeout"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.http.edge.downstream_rq_1xx",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_2000.http.edge.downstream_rq_2xx",
+      "value": 303
+    },
+    {
+      "name": "listener.0.0.0.0_2000.http.edge.downstream_rq_3xx",
+      "value": 16
+    },
+    {
+      "name": "listener.0.0.0.0_2000.http.edge.downstream_rq_4xx",
+      "value": 9
+    },
+    {
+      "value": 8,
+      "name": "listener.0.0.0.0_2000.http.edge.downstream_rq_5xx"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.http.edge.downstream_rq_completed",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.no_filter_chain_match"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.worker_0.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_0.downstream_cx_total",
+      "value": 40
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.worker_1.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_1.downstream_cx_total",
+      "value": 37
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.worker_2.downstream_cx_active"
+    },
+    {
+      "value": 41,
+      "name": "listener.0.0.0.0_2000.worker_2.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_3.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_3.downstream_cx_total",
+      "value": 46
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_2000.worker_4.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_4.downstream_cx_total",
+      "value": 44
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_5.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 37,
+      "name": "listener.0.0.0.0_2000.worker_5.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_6.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 47,
+      "name": "listener.0.0.0.0_2000.worker_6.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_7.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_2000.worker_7.downstream_cx_total",
+      "value": 44
+    },
+    {
+      "name": "listener.0.0.0.0_3000.downstream_cx_active",
+      "value": 2
+    },
+    {
+      "value": 80,
+      "name": "listener.0.0.0.0_3000.downstream_cx_destroy"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.downstream_cx_overflow"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.downstream_cx_overload_reject"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.downstream_cx_total",
+      "value": 82
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.downstream_cx_transport_socket_connect_timeout"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.downstream_global_cx_overflow",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.downstream_pre_cx_active"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.downstream_pre_cx_timeout"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.http.edge.downstream_rq_1xx"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.http.edge.downstream_rq_2xx",
+      "value": 62
+    },
+    {
+      "value": 11,
+      "name": "listener.0.0.0.0_3000.http.edge.downstream_rq_3xx"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.http.edge.downstream_rq_4xx",
+      "value": 5
+    },
+    {
+      "name": "listener.0.0.0.0_3000.http.edge.downstream_rq_5xx",
+      "value": 2
+    },
+    {
+      "name": "listener.0.0.0.0_3000.http.edge.downstream_rq_completed",
+      "value": 80
+    },
+    {
+      "name": "listener.0.0.0.0_3000.no_filter_chain_match",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.worker_0.downstream_cx_active"
+    },
+    {
+      "value": 11,
+      "name": "listener.0.0.0.0_3000.worker_0.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.worker_1.downstream_cx_active"
+    },
+    {
+      "value": 10,
+      "name": "listener.0.0.0.0_3000.worker_1.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.worker_2.downstream_cx_active"
+    },
+    {
+      "value": 9,
+      "name": "listener.0.0.0.0_3000.worker_2.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.worker_3.downstream_cx_active",
+      "value": 1
+    },
+    {
+      "value": 13,
+      "name": "listener.0.0.0.0_3000.worker_3.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.worker_4.downstream_cx_active",
+      "value": 1
+    },
+    {
+      "name": "listener.0.0.0.0_3000.worker_4.downstream_cx_total",
+      "value": 14
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.worker_5.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.worker_5.downstream_cx_total",
+      "value": 8
+    },
+    {
+      "name": "listener.0.0.0.0_3000.worker_6.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 9,
+      "name": "listener.0.0.0.0_3000.worker_6.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_3000.worker_7.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_3000.worker_7.downstream_cx_total",
+      "value": 8
+    },
+    {
+      "name": "listener.0.0.0.0_4000.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 336,
+      "name": "listener.0.0.0.0_4000.downstream_cx_destroy"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.downstream_cx_overflow",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.downstream_cx_overload_reject"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.downstream_cx_total",
+      "value": 336
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.downstream_cx_transport_socket_connect_timeout"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.downstream_global_cx_overflow"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.downstream_pre_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.downstream_pre_cx_timeout",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.http.edge.downstream_rq_1xx"
+    },
+    {
+      "value": 307,
+      "name": "listener.0.0.0.0_4000.http.edge.downstream_rq_2xx"
+    },
+    {
+      "value": 13,
+      "name": "listener.0.0.0.0_4000.http.edge.downstream_rq_3xx"
+    },
+    {
+      "value": 9,
+      "name": "listener.0.0.0.0_4000.http.edge.downstream_rq_4xx"
+    },
+    {
+      "value": 7,
+      "name": "listener.0.0.0.0_4000.http.edge.downstream_rq_5xx"
+    },
+    {
+      "value": 336,
+      "name": "listener.0.0.0.0_4000.http.edge.downstream_rq_completed"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.no_filter_chain_match"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.worker_0.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_0.downstream_cx_total",
+      "value": 44
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_1.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_1.downstream_cx_total",
+      "value": 42
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.worker_2.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_2.downstream_cx_total",
+      "value": 49
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_3.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 35,
+      "name": "listener.0.0.0.0_4000.worker_3.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_4.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 38,
+      "name": "listener.0.0.0.0_4000.worker_4.downstream_cx_total"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_5.downstream_cx_active",
+      "value": 0
+    },
+    {
+      "value": 48,
+      "name": "listener.0.0.0.0_4000.worker_5.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.worker_6.downstream_cx_active"
+    },
+    {
+      "name": "listener.0.0.0.0_4000.worker_6.downstream_cx_total",
+      "value": 43
+    },
+    {
+      "value": 0,
+      "name": "listener.0.0.0.0_4000.worker_7.downstream_cx_active"
+    },
+    {
+      "value": 37,
+      "name": "listener.0.0.0.0_4000.worker_7.downstream_cx_total"
+    },
+    {
+      "value": 1,
+      "name": "listener.admin.downstream_cx_active"
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.downstream_cx_destroy"
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.downstream_cx_overflow"
+    },
+    {
+      "name": "listener.admin.downstream_cx_overload_reject",
+      "value": 0
+    },
+    {
+      "value": 1,
+      "name": "listener.admin.downstream_cx_total"
+    },
+    {
+      "name": "listener.admin.downstream_cx_transport_socket_connect_timeout",
+      "value": 0
+    },
+    {
+      "name": "listener.admin.downstream_global_cx_overflow",
+      "value": 0
+    },
+    {
+      "name": "listener.admin.downstream_pre_cx_active",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.downstream_pre_cx_timeout"
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.http.admin.downstream_rq_1xx"
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.http.admin.downstream_rq_2xx"
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.http.admin.downstream_rq_3xx"
+    },
+    {
+      "name": "listener.admin.http.admin.downstream_rq_4xx",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.http.admin.downstream_rq_5xx"
+    },
+    {
+      "name": "listener.admin.http.admin.downstream_rq_completed",
+      "value": 0
+    },
+    {
+      "name": "listener.admin.main_thread.downstream_cx_active",
+      "value": 1
+    },
+    {
+      "value": 1,
+      "name": "listener.admin.main_thread.downstream_cx_total"
+    },
+    {
+      "value": 0,
+      "name": "listener.admin.no_filter_chain_match"
+    },
+    {
+      "value": 4,
+      "name": "listener_manager.listener_added"
+    },
+    {
+      "name": "listener_manager.listener_create_failure",
+      "value": 0
+    },
+    {
+      "value": 32,
+      "name": "listener_manager.listener_create_success"
+    },
+    {
+      "value": 0,
+      "name": "listener_manager.listener_in_place_updated"
+    },
+    {
+      "value": 0,
+      "name": "listener_manager.listener_modified"
+    },
+    {
+      "name": "listener_manager.listener_removed",
+      "value": 0
+    },
+    {
+      "name": "listener_manager.listener_stopped",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "listener_manager.total_filter_chains_draining"
+    },
+    {
+      "value": 4,
+      "name": "listener_manager.total_listeners_active"
+    },
+    {
+      "value": 0,
+      "name": "listener_manager.total_listeners_draining"
+    },
+    {
+      "name": "listener_manager.total_listeners_warming",
+      "value": 0
+    },
+    {
+      "name": "listener_manager.workers_started",
+      "value": 1
+    },
+    {
+      "value": 0,
+      "name": "main_thread.watchdog_mega_miss"
+    },
+    {
+      "name": "main_thread.watchdog_miss",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "runtime.admin_overrides_active"
+    },
+    {
+      "value": 0,
+      "name": "runtime.deprecated_feature_seen_since_process_start"
+    },
+    {
+      "value": 0,
+      "name": "runtime.deprecated_feature_use"
+    },
+    {
+      "name": "runtime.load_error",
+      "value": 0
+    },
+    {
+      "value": 1,
+      "name": "runtime.load_success"
+    },
+    {
+      "name": "runtime.num_keys",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "runtime.num_layers"
+    },
+    {
+      "value": 0,
+      "name": "runtime.override_dir_exists"
+    },
+    {
+      "value": 1,
+      "name": "runtime.override_dir_not_exists"
+    },
+    {
+      "name": "server.compilation_settings.fips_mode",
+      "value": 0
+    },
+    {
+      "value": 8,
+      "name": "server.concurrency"
+    },
+    {
+      "name": "server.days_until_first_cert_expiring",
+      "value": 2147483647
+    },
+    {
+      "name": "server.debug_assertion_failures",
+      "value": 0
+    },
+    {
+      "name": "server.dropped_stat_flushes",
+      "value": 0
+    },
+    {
+      "name": "server.dynamic_unknown_fields",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "server.envoy_bug_failures"
+    },
+    {
+      "name": "server.hot_restart_epoch",
+      "value": 0
+    },
+    {
+      "value": 1,
+      "name": "server.hot_restart_generation"
+    },
+    {
+      "name": "server.live",
+      "value": 1
+    },
+    {
+      "value": 0,
+      "name": "server.main_thread.watchdog_mega_miss"
+    },
+    {
+      "value": 0,
+      "name": "server.main_thread.watchdog_miss"
+    },
+    {
+      "value": 8320760,
+      "name": "server.memory_allocated"
+    },
+    {
+      "value": 18874368,
+      "name": "server.memory_heap_size"
+    },
+    {
+      "value": 26536874,
+      "name": "server.memory_physical_size"
+    },
+    {
+      "value": 0,
+      "name": "server.parent_connections"
+    },
+    {
+      "value": 0,
+      "name": "server.seconds_until_first_ocsp_response_expiring"
+    },
+    {
+      "name": "server.state",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "server.static_unknown_fields"
+    },
+    {
+      "name": "server.stats_recent_lookups",
+      "value": 4432
+    },
+    {
+      "name": "server.total_connections",
+      "value": 3
+    },
+    {
+      "name": "server.uptime",
+      "value": 180
+    },
+    {
+      "value": 6090155,
+      "name": "server.version"
+    },
+    {
+      "value": 0,
+      "name": "server.wip_protos"
+    },
+    {
+      "name": "server.worker_0.watchdog_mega_miss",
+      "value": 0
+    },
+    {
+      "name": "server.worker_0.watchdog_miss",
+      "value": 0
+    },
+    {
+      "name": "server.worker_1.watchdog_mega_miss",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "server.worker_1.watchdog_miss"
+    },
+    {
+      "value": 0,
+      "name": "server.worker_2.watchdog_mega_miss"
+    },
+    {
+      "name": "server.worker_2.watchdog_miss",
+      "value": 0
+    },
+    {
+      "name": "server.worker_3.watchdog_mega_miss",
+      "value": 0
+    },
+    {
+      "name": "server.worker_3.watchdog_miss",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "server.worker_4.watchdog_mega_miss"
+    },
+    {
+      "name": "server.worker_4.watchdog_miss",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "server.worker_5.watchdog_mega_miss"
+    },
+    {
+      "value": 0,
+      "name": "server.worker_5.watchdog_miss"
+    },
+    {
+      "value": 0,
+      "name": "server.worker_6.watchdog_mega_miss"
+    },
+    {
+      "name": "server.worker_6.watchdog_miss",
+      "value": 0
+    },
+    {
+      "name": "server.worker_7.watchdog_mega_miss",
+      "value": 0
+    },
+    {
+      "value": 0,
+      "name": "server.worker_7.watchdog_miss"
+    },
+    {
+      "value": 0,
+      "name": "vhost.forward_service.vcluster.other.upstream_rq_retry"
+    },
+    {
+      "name": "vhost.forward_service.vcluster.other.upstream_rq_retry_limit_exceeded",
+      "value": 0
+    },
+    {
+      "name": "vhost.forward_service.vcluster.other.upstream_rq_retry_overflow",
+      "value": 0
+    },
+    {
+      "name": "vhost.forward_service.vcluster.other.upstream_rq_retry_success",
+      "value": 0
+    },
+    {
+      "name": "vhost.forward_service.vcluster.other.upstream_rq_timeout",
+      "value": 0
+    },
+    {
+      "name": "vhost.forward_service.vcluster.other.upstream_rq_total",
+      "value": 0
+    },
+    {
+      "name": "workers.watchdog_mega_miss",
+      "value": 0
+    },
+    {
+      "name": "workers.watchdog_miss",
+      "value": 0
+    },
+    {
+      "histograms": {
+        "supported_quantiles": [
+          0,
+          25,
+          50,
+          75,
+          90,
+          95,
+          99,
+          99.5,
+          99.9,
+          100
+        ],
+        "computed_quantiles": [
+          {
+            "values": [
+              {
+                "cumulative": 51,
+                "interval": 69
+              },
+              {
+                "cumulative": 65.33333333333333,
+                "interval": 84.125
+              },
+              {
+                "interval": 86.5,
+                "cumulative": 78.1
+              },
+              {
+                "interval": 89.75,
+                "cumulative": 89
+              },
+              {
+                "interval": 105.5,
+                "cumulative": 98.38
+              },
+              {
+                "cumulative": 100.23529411764704,
+                "interval": 107.75
+              },
+              {
+                "interval": 109.55,
+                "cumulative": 108.04705882352941
+              },
+              {
+                "interval": 109.775,
+                "cumulative": 109.02352941176468
+              },
+              {
+                "cumulative": 109.80470588235295,
+                "interval": 109.955
+              },
+              {
+                "interval": 110,
+                "cumulative": 110
+              }
+            ],
+            "name": "cluster.cluster_america.external.upstream_rq_time"
+          },
+          {
+            "name": "cluster.cluster_america.upstream_cx_connect_ms",
+            "values": [
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 1.0668000000000006,
+                "interval": 0
+              },
+              {
+                "cumulative": 1.1,
+                "interval": 0
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "cumulative": 51,
+                "interval": 69
+              },
+              {
+                "interval": 84.25,
+                "cumulative": 65.5
+              },
+              {
+                "cumulative": 78.5,
+                "interval": 86.5
+              },
+              {
+                "interval": 89.75,
+                "cumulative": 89
+              },
+              {
+                "interval": 105.5,
+                "cumulative": 98.6
+              },
+              {
+                "cumulative": 101.69999999999999,
+                "interval": 107.75
+              },
+              {
+                "cumulative": 108.34,
+                "interval": 109.55
+              },
+              {
+                "cumulative": 109.16999999999999,
+                "interval": 109.775
+              },
+              {
+                "cumulative": 109.834,
+                "interval": 109.955
+              },
+              {
+                "interval": 110,
+                "cumulative": 110
+              }
+            ],
+            "name": "cluster.cluster_america.upstream_cx_length_ms"
+          },
+          {
+            "values": [
+              {
+                "interval": 69,
+                "cumulative": 51
+              },
+              {
+                "cumulative": 65.33333333333333,
+                "interval": 84.125
+              },
+              {
+                "interval": 86.5,
+                "cumulative": 78.1
+              },
+              {
+                "interval": 89.75,
+                "cumulative": 89
+              },
+              {
+                "cumulative": 98.38,
+                "interval": 105.5
+              },
+              {
+                "cumulative": 100.23529411764704,
+                "interval": 107.75
+              },
+              {
+                "cumulative": 108.04705882352941,
+                "interval": 109.55
+              },
+              {
+                "cumulative": 109.02352941176468,
+                "interval": 109.775
+              },
+              {
+                "interval": 109.955,
+                "cumulative": 109.80470588235295
+              },
+              {
+                "cumulative": 110,
+                "interval": 110
+              }
+            ],
+            "name": "cluster.cluster_america.upstream_rq_time"
+          },
+          {
+            "values": [
+              {
+                "cumulative": 5000,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 5325
+              },
+              {
+                "interval": null,
+                "cumulative": 6550
+              },
+              {
+                "interval": null,
+                "cumulative": 7237.5
+              },
+              {
+                "cumulative": 7395,
+                "interval": null
+              },
+              {
+                "cumulative": 7695,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 7779
+              },
+              {
+                "interval": null,
+                "cumulative": 7789.5
+              },
+              {
+                "interval": null,
+                "cumulative": 7797.9
+              },
+              {
+                "cumulative": 7800,
+                "interval": null
+              }
+            ],
+            "name": "cluster.cluster_antarctica.external.upstream_rq_time"
+          },
+          {
+            "name": "cluster.cluster_antarctica.upstream_cx_connect_ms",
+            "values": [
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              }
+            ]
+          },
+          {
+            "name": "cluster.cluster_antarctica.upstream_cx_length_ms",
+            "values": [
+              {
+                "interval": 8000,
+                "cumulative": 5000
+              },
+              {
+                "cumulative": 6558.333333333333,
+                "interval": 8025
+              },
+              {
+                "cumulative": 7905,
+                "interval": 8050
+              },
+              {
+                "cumulative": 8010.416666666667,
+                "interval": 8075
+              },
+              {
+                "interval": 8090,
+                "cumulative": 8064.166666666667
+              },
+              {
+                "cumulative": 8082.083333333333,
+                "interval": 8095
+              },
+              {
+                "interval": 8099,
+                "cumulative": 8096.416666666667
+              },
+              {
+                "cumulative": 8098.208333333333,
+                "interval": 8099.5
+              },
+              {
+                "interval": 8099.9,
+                "cumulative": 8099.641666666666
+              },
+              {
+                "interval": 8100,
+                "cumulative": 8100
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "interval": null,
+                "cumulative": 5000
+              },
+              {
+                "cumulative": 5325,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 6550
+              },
+              {
+                "cumulative": 7237.5,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 7395
+              },
+              {
+                "cumulative": 7695,
+                "interval": null
+              },
+              {
+                "cumulative": 7779,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 7789.5
+              },
+              {
+                "cumulative": 7797.9,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 7800
+              }
+            ],
+            "name": "cluster.cluster_antarctica.upstream_rq_time"
+          },
+          {
+            "values": [
+              {
+                "interval": 4200,
+                "cumulative": 2000
+              },
+              {
+                "cumulative": 2812.5,
+                "interval": 4250
+              },
+              {
+                "cumulative": 3516.6666666666665,
+                "interval": 4300
+              },
+              {
+                "interval": 4550,
+                "cumulative": 4265
+              },
+              {
+                "cumulative": 4762,
+                "interval": 4580
+              },
+              {
+                "interval": 4590,
+                "cumulative": 4851.25
+              },
+              {
+                "interval": 4598,
+                "cumulative": 4960.5
+              },
+              {
+                "cumulative": 4980.25,
+                "interval": 4599
+              },
+              {
+                "interval": 4599.8,
+                "cumulative": 4996.05
+              },
+              {
+                "cumulative": 5000,
+                "interval": 4600
+              }
+            ],
+            "name": "cluster.cluster_asia.external.upstream_rq_time"
+          },
+          {
+            "values": [
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 1.0200000000000002
+              },
+              {
+                "interval": 0,
+                "cumulative": 1.0599999999999994
+              },
+              {
+                "cumulative": 1.092,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 1.1
+              }
+            ],
+            "name": "cluster.cluster_asia.upstream_cx_connect_ms"
+          },
+          {
+            "values": [
+              {
+                "cumulative": 2000,
+                "interval": 4200
+              },
+              {
+                "cumulative": 2812.5,
+                "interval": 4250
+              },
+              {
+                "interval": 4300,
+                "cumulative": 3516.6666666666665
+              },
+              {
+                "cumulative": 4265,
+                "interval": 4550
+              },
+              {
+                "interval": 4580,
+                "cumulative": 4762
+              },
+              {
+                "cumulative": 4851.25,
+                "interval": 4590
+              },
+              {
+                "cumulative": 4960.5,
+                "interval": 4598
+              },
+              {
+                "cumulative": 4980.25,
+                "interval": 4599
+              },
+              {
+                "interval": 4599.8,
+                "cumulative": 4996.05
+              },
+              {
+                "cumulative": 5000,
+                "interval": 4600
+              }
+            ],
+            "name": "cluster.cluster_asia.upstream_cx_length_ms"
+          },
+          {
+            "name": "cluster.cluster_asia.upstream_rq_time",
+            "values": [
+              {
+                "interval": 4200,
+                "cumulative": 2000
+              },
+              {
+                "interval": 4250,
+                "cumulative": 2812.5
+              },
+              {
+                "interval": 4300,
+                "cumulative": 3516.6666666666665
+              },
+              {
+                "interval": 4550,
+                "cumulative": 4265
+              },
+              {
+                "interval": 4580,
+                "cumulative": 4762
+              },
+              {
+                "interval": 4590,
+                "cumulative": 4851.25
+              },
+              {
+                "interval": 4598,
+                "cumulative": 4960.5
+              },
+              {
+                "interval": 4599,
+                "cumulative": 4980.25
+              },
+              {
+                "cumulative": 4996.05,
+                "interval": 4599.8
+              },
+              {
+                "interval": 4600,
+                "cumulative": 5000
+              }
+            ]
+          },
+          {
+            "name": "cluster.cluster_europe.external.upstream_rq_time",
+            "values": [
+              {
+                "interval": 52,
+                "cumulative": 51
+              },
+              {
+                "interval": 58,
+                "cumulative": 64.33333333333333
+              },
+              {
+                "cumulative": 75.75,
+                "interval": 72
+              },
+              {
+                "interval": 84,
+                "cumulative": 91
+              },
+              {
+                "interval": 106,
+                "cumulative": 98.9
+              },
+              {
+                "interval": 108,
+                "cumulative": 103.08333333333333
+              },
+              {
+                "interval": 109.6,
+                "cumulative": 108.61666666666667
+              },
+              {
+                "interval": 109.8,
+                "cumulative": 109.30833333333332
+              },
+              {
+                "interval": 109.96000000000001,
+                "cumulative": 109.86166666666666
+              },
+              {
+                "interval": 110,
+                "cumulative": 110
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "cumulative": 0,
+                "interval": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 0
+              },
+              {
+                "interval": 0,
+                "cumulative": 1.0446666666666657
+              },
+              {
+                "cumulative": 1.0889333333333335,
+                "interval": 0
+              },
+              {
+                "cumulative": 1.1,
+                "interval": 0
+              }
+            ],
+            "name": "cluster.cluster_europe.upstream_cx_connect_ms"
+          },
+          {
+            "name": "cluster.cluster_europe.upstream_cx_length_ms",
+            "values": [
+              {
+                "interval": 52,
+                "cumulative": 51
+              },
+              {
+                "interval": 58,
+                "cumulative": 64.8
+              },
+              {
+                "interval": 72,
+                "cumulative": 76
+              },
+              {
+                "interval": 85,
+                "cumulative": 92
+              },
+              {
+                "cumulative": 99.16,
+                "interval": 106
+              },
+              {
+                "interval": 108,
+                "cumulative": 104.27586206896551
+              },
+              {
+                "cumulative": 108.8551724137931,
+                "interval": 109.6
+              },
+              {
+                "interval": 109.8,
+                "cumulative": 109.42758620689654
+              },
+              {
+                "cumulative": 109.88551724137932,
+                "interval": 109.96000000000001
+              },
+              {
+                "cumulative": 110,
+                "interval": 110
+              }
+            ]
+          },
+          {
+            "name": "cluster.cluster_europe.upstream_rq_time",
+            "values": [
+              {
+                "cumulative": 51,
+                "interval": 52
+              },
+              {
+                "cumulative": 64.33333333333333,
+                "interval": 58
+              },
+              {
+                "interval": 72,
+                "cumulative": 75.75
+              },
+              {
+                "interval": 84,
+                "cumulative": 91
+              },
+              {
+                "interval": 106,
+                "cumulative": 98.9
+              },
+              {
+                "interval": 108,
+                "cumulative": 103.08333333333333
+              },
+              {
+                "interval": 109.6,
+                "cumulative": 108.61666666666667
+              },
+              {
+                "cumulative": 109.30833333333332,
+                "interval": 109.8
+              },
+              {
+                "interval": 109.96000000000001,
+                "cumulative": 109.86166666666666
+              },
+              {
+                "cumulative": 110,
+                "interval": 110
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              }
+            ],
+            "name": "http.admin.downstream_cx_length_ms"
+          },
+          {
+            "name": "http.admin.downstream_rq_time",
+            "values": [
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              }
+            ]
+          },
+          {
+            "name": "http.edge.downstream_cx_length_ms",
+            "values": [
+              {
+                "interval": 53,
+                "cumulative": 52
+              },
+              {
+                "cumulative": 68.96875,
+                "interval": 73
+              },
+              {
+                "interval": 87.5,
+                "cumulative": 84
+              },
+              {
+                "cumulative": 99.95,
+                "interval": 105
+              },
+              {
+                "interval": 4400,
+                "cumulative": 3669.999999999999
+              },
+              {
+                "interval": 4600,
+                "cumulative": 5184.999999999996
+              },
+              {
+                "cumulative": 8060.7,
+                "interval": 8080
+              },
+              {
+                "interval": 8090,
+                "cumulative": 8080.35
+              },
+              {
+                "cumulative": 8096.070000000001,
+                "interval": 8098
+              },
+              {
+                "cumulative": 8100,
+                "interval": 8100
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "interval": 52,
+                "cumulative": 51
+              },
+              {
+                "interval": 72,
+                "cumulative": 67.46875
+              },
+              {
+                "interval": 86,
+                "cumulative": 82
+              },
+              {
+                "cumulative": 98.1923076923077,
+                "interval": 105
+              },
+              {
+                "interval": 4300,
+                "cumulative": 3669.999999999999
+              },
+              {
+                "cumulative": 5184.999999999996,
+                "interval": 4600
+              },
+              {
+                "interval": 8080,
+                "cumulative": 8047.6
+              },
+              {
+                "cumulative": 8073.8,
+                "interval": 8090
+              },
+              {
+                "cumulative": 8094.76,
+                "interval": 8098
+              },
+              {
+                "cumulative": 8100,
+                "interval": 8100
+              }
+            ],
+            "name": "http.edge.downstream_rq_time"
+          },
+          {
+            "values": [
+              {
+                "interval": 8000,
+                "cumulative": 5000
+              },
+              {
+                "cumulative": 6558.333333333333,
+                "interval": 8025
+              },
+              {
+                "cumulative": 7925,
+                "interval": 8050
+              },
+              {
+                "cumulative": 8046.25,
+                "interval": 8075
+              },
+              {
+                "cumulative": 8078.5,
+                "interval": 8090
+              },
+              {
+                "interval": 8095,
+                "cumulative": 8089.25
+              },
+              {
+                "interval": 8099,
+                "cumulative": 8097.85
+              },
+              {
+                "interval": 8099.5,
+                "cumulative": 8098.925
+              },
+              {
+                "interval": 8099.9,
+                "cumulative": 8099.785
+              },
+              {
+                "interval": 8100,
+                "cumulative": 8100
+              }
+            ],
+            "name": "listener.0.0.0.0_1000.downstream_cx_length_ms"
+          },
+          {
+            "name": "listener.0.0.0.0_2000.downstream_cx_length_ms",
+            "values": [
+              {
+                "cumulative": 52,
+                "interval": 53
+              },
+              {
+                "interval": 59,
+                "cumulative": 66.66666666666667
+              },
+              {
+                "cumulative": 78.25,
+                "interval": 73
+              },
+              {
+                "cumulative": 93.8,
+                "interval": 86
+              },
+              {
+                "cumulative": 102.45454545454545,
+                "interval": 106
+              },
+              {
+                "interval": 108,
+                "cumulative": 106.22727272727272
+              },
+              {
+                "interval": 109.6,
+                "cumulative": 109.24545454545455
+              },
+              {
+                "interval": 109.8,
+                "cumulative": 109.62272727272727
+              },
+              {
+                "cumulative": 109.92454545454545,
+                "interval": 109.96000000000001
+              },
+              {
+                "interval": 110,
+                "cumulative": 110
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "interval": 4300,
+                "cumulative": 2000
+              },
+              {
+                "interval": 4350,
+                "cumulative": 2812.5
+              },
+              {
+                "interval": 4400,
+                "cumulative": 3516.6666666666665
+              },
+              {
+                "interval": 4550,
+                "cumulative": 4281.25
+              },
+              {
+                "interval": 4580,
+                "cumulative": 4762
+              },
+              {
+                "cumulative": 4851.25,
+                "interval": 4590
+              },
+              {
+                "interval": 4598,
+                "cumulative": 4960.5
+              },
+              {
+                "interval": 4599,
+                "cumulative": 4980.25
+              },
+              {
+                "interval": 4599.8,
+                "cumulative": 4996.05
+              },
+              {
+                "cumulative": 5000,
+                "interval": 4600
+              }
+            ],
+            "name": "listener.0.0.0.0_3000.downstream_cx_length_ms"
+          },
+          {
+            "name": "listener.0.0.0.0_4000.downstream_cx_length_ms",
+            "values": [
+              {
+                "cumulative": 52,
+                "interval": 70
+              },
+              {
+                "cumulative": 67,
+                "interval": 85.25
+              },
+              {
+                "interval": 87.75,
+                "cumulative": 79.9
+              },
+              {
+                "interval": 90.75,
+                "cumulative": 91.2
+              },
+              {
+                "interval": 105.5,
+                "cumulative": 99.6
+              },
+              {
+                "cumulative": 104.46666666666665,
+                "interval": 107.75
+              },
+              {
+                "cumulative": 108.89333333333333,
+                "interval": 109.55
+              },
+              {
+                "cumulative": 109.44666666666666,
+                "interval": 109.775
+              },
+              {
+                "interval": 109.955,
+                "cumulative": 109.88933333333334
+              },
+              {
+                "interval": 110,
+                "cumulative": 110
+              }
+            ]
+          },
+          {
+            "name": "listener.admin.downstream_cx_length_ms",
+            "values": [
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "cumulative": null,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": null
+              }
+            ]
+          },
+          {
+            "values": [
+              {
+                "interval": null,
+                "cumulative": 56
+              },
+              {
+                "interval": null,
+                "cumulative": 56.25
+              },
+              {
+                "interval": null,
+                "cumulative": 56.5
+              },
+              {
+                "cumulative": 56.75,
+                "interval": null
+              },
+              {
+                "interval": null,
+                "cumulative": 56.9
+              },
+              {
+                "interval": null,
+                "cumulative": 56.95
+              },
+              {
+                "interval": null,
+                "cumulative": 56.99
+              },
+              {
+                "cumulative": 56.995,
+                "interval": null
+              },
+              {
+                "cumulative": 56.999,
+                "interval": null
+              },
+              {
+                "cumulative": 57,
+                "interval": null
+              }
+            ],
+            "name": "server.initialization_time_ms"
+          }
+        ]
+      }
+    }
+  ]
+}

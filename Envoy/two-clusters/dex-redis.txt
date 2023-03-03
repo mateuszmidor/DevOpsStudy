@@ -1,0 +1,36 @@
+[Redis.cpp:151] Successfully connected to redis 127.0.0.1:6379@0
+[Redis.cpp:151] Successfully connected to redis 127.0.0.1:6379@0
+[PcapInterface.cpp:101] Reading packets from wlp0s20f3 [id: 0]
+[Ntop.cpp:2700] Registered interface wlp0s20f3 [id: 0]
+[main.cpp:352] PID stored in file /var/run/ntopng.pid
+[Geolocation.cpp:116] Running without geolocation support.
+[Geolocation.cpp:117] To enable geolocation follow the instructions at
+[Geolocation.cpp:118] https://github.com/ntop/ntopng/blob/dev/doc/README.geolocation.md
+[HTTPserver.cpp:1410] HTTPS Disabled: missing TLS certificate /home/mariusz/proj/ntopng/httpdocs/ssl/ntopng-cert.pem
+[HTTPserver.cpp:1412] Please read https://github.com/ntop/ntopng/blob/dev/doc/README.SSL.md if you want to enable TLS.
+[HTTPserver.cpp:1683] Web server dirs [/home/mariusz/proj/ntopng/httpdocs][/home/mariusz/proj/ntopng/scripts]
+[HTTPserver.cpp:1686] HTTP server listening on 3002
+[NetworkInterface.cpp:3246] Started host user script hooks loop on interface wlp0s20f3 [id: 0]...
+[NetworkInterface.cpp:3187] Started flow user script hooks loop on interface wlp0s20f3 [id: 0]...
+[main.cpp:422] Working directory: /var/lib/ntopng
+[main.cpp:424] Scripts/HTML pages directory: /home/mariusz/proj/ntopng
+[Ntop.cpp:470] Welcome to ntopng x86_64 v.5.7.230216 (dev:3945f44021196a8ff0a3ff7ae91a8de0d33a390b:20230216)
+[Ntop.cpp:480] Built on Ubuntu 22.04.1 LTS
+[Ntop.cpp:482] (C) 1998-23 ntop.org
+[Ntop.cpp:879] Adding 192.168.2.112/32 as IPv4 interface address for wlp0s20f3
+[Ntop.cpp:888] Adding 192.168.2.0/24 as IPv4 local network for wlp0s20f3
+[Ntop.cpp:910] Adding fe80::99ce:e233:681a:1e81/128 as IPv6 interface address for wlp0s20f3
+[Ntop.cpp:920] Adding fe80::99ce:e233:681a:1e81/64 as IPv6 local network for wlp0s20f3
+[PeriodicActivities.cpp:109] Started periodic activities loop...
+[startup.lua:35] Processing startup.lua: please hold on...
+[startup.lua:120] [lists_utils.lua:823] Refreshing category lists...
+[startup.lua:120] [lists_utils.lua:747] Category Lists (28674 hosts, 2571 IPs, 0 JA3) loaded in 1 sec
+[startup.lua:124] Initializing device polices...
+[startup.lua:140] Initializing alerts...
+[startup.lua:149] Initializing timeseries...
+[startup.lua:212] Fetching latest ntop blog posts...
+[startup.lua:216] Completed startup.lua
+[PeriodicActivities.cpp:167] Found 10 activities
+[FlowChecksLoader.cpp:265] WARNING: Unable to find flow check 'connection_failed': skipping it
+[NetworkInterface.cpp:3421] Started packet polling on interface wlp0s20f3 [id: 0]...
+[CustomFlowLuaScript.cpp:46] Unable to find script /home/mariusz/proj/ntopng/scripts/callbacks/checks/flows/custom_flow_protocol_detected_script.lua: ignored `Flow User Check Script` flow check
