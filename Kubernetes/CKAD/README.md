@@ -11,7 +11,7 @@ Highlights:
 
 ## Practice/Labs
 - https://kodekloud.com/courses/kubernetes-challenges/
-- https://liptanbiswas.com/tuts/ckad-practice-challenges/
+- https://liptanbiswas.com/tuts/ckad-practice-challenges/ - provided env doesn't work, but you can do tasks using minikube
 - https://github.com/dgkanatsios/CKAD-exercises
 - https://killercoda.com/killer-shell-ckad (free, but needs login)
 - https://killercoda.com/killer-shell-cka (CKA, but worthy)
