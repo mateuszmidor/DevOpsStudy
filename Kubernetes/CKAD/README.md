@@ -29,21 +29,22 @@ Highlights:
 - https://kavinduchamiran.medium.com/my-two-cents-on-passing-ckad-in-2022-ffbb7f1c65be
 
 ## Simulated exam
-- lots of namespace switching
+- lots of context and namespace switching
 - lots of testing with curl
 - multitab terminal available
 - multidesktop linux!
 
 So, better prepare ~/.bashrc:
 ```sh
-alias kn='kubectl config set-context --current --namespace '
-alias kb='kubectl run busybox-once --rm --restart=Never -it --image=busybox -- '
-alias ka='kubectl apply -f '
-alias kr='kubectl replace --force --grace-period=0 -f '
-alias l=less
-alias ke='kubectl explain --recursive '# usage: ke pod.spec.volumes | l
-export O='--dry-run=client -o=yaml'
-export N='--grace-period=0 --force'
+export O="--dry-run=client -o=yaml"
+export N="--grace-period=0 --force"
+alias editalias="vim ~/.bashrc && source ~/.bashrc" # quick edit your bash aliases
+alias kc="kubectl config use-context" # change context
+alias kn="kubectl config set-context --current --namespace " # change namespace
+alias kb="kubectl run busybox-once --rm --restart=Never -it --image=busybox --" # run busybox containerr
+alias ka="kubectl apply -f"
+alias kr="kubectl replace $N-f"
+alias ke="kubectl explain --recursive"
 ```
 
 And ~/.vimrc:
@@ -53,5 +54,10 @@ set number
 set shiftwidth=2
 set tabstop=2
 set expandtab
-autocmd FileType yaml setlocal ai "enable auto-indent in YAML files
+set ai "enable auto-indent when editing YAML files
 ```
+
+## Actual exam
+
+(TODO)
+
