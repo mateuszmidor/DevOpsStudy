@@ -1,0 +1,8 @@
+# create kubernetes resources under the name "nginx" (filename without extension)
+k8s_yaml("./nginx.yaml")
+
+# forward localhost:8080 -> pod/nginx:80
+k8s_resource("nginx", port_forwards="8080:80")
+
+# display nginx welcome page in firefox
+local_resource("view_nginx", "firefox localhost:8080 ", resource_deps=["nginx"])
