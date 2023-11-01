@@ -1,0 +1,11 @@
+# build image with our app and push it to local registry managed by tilt; image tag=http-server, buid dir=., watch dir=.
+docker_build("http-server-img", ".")
+
+# create kubernetes resources under the name "http-server" (filename without extension)
+k8s_yaml("./http-server.yaml")
+
+# forward localhost:8080 -> pod/http-server:8080
+k8s_resource("http-server", port_forwards="8080:8080")
+
+# display index page in firefox
+local_resource("view_index", "firefox localhost:8080 ", resource_deps=["http-server"])
