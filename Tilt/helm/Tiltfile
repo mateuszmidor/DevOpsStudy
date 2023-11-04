@@ -1,0 +1,9 @@
+# install local Helm chart "apache2", "set" configures values defined in "values.yaml" file
+yaml = helm("./apache2", name="chart-apache2", set="replicaCount=2")
+k8s_yaml(yaml)
+
+# forward localhost:8080 -> deploy/chart-apache2:80
+k8s_resource("chart-apache2", port_forwards="8080:90")
+
+# display apache2 welcome page in firefox
+local_resource("view_apache2", "firefox localhost:8080 ", resource_deps=["chart-apache2"])
