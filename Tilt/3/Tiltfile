@@ -1,0 +1,21 @@
+# build image with our app and push it to local registry managed by tilt; image tag=http-server, buid dir=., watch dir=.
+# avoid rebuilding the image and restarting the container when just the server binary can be rebuilt in place in the running container
+load('ext://restart_process', 'docker_build_with_restart')
+docker_build_with_restart(
+    "http-server-img",
+    ".",
+    entrypoint='/http-server', # restart this app right after live_update has happpened
+    live_update=[
+        sync('.', '/app'), # watch current folder for changes and send changed file to the container under /app
+        run('cd /app && CGO_ENABLED=0 GOOS=linux go build -o /http-server') # rebuild the app from sources; this happens inside the running container
+    ]
+)
+
+# create kubernetes resources under the name "http-server" (filename without extension)
+k8s_yaml("./http-server.yaml")
+
+# forward localhost:8080 -> pod/http-server:8080
+k8s_resource("http-server", port_forwards="8080:8080")
+
+# display index page in firefox
+local_resource("view_index", "firefox localhost:8080 ", resource_deps=["http-server"])
