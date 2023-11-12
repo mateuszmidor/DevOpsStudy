@@ -1,0 +1,9 @@
+# setup Tilt to take command line args as an input
+config.define_string_list("cmdline_args", args=True) # args=True means: use positional arguments: "Andy McCain" instead of: --cmdline_args=Andy --cmdline_args=McCain
+cfg = config.parse()
+
+# print Welcome message with command args using shell program "echo"
+default_args = ["unknown traveler"]
+args = cfg.get('cmdline_args', default_args)
+name = " ".join(args)
+local_resource("welcome", "echo Welcome, {}".format(name))
