@@ -1,0 +1,164 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        -120
+      ],
+      "id": "6cd0435c-7987-4dd5-909d-877787ae7bc5",
+      "name": "When chat message received",
+      "webhookId": "bfbd3f65-ef5a-4bb3-b979-e69044a88f47"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        120,
+        -120
+      ],
+      "id": "a5a20072-977d-4ccf-85e1-baf4dc03261c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        120,
+        100
+      ],
+      "id": "f85c758e-980d-46d2-b3e4-17c978b0aff7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "DFxwIePy25ToUGv6",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 15
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        220,
+        100
+      ],
+      "id": "e8438b24-13ce-4aa7-bc1e-7ec8614b7818",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        380,
+        100
+      ],
+      "id": "5fcadc86-46ca-40a5-bb38-0a4594c30671",
+      "name": "Wikipedia"
+    },
+    {
+      "parameters": {
+        "description": "użyj tego narzędzia żeby zakodować tekst do base64",
+        "language": "python",
+        "pythonCode": "import base64\nreturn base64.b64encode(query.encode(\"utf-8\")).decode(\"utf-8\")\n\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.2,
+      "position": [
+        580,
+        100
+      ],
+      "id": "6abd8d09-53c4-4014-b529-1afcc503e70e",
+      "name": "Code Tool"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "312104e4-9899-4501-8d3f-06a14800de47",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e401d17d515521f9c2016a9132b53a63962ed7748811645c58a4d71f012c7039"
+  },
+  "id": "rR3jvfd7RFAEBp3G",
+  "tags": []
+}
