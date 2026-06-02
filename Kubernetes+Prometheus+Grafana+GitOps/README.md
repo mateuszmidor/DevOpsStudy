@@ -35,3 +35,5 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ```sh
 kubectl get secret gitops-grafana-admin-credentials -n monitoring -o jsonpath='{.data.GF_SECURITY_ADMIN_PASSWORD}' | base64 -d
 ```
+
+Note: it may take a while for grafana operator to fetch the CRDs, e.g. alerting rule may show up with 1-2 minutes delay.
