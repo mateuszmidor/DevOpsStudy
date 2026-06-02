@@ -45,7 +45,7 @@ Rule: Grafana must send alert notifications to a Microsoft Teams channel via web
 
 #### Scenario: Configure Teams webhook contact point
 - **GIVEN** a running Grafana instance
-- **WHEN** a `GrafanaContactPoint` CR is applied with `type: teams` and a valid webhook URL
+- **WHEN** a `GrafanaContactPoint` CR is applied with `receivers[].type: teams` and a valid webhook URL under `receivers[].settings.url`
 - **THEN** the contact point appears in Grafana's alerting contact points list
 - **AND** the contact point is named `ms-teams-channel`
 

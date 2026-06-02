@@ -22,6 +22,7 @@ spec:
     matchLabels:
       dashboards: "gitops"
   name: ms-teams-channel
-  type: teams
-  settings:
-    url: "https://webhook.site/2e5e7bcf-c8b6-46a3-9045-93f528b55e34"
+  receivers:
+    - type: teams
+      settings:
+        url: "https://webhook.site/2e5e7bcf-c8b6-46a3-9045-93f528b55e34"
