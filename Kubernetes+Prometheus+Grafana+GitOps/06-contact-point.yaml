@@ -7,10 +7,12 @@
 # The contact point uses "type: teams", which tells Grafana to format the
 # alert payload in the Teams-compatible message card format.
 #
-# The URL below is a webhook.site test endpoint used for development and
-# validation. Replace it with a real Teams channel webhook URL for
-# production use. The notification policy (06-notification-policy.yaml)
-# routes all alerts to this contact point.
+# The webhook URL is sourced from the `contact-point-url` Secret
+# (05-contact-point-url-secret.yaml), resolved at reconciliation time by
+# the Grafana Operator via valuesFrom[].secretKeyRef.
+#
+# The notification policy (07-notification-policy.yaml) routes all alerts
+# to this contact point.
 # ---------------------------------------------------------------------------
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaContactPoint
@@ -24,5 +26,10 @@ spec:
   name: ms-teams-channel
   receivers:
     - type: teams
-      settings:
-        url: "https://webhook.site/2e5e7bcf-c8b6-46a3-9045-93f528b55e34"
+      settings: {}
+      valuesFrom:
+        - targetPath: url
+          valueFrom:
+            secretKeyRef:
+              name: contact-point-url
+              key: url

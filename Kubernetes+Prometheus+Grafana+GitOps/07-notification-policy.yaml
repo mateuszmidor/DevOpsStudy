@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------------------
 # Defines the top-level notification routing policy for Grafana alerts.
 # This is the root route — it applies to all firing alerts and sends
-# them to the "ms-teams-channel" contact point (defined in 05-contact-point.yaml).
+# them to the "ms-teams-channel" contact point (defined in 06-contact-point.yaml).
 #
 # Alerts are grouped by "alertname" and "namespace" so that multiple
 # related alerts are bundled into a single notification rather than

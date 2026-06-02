@@ -1,4 +1,4 @@
-.PHONY: default obs
+.PHONY: default crds
 
 default:
 	helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -13,11 +13,12 @@ default:
 	helm upgrade --install grafana-operator grafana/grafana-operator \
 		--namespace monitoring
 
-obs:
+crds:
 	kubectl apply -f 01-grafana-instance.yaml
 	kubectl apply -f 02-datasource.yaml
 	kubectl apply -f 03-dashboard.yaml
 	kubectl apply -f 04-folder.yaml
-	kubectl apply -f 05-contact-point.yaml
-	kubectl apply -f 06-notification-policy.yaml
-	kubectl apply -f 07-alert-rule.yaml
+	kubectl apply -f 05-contact-point-url-secret.yaml
+	kubectl apply -f 06-contact-point.yaml
+	kubectl apply -f 07-notification-policy.yaml
+	kubectl apply -f 08-alert-rule.yaml

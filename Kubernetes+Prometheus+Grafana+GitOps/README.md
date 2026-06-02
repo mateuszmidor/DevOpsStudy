@@ -14,7 +14,7 @@ Observability stack for a Minikube cluster using Prometheus Operator and Grafana
 make
 
 # Apply Grafana CRDs (instance, datasource, dashboard, alerts)
-make obs
+make crds
 ```
 
 ## Access Grafana
