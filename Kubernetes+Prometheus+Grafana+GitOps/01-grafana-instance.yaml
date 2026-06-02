@@ -1,0 +1,36 @@
+# ---------------------------------------------------------------------------
+# Grafana instance (CRD: Grafana)
+# ---------------------------------------------------------------------------
+# Provisions the main Grafana server via the Grafana Operator
+# (grafana.integreatly.org/v1beta1). This resource tells the operator to
+# deploy a Grafana pod with a 2Gi persistent volume claim so dashboards
+# and settings survive restarts.
+#
+# Console logging is enabled (no file-based log shipping needed in this
+# setup) and anonymous authentication is disabled — users must log in
+# with the auto-generated admin credentials.
+#
+# The label "dashboards: gitops" serves as the instanceSelector that all
+# other Grafana CRDs (datasources, dashboards, folders, etc.) use to
+# bind themselves to this specific Grafana instance.
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: gitops-grafana
+  namespace: monitoring
+  labels:
+    dashboards: "gitops"
+spec:
+  persistentVolumeClaim:
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+  config:
+    log:
+      mode: "console"
+    auth.anonymous:
+      enabled: "false"

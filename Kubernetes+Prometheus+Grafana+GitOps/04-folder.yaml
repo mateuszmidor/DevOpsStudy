@@ -1,0 +1,23 @@
+# ---------------------------------------------------------------------------
+# Alert folder (CRD: GrafanaFolder)
+# ---------------------------------------------------------------------------
+# Creates an "Infrastructure Alerts" folder in Grafana's alerting UI.
+# Folders provide a way to group alert rules by topic or team so they
+# are easier to manage and navigate.
+#
+# The alert rule group (07-alert-rule.yaml) references this folder via
+# folderRef: infrastructure-alerts-folder, which places the pod-count
+# alert inside this folder automatically.
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaFolder
+metadata:
+  name: infrastructure-alerts-folder
+  namespace: monitoring
+  labels:
+    dashboards: "gitops"
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "gitops"
+  title: "Infrastructure Alerts" # our alert will be created in this folder in Grafana

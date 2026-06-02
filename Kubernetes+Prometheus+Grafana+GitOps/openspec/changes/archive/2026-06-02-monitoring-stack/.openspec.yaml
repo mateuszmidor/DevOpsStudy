@@ -1,0 +1,11 @@
+schema: intent-driven
+change:
+  name: monitoring-stack
+  title: GitOps monitoring stack with Prometheus + Grafana Operator
+  description: >
+    Deploy a GitOps-driven monitoring stack on a local Minikube cluster.
+    Uses Prometheus Operator (kube-prometheus-stack without Grafana) and
+    Grafana Operator (standalone) managed via Helm bootstrap + CRDs applied
+    with kubectl. Includes a custom "Observability" dashboard with pod count,
+    an alert when default namespace pods exceed 3, and MS Teams webhook
+    integration for notifications.

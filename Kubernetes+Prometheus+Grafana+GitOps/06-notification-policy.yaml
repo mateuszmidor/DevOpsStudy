@@ -1,0 +1,31 @@
+# ---------------------------------------------------------------------------
+# Notification policy (CRD: GrafanaNotificationPolicy)
+# ---------------------------------------------------------------------------
+# Defines the top-level notification routing policy for Grafana alerts.
+# This is the root route — it applies to all firing alerts and sends
+# them to the "ms-teams-channel" contact point (defined in 05-contact-point.yaml).
+#
+# Alerts are grouped by "alertname" and "namespace" so that multiple
+# related alerts are bundled into a single notification rather than
+# flooding the channel. Timing parameters:
+#   - group_wait: 30s       — how long to buffer alerts before sending
+#   - group_interval: 5m    — minimum wait between sending batches
+#   - repeat_interval: 4h   — how often to re-send if alert is still firing
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaNotificationPolicy
+metadata:
+  name: gitops-notification-policy
+  namespace: monitoring
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "gitops"
+  route:
+    receiver: ms-teams-channel
+    group_by:
+      - alertname
+      - namespace
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 4h

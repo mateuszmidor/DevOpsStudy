@@ -1,0 +1,79 @@
+# ---------------------------------------------------------------------------
+# Pod count alert rule (CRD: GrafanaAlertRuleGroup)
+# ---------------------------------------------------------------------------
+# Defines a Grafana-managed alert rule that fires when the number of
+# running pods in the "default" namespace exceeds 3 for a sustained
+# period of 1 minute.
+#
+# The alert uses Grafana's 3-stage expression pipeline:
+#   Stage A (query)       — PromQL: sum(kube_pod_status_phase{...})
+#   Stage B (reduce)      — reduces the time series to its last value
+#   Stage C (threshold)   — fires if the reduced value > 3
+#
+# Condition "C" is the alert's trigger condition. If the datasource
+# returns no data, the rule evaluates to NoData; if the expression
+# itself errors, it falls back to Alerting (execErrState) to ensure
+# failures don't silence notifications.
+#
+# When firing, the alert includes a summary and description that
+# interpolates the current pod count ({{ $values.B.Value }}), and is
+# labelled with severity: "critical".
+#
+# The rule lives inside the "Infrastructure Alerts" folder
+# (referenced by folderRef: infrastructure-alerts-folder, created in
+# 04-folder.yaml), and is evaluated every 10 seconds.
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaAlertRuleGroup
+metadata:
+  name: gitops-pod-alerts
+  namespace: monitoring
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "gitops"
+  name: Resource Threshold Alerts
+  folderRef: infrastructure-alerts-folder
+  interval: 10s
+  rules:
+    - title: "Default Namespace Pod Count Critical"
+      uid: "default-pod-count-alert-01"
+      condition: C
+      noDataState: NoData
+      execErrState: Alerting
+      for: 1m
+      annotations:
+        summary: "Default Namespace Pod Count Exceeded"
+        description: "The default namespace currently has {{ $values.B.Value }} running pods (Max allowed: 3)."
+      labels:
+        severity: critical
+      data:
+        - refId: A
+          relativeTimeRange:
+            from: 300
+            to: 0
+          datasourceUid: prometheus-gitops
+          model:
+            expr: 'sum(kube_pod_status_phase{namespace="default", phase="Running"})'
+            intervalMs: 10000
+            maxDataPoints: 43200
+            refId: A
+        - refId: B
+          datasourceUid: "__expr__"
+          model:
+            type: reduce
+            expression: A
+            reducer: last
+            refId: B
+        - refId: C
+          datasourceUid: "__expr__"
+          model:
+            type: threshold
+            expression: B
+            conditions:
+              - type: gt
+                evaluator:
+                  params:
+                    - 3
+                  type: gt
+            refId: C

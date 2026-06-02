@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------------
+# Prometheus datasource (CRD: GrafanaDatasource)
+# ---------------------------------------------------------------------------
+# Registers Prometheus as a data source inside Grafana so dashboards and
+# alert rules can query metrics.
+#
+# The UID "prometheus-gitops" is referenced by the dashboard panels and
+# alert rule queries. The URL points to the Prometheus Operator's in-cluster
+# service (prometheus-operated.monitoring.svc.cluster.local:9090) which
+# is auto-created when the kube-prometheus-stack Helm chart is installed.
+#
+# This datasource is set as the default (isDefault: true), and uses POST
+# for HTTP requests with a 15-second scrape interval hint.
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: prometheus-gitops
+  namespace: monitoring
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "gitops"
+  datasource:
+    name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus-operated.monitoring.svc.cluster.local:9090
+    isDefault: true
+    uid: prometheus-gitops
+    jsonData:
+      httpMethod: POST
+      timeInterval: 15s

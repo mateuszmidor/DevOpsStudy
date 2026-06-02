@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------------------
+# MS Teams contact point (CRD: GrafanaContactPoint)
+# ---------------------------------------------------------------------------
+# Defines a contact point that delivers alert notifications to Microsoft
+# Teams via an incoming webhook.
+#
+# The contact point uses "type: teams", which tells Grafana to format the
+# alert payload in the Teams-compatible message card format.
+#
+# The URL below is a webhook.site test endpoint used for development and
+# validation. Replace it with a real Teams channel webhook URL for
+# production use. The notification policy (06-notification-policy.yaml)
+# routes all alerts to this contact point.
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaContactPoint
+metadata:
+  name: ms-teams-contact-point
+  namespace: monitoring
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "gitops"
+  name: ms-teams-channel
+  type: teams
+  settings:
+    url: "https://webhook.site/2e5e7bcf-c8b6-46a3-9045-93f528b55e34"

@@ -1,0 +1,60 @@
+# ---------------------------------------------------------------------------
+# "Observability" dashboard (CRD: GrafanaDashboard)
+# ---------------------------------------------------------------------------
+# Creates an "Observability" dashboard with a single stat panel that
+# displays the number of running pods in the "default" namespace.
+#
+# The panel's PromQL query is:
+#   sum(kube_pod_status_phase{namespace="default", phase="Running"})
+#
+# A color threshold is applied: green when the count is below 3, red
+# when it reaches 3 or more. This provides a quick visual indicator of
+# whether the pod count is approaching the alert threshold.
+#
+# The dashboard JSON is defined inline (not imported from Grafana.com)
+# so the entire definition stays self-contained in this repository.
+# ---------------------------------------------------------------------------
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: observability-pod-count
+  namespace: monitoring
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: "gitops"
+  json: |
+    {
+      "title": "Observability",
+      "uid": "observability-pod-count",
+      "panels": [
+        {
+          "id": 1,
+          "title": "Running Pods (default namespace)",
+          "type": "stat",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus-gitops"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  { "color": "green", "value": null },
+                  { "color": "red", "value": 3 }
+                ]
+              },
+              "unit": "none"
+            }
+          },
+          "targets": [
+            {
+              "expr": "sum(kube_pod_status_phase{namespace=\"default\", phase=\"Running\"})",
+              "legendFormat": "Running Pods",
+              "refId": "A"
+            }
+          ]
+        }
+      ]
+    }
